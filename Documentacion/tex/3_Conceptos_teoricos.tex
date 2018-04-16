@@ -1,0 +1,60 @@
+\capitulo{3}{Conceptos teóricos}
+
+\section{Aplicación móvil}
+
+Una aplicación móvil es es una aplicación informática con el objetivo de ser ejecutada dentro de dispositivos móviles como un smartphone o una tablet.
+
+\section{Android}
+
+A continuación hablaremos de como funciona el Sistema Operativo de Android, el cual está basado en el núcleo de Linux y desarrollado para su ejecución en dispositivos móviles como SmartPones, tablets, SmartWatchs...
+La última versión de este Sistema Operativo es la \textit{7,1,2 "Nougat"}.
+
+\subsection{Arquitectura de Android}
+La arquitectura de Andorid está estructurado en cinco niveles, siendo estos las aplicaciones, los marcos de trabajo de las aplicaciones, las bilbiotecas, el runtime de Android y el núcleo de Linux.
+\imagen{AndroidArquitectura}{Arquitectura de Android}
+
+Aplicaciones: las aplicaciones base incluyen un cliente de correo electrónico, programa de SMS, calendario, mapas, navegador, contactos y otros. Todas las aplicaciones están escritas en lenguaje de programación Java.
+
+Marco de trabajo de aplicaciones: los desarrolladores tienen acceso completo a los mismos APIs del framework usados por las aplicaciones base. La arquitectura está diseñada para simplificar la reutilización de componentes; cualquier aplicación puede publicar sus capacidades y cualquier otra aplicación puede luego hacer uso de esas capacidades (sujeto a reglas de seguridad del framework). Este mismo mecanismo permite que los componentes sean reemplazados por el usuario.
+Bibliotecas: Android incluye un conjunto de bibliotecas de C/C++ usadas por varios componentes del sistema. Estas características se exponen a los desarrolladores a través del marco de trabajo de aplicaciones de Android; algunas son: System C library (implementación biblioteca C estándar), bibliotecas de medios, bibliotecas de gráficos, 3D y SQLite, entre otras.
+
+Runtime de Android: Android incluye un set de bibliotecas base que proporcionan la mayor parte de las funciones disponibles en las bibliotecas base del lenguaje Java. Cada aplicación Android corre su propio proceso, con su propia instancia de la máquina virtual Dalvik. Dalvik ha sido escrito de forma que un dispositivo puede correr múltiples máquinas virtuales de forma eficiente. Dalvik ejecutaba hasta la versión 5.0 archivos en el formato Dalvik Executable (.dex), el cual está optimizado para memoria mínima. La Máquina Virtual está basada en registros y corre clases compiladas por el compilador de Java que han sido transformadas al formato.dex por la herramienta incluida "dx". Desde la versión 5.0 utiliza el ART, que compila totalmente al momento de instalación de la aplicación.
+
+Núcleo Linux: Android depende de Linux para los servicios base del sistema como seguridad, gestión de memoria, gestión de procesos, pila de red y modelo de controladores. El núcleo también actúa como una capa de abstracción entre el hardware y el resto de la pila de software.\cite{Android}
+
+\section{Entorno de desarrollo}
+El entorno de desarrollo integrado es una aplicación informática que permite el desarrollo de software de una manera más sencilla. Los entornos de desarrollo suelensonstar de un editor de exto, herramientas de construcción automáticas y un debuger.
+Algunos entornos cuentan con IntelliSense para auto completar texto y un compilador, para poder compilar el código generado con el entorno de desarrollo.
+
+
+\section{Java}
+Java es un lenguaje de programación orientado a objetos, concurrente y de propósito general, y buscaba la independencia de la implementación de las aplicaciones, para conseguir poder ejecutar un mismo código sobre diferentes dispositivos con tecnologías diferentes.
+
+Que sea un lenguaje de programación orientado a objetos quiere decir que cada tipo de dato que tengamos en la aplicación tendrá que llevar sus operaciones específicas para ese dato, es decir, cada objeto tendrá asociado un comportamiento y un estado.
+Al separar estos comportamientos y estados unos de otros, permite de manera más sencilla el reutilizar código de diferentes aplicaciones.
+
+Para permitir la independencia del código sobre las plataformas Java al compilarse genera un código llamado bytecode que son instrucciones que se le darán a la máquina que corre Java. Es decir, que cuando instalemos Java tendremos que seleccionar el que sea compatible con nuestro dispositivo, pero a la hora de ejecutar código, al este correr por la máquina virtual de Java lo que permite es que no necesite de especificaciones concretas de cada sistema el código de nuestra aplicación.
+
+Otra característica principal de Java es el recolector de basura, que impedirá tener objetos que no se estén utilizando en este momento. Para ello el programador podrá especificar el ciclo de vida de los objetos, para controlar cuando se crean y cuando se borran. Es muy importante el recolector de basura ya que si no podríamos tener problemas con la memoria de nuestro dispositivo, ya que cada instancia de un objeto consume parte de esta.
+
+Los entornos en los que funciona Java son sistemas móviles y embebidos, navegadores web, servidores y aplicaciones de escritorio.\cite{Java}
+
+\section{Servicios Android - Services}
+Un Service es un componente de una aplicación que puede realizar operaciones de larga ejecución en segundo plano y que no proporciona una interfaz de usuario. Otro componente de la aplicación puede iniciar un servicio y continuará ejecutándose en segundo plano aunque el usuario cambie a otra aplicación. Además, un componente puede enlazarse con un servicio para interactuar con él e incluso realizar una comunicación entre procesos (IPC). Por ejemplo, un servicio puede manejar transacciones de red, reproducir música, realizar I/O de archivos o interactuar con un proveedor de contenido, todo en segundo plano.
+
+Un servicio puede adoptar esencialmente dos formas:
+
+Servicio iniciado
+Un servicio está "iniciado" cuando un componente de aplicación (como una actividad) lo inicia llamando a startService(). Una vez iniciado, un servicio puede ejecutarse en segundo plano de manera indefinida, incluso si se destruye el componente que lo inició. Por lo general, un servicio iniciado realiza una sola operación y no devuelve un resultado al emisor. Por ejemplo, puede descargar o cargar un archivo a través de la red. Cuando la operación está terminada, el servicio debe detenerse por sí mismo.
+Servicio de enlace
+Un servicio es de "de enlace" cuando un componente de la aplicación se vincula a él llamando a bindService(). Un servicio de enlace ofrece una interfaz cliente-servidor que permite que los componentes interactúen con el servicio, envíen solicitudes, obtengan resultados e incluso lo hagan en distintos procesos con la comunicación entre procesos (IPC). Un servicio de enlace se ejecuta solamente mientras otro componente de aplicación está enlazado con él. Se pueden enlazar varios componentes con el servicio a la vez, pero cuando todos ellos se desenlazan, el servicio se destruye.
+
+\section{Listener}
+
+Los listener son clases que se encargan de controlar los eventos que se generan dentro de nuestra aplicación.
+Estos listeners podrán manejar los eventos para su posterior procesado, pudiendo capturar datos e información de dichos eventos.
+
+\subsection{GPS}
+
+GPS son las siglas de sistema de posicionamiento global, el cual nos permite establecer la posición de nuestro dispositivo móvil.
+Se generará un listener para los eventos GPS lo que se nos permitirá saber de manera periódica donde se encuentra nuestro dispositivo móvil.
