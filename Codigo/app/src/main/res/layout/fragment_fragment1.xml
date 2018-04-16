@@ -1,0 +1,24 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.transicionesActivityFragment.Fragment1">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:text="Fragment 1"
+        android:textAlignment="center"
+        android:layout_centerInParent="true"
+        />
+
+    <Button
+        android:id="@+id/botonFragment1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="GOTO Fragment 2"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="20dp"/>
+
+</RelativeLayout>
