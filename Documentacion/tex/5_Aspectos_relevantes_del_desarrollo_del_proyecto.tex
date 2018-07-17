@@ -1,2 +1,38 @@
 \capitulo{5}{Aspectos relevantes del desarrollo del proyecto}
 
+\section{Inicio del proyecto}
+
+Lo que me motivó a la hora de desarrollar este proyecto fue la necesidad de permitirme de una manera rápida y sencilla poder configurar mi terminal móvil para evitar situaciones embarazosas o no deseadas en las que el móvil suena cuando no debia, o por el contrario no sonaba cuando estabas disponible.
+
+Para ello decidí realizar una aplicación que permitiera a un usuario no experto de los dispositivos móviles el poder mantener gestionado en todo momento y de manera sencilla el sonido de su dispositivo.
+
+\section{Metodologías}
+
+Dentro de lo posible se intentó llevar a cabo el desarrollo del proyecto siguiendo una metodología ágil, siendo esta Scrum, intentando ir sacando de manera ágil el contenido del proyecto.
+Aunque no ha sido conseguido, como forma educativa se ha intentado seguir lo máximo posible esta idea.
+
+Para ello se generaron una serie de hitos a ir cumpliendo divididos en diferentes sprints, que se buscaba que fuera el contenido de trabajo que se podía generar en una semana. Se debería de haber ido quedando con el tutor para la revisión de estos sprints pero por diferentes motivos se fueron fui haciendo revisiones autocríticas para la revisión de estos a la vez que se quedaba con el tutor y se mantenia conversación por correo electrónico.
+Cara la planificación de estos sprints se utilizó ZenHub, una herramienta que representa un tablero canvas.
+
+\subsection{Persistencia de los datos}
+Otra decisión importante que se tuvo que tomar una vez ya arrancado el proyecto y avanzado, fue el modo de guardar los datos que introducía el usuario, es decir, cada vez que abriéramos la aplicación tendría que poder obtener los datos que habían sido guardados previamente, ya fueran eventos o configuraciones de sonido.
+
+Las opciones que contemplamos fuero SQLlite, una base de datos con un tamaño reducido, que se ejecuta con la propia aplicación y Realm, que es un sistema de gestión de bases de datos diseñado inicialmente para Android y IOS de código abierto.
+Al final se decidió la utilización de la base de datos Realm ya que su utilización era bastante sencilla.
+
+La única complicación, es que hay que generar el id por el que va cada clase, para ello generaremos una clase que se ejecute al principio de cada ejecución de la aplicación, y que se encargara de obtener el ID máximo de cada clase, para evitar problemas de conflictos de PrimaryKey.
+
+\subsection{LocationManager}
+Location Manager es una clase propia de Android que nos permite utilizar los servicios de localización del SO. Con esta clase lo que podremos hacer será obtener la localización por varios métodos, en este caso la localización será la que obtengamos del GPS del móvil. 
+
+\subsection{Easy Content Providers}
+
+Es un proyecto de Android que permite obtener de manera sencilla diferentes datos del dispositivo, como por ejemplo los calendarios, contactos, log de llamadas\ldots
+
+Con esta herramienta hemos conseguido iterar sobre los diferentes calendarios que se encuentran en nuestro dispositivo android, para luego obtener los eventos, y saber si hay alguno activo en ese momento o no.
+
+\subsection{WifiManager}
+WifiManager es la clase Java de Android, que nos permite obtener la información del wifi de nuestro terminal. Se estuvo pensando si utilizar toda la lista de redes wifi disponibles, la red con la intensidad mayor o la red wifi a la que estaba conectada el dispositivo, y al final me decanté por la red wifi a la que está conectado el dispositivo, ya que puede dar la casualidad que haya alguna otra red disponible con el mismo nombre que alguna de las que estuvieran configuradas, y de esta manera nos aseguramos que la red wifi con la que trataremos será la que utilice el usuario del terminal.
+
+\subsection{Navigation Drawer}
+Para facilitar la experiencia de usuario se pensó en la utilización de este tipo de menú, ya que es muy cómodo de utilizar y no ocupa espacio dentro de la interfaz de trabajo del usuario.

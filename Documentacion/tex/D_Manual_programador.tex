@@ -9,3 +9,148 @@
 \section{Compilación, instalación y ejecución del proyecto}
 
 \section{Pruebas del sistema}
+
+\subsection{Pruebas unitarias de la base de datos}
+
+\subsubsection{Creación de objetos en la base de datos}
+
+\paragraph{Premisas}
+Se tenga instanciada la base de datos y creado el modelo de datos.
+Se tenga definida la clase que controle los índices de la base de datos, y esta sea arrancada cuando se inicie la aplicación.
+
+\paragraph{Acciones}
+Se generarán todos los tipos de eventos en la base de datos.
+Cada vez que se genere una nueva entrada en la base de datos se comprobará que se introduce comprobando que el numero máximo del id generado es mayor al id máximo que había anteriormente.
+
+\paragraph{Resultados esperados}
+
+Se comprueba que se insertan correctamente todos los tipos de eventos en la base de datos.
+
+\paragraph{Resultado}
+Prueba superada.
+
+\subsubsection{Obtención de datos de la base de datos}
+
+\paragraph{Premisas}
+Se tenga instanciada la base de datos y creado el modelo de datos.
+Se tenga definida la clase que controle los índices de la base de datos, y esta sea arrancada cuando se inicie la aplicación.
+Haya datos guardados dentro de la base de datos.
+
+\paragraph{Acciones}
+Se hará una búsqueda de cada tipo de datos instanciados.
+Se comprobará que se puede iterar sobre dichos datos.
+
+\paragraph{Resultados esperados}
+
+Afirmamos que se puede iterar sobre objetos creados de la base de datos y su contenido corresponde con el introducido.
+
+\paragraph{Resultado}
+Prueba superada.
+
+\subsection{Pruebas unitarias del observador GPS}
+
+\subsubsection{Obtención de la localización GPS en cualquier momento}
+
+\paragraph{Premisas}
+Se tienen que tener aceptados los permisos de localización GPS en la aplicación.
+
+
+\paragraph{Acciones}
+Se generarán todos los tipos de eventos en la base de datos.
+Cada vez que se genere una nueva entrada en la base de datos se comprobará que se introduce comprobando que el numero máximo del id generado es mayor al id máximo que había anteriormente.
+
+\paragraph{Resultados esperados}
+
+Se comprueba que se insertan correctamente todos los tipos de eventos en la base de datos.
+
+\paragraph{Resultado}
+Prueba superada.
+
+
+\subsubsection{Error en la aplicación al intentar acceder a la posición GPS sin los permisos en la aplicación}
+
+\paragraph{Premisas}
+No se tiene que tener aceptados los permisos para la obtención de la localización GPS.
+
+
+\paragraph{Acciones}
+Se intentará obtener la posición con el GPS.
+
+\paragraph{Resultados esperados}
+La aplicación se cierra por falta de permisos.
+
+\paragraph{Resultado}
+Prueba superada.
+
+\subsubsection{Error en la aplicación al intentar acceder a la posición GPS sin los permisos en la aplicación}
+
+\paragraph{Premisas}
+No se tiene que tener aceptados los permisos para la obtención de la localización GPS.
+
+
+\paragraph{Acciones}
+Se intentará obtener la posición con el GPS.
+
+\paragraph{Resultados esperados}
+La aplicación se cierra por falta de permisos.
+
+\paragraph{Resultado}
+Prueba superada.
+
+\subsubsection{Acceder a los eventos de calendario}
+
+\paragraph{Premisas}
+Se tendrán los permisos de lectura y escritura de calendarios en la aplicación.
+
+
+\paragraph{Acciones}
+Se obtendrán los calendarios y sus eventos para iterar sobre ellos.
+
+\paragraph{Resultados esperados}
+Se esperará un listado de eventos sobre el que poder iterar.
+
+\paragraph{Resultado}
+Prueba superada.
+
+\subsubsection{Obtener error en la aplicación por permisos de calendario}
+
+\paragraph{Premisas}
+No se tendrán aceptados los permisos de calendario en la aplicación.
+
+
+\paragraph{Acciones}
+Se obtendrán los calendarios y sus eventos para iterar sobre ellos.
+
+\paragraph{Resultados esperados}
+Se obtendrá un error al intentar generar los listados de eventos.
+
+\paragraph{Resultado}
+Prueba superada.
+
+\subsubsection{Obtener SSID del wifi}
+
+\paragraph{Premisas}
+No se requieren premisas.
+
+\paragraph{Acciones}
+Se obtendrá la ssid del wifi actual.
+
+\paragraph{Resultados esperados}
+Se obtendrá unknown ssid ya que no se puede conectar el emulador a redes wifi.
+
+\paragraph{Resultado}
+Prueba superada.
+
+\subsubsection{Observador genérico}
+
+\paragraph{Premisas}
+No se requieren premisas.
+
+\paragraph{Acciones}
+Se tendrán que crear eventos para ver si la aplicación los detecta.
+
+\paragraph{Resultados esperados}
+Si se encuentran eventos que coincidan con las condiciones, se tendrá que informar de ellos.
+
+\paragraph{Resultado}
+Prueba superada.

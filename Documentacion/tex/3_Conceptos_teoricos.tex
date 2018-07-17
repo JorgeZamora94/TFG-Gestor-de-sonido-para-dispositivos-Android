@@ -58,3 +58,8 @@ Estos listeners podrán manejar los eventos para su posterior procesado, pudiend
 
 GPS son las siglas de sistema de posicionamiento global, el cual nos permite establecer la posición de nuestro dispositivo móvil.
 Se generará un listener para los eventos GPS lo que se nos permitirá saber de manera periódica donde se encuentra nuestro dispositivo móvil.
+
+\section{Concurrencia}
+La concurrencia es una propiedad que permite al sistema el poder realizar trabajos de manera simultánea. En nuestro caso, la concurrencia se realizará a través de los diferentes hilos de ejecución de nuestra aplicación, como el hilo principal de la aplicación (Main Thread), nuestro observador GPS el cual mirará en todo momento si se hacen cambios en el GPS, y el hilo del observador genérico, el cual es un hilo que se lanza cada x tiempo.
+
+El principal problema que se trató con el tema de la concurrencia fueron el bloqueo del hilo principal por medio del observador genérico, ya que al utilizar un Thread nohabía control sobre el bloqueo del hilo principal. Como alternativas se utilizaron los AsincThread, hilis asíncronos que nos permitían la ejecución de tareas en segundo plano, aunque al final se decidió la utilización del TimerTask, ya que está preparado para la repetición de acciones programadas con un lapso x de tiempo.

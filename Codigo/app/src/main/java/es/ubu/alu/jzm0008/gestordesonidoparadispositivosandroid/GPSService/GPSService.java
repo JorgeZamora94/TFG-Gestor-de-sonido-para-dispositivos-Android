@@ -37,6 +37,7 @@ public class GPSService extends IntentService {
                 while(true) {
                     try {
                         Thread.sleep(1000);
+                        Toast.makeText(context,gpsListener.getLocation().toString(),Toast.LENGTH_SHORT).show();
                         System.out.println(gpsListener.getLocation());
                     } catch (InterruptedException e) {
                         e.printStackTrace();

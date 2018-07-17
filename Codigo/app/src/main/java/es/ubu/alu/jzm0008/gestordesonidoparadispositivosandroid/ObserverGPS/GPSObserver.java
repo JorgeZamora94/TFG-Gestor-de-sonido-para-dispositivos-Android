@@ -1,4 +1,5 @@
-package es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.GPSListener;
+package es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.ObserverGPS;
+
 
 import android.Manifest;
 import android.app.Activity;
@@ -9,13 +10,8 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.IBinder;
-import android.os.Looper;
 import android.support.v4.app.ActivityCompat;
-import android.widget.Toast;
-
-import java.util.Calendar;
 
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.activities.MainActivityDemo;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.bd.model.GPSEvent;
@@ -25,7 +21,8 @@ import io.realm.RealmResults;
 
 import static android.content.Context.LOCATION_SERVICE;
 
-public class GPSListener implements LocationListener {
+public class GPSObserver implements LocationListener {
+
     private final Context context;
     boolean isGPSEnabled =false;
     boolean isNetworkEnabled =false;
@@ -36,7 +33,9 @@ public class GPSListener implements LocationListener {
     Location location;
     protected LocationManager locationManager;
 
-    public GPSListener(Context context){
+    private Properties properties;
+    public GPSObserver(Context context){
+        this.properties = new Properties();
         this.context=context;
         if (ActivityCompat.checkSelfPermission( context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions((Activity) context,
@@ -48,7 +47,7 @@ public class GPSListener implements LocationListener {
 
         if(isGPSEnabled){
             if(location==null) {
-                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 10, this);
+                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,properties.getTiempo(),properties.getDistancia(), this);
                 if (locationManager != null) {
                     this.location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
                 }
@@ -57,25 +56,15 @@ public class GPSListener implements LocationListener {
     }
 
     public Location getLocation(){
-        //Toast.makeText(context,location.toString(),Toast.LENGTH_SHORT).show();
         return this.location;
     }
-    
+
     public void onLocationChanged(Location location){
         Realm realm = Realm.getDefaultInstance();
-        RealmResults<GPSEvent> manuales = realm.where(GPSEvent.class).findAll();
-        Calendar ahora = Calendar.getInstance();
-        for(GPSEvent eventoGps : manuales) {
-            if(location.getLongitude()==eventoGps.getLon() && location.getLatitude() == eventoGps.getLat()){
-                Handler handler = new Handler(Looper.getMainLooper());
-
-                handler.post(new Runnable() {
-
-                    @Override
-                    public void run() {
-                        MainActivityDemo.alertaEventoGPS(context);
-                    }
-                });
+        RealmResults<GPSEvent> gps = realm.where(GPSEvent.class).findAll();
+        for(GPSEvent event : gps) {
+            if (event.getLat() == location.getLatitude() && event.getLon() == location.getLongitude()) {
+                MainActivityDemo.alertaEventoGPS(context);
             }
         }
         this.location = location;
@@ -95,4 +84,3 @@ public class GPSListener implements LocationListener {
     }
 
 }
-

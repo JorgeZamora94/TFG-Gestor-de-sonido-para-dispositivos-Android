@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nuevo_periodico"
+            android:title="Evento periódico" />
+         <item
+            android:id="@+id/nuevo_gps"
+            android:title="Evento GPS" />
+        <item
+            android:id="@+id/nuevo_wifi"
+            android:title="Evento wifi" />
+        <item
+            android:id="@+id/nuevo_manual"
+            android:title="Evento manual" />
+        <item
+            android:id="@+id/nuevo_calendario"
+            android:title="Evento calendario" />
+    </group>
+</menu>

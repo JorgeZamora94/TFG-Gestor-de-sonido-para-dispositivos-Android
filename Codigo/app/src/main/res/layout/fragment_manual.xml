@@ -1,0 +1,47 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.EventFragments.ManualFragment">
+
+    <Button
+        android:text="Seleccione el día del evento"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:id="@+id/buttonSelectDiaManual"
+        android:layout_gravity="top|center"/>
+
+    <Button
+        android:text="Seleccione hora de inicio"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="250dp"
+        android:id="@+id/buttonSelectHInicioManual"
+        android:layout_gravity="top|center"/>
+
+    <Button
+        android:text="Seleccione hora de finalización"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="350dp"
+        android:id="@+id/buttonSelectHFinManual"
+        android:layout_gravity="top|center"/>
+
+    <Button
+        android:text="Guarda evento"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="500dp"
+        android:id="@+id/buttonSaveManual"
+        android:layout_gravity="top|center"/>
+
+</FrameLayout>
