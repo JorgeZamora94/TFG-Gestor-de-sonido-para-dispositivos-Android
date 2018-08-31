@@ -1,30 +1,39 @@
-package es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.EventFragments;
+package es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.fragments;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TimePicker;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Iterator;
+import java.util.List;
 
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.R;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.activities.MainActivityDemo;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.app.AppConfigBd;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.bd.model.ManualEvent;
+import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.bd.model.SettingControl;
 import io.realm.Realm;
+import io.realm.RealmResults;
 
 public class ManualFragment extends Fragment {
 
     Realm realm = Realm.getDefaultInstance();
+    RealmResults<SettingControl> settingsControls = realm.where(SettingControl.class).findAll();
+
+
+    Spinner spinner = null;
 
     Button buttonSelectDate;
     Button buttonSelectTime1;
@@ -34,6 +43,7 @@ public class ManualFragment extends Fragment {
     Calendar dia;
     Calendar inicio;
     Calendar fin;
+    EditText nombre;
 
 
 
@@ -46,6 +56,26 @@ public class ManualFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_manual, container, false);
+
+        nombre = (EditText) view.findViewById(R.id.eventManualNameEditText);
+
+
+        Iterator it = settingsControls.listIterator();
+        List lista = new ArrayList<>();
+        while(it.hasNext()){
+            SettingControl s = (SettingControl) it.next();
+            lista.add(s);
+        }
+
+        ArrayAdapter adaptador =
+                new ArrayAdapter( getActivity().getBaseContext(),
+                        android.R.layout.simple_spinner_item, lista);
+
+        spinner = (Spinner) view.findViewById(R.id.spinnerConfManual);
+        adaptador.setDropDownViewResource(
+                android.R.layout.simple_spinner_dropdown_item);
+
+        spinner.setAdapter(adaptador);
 
 
         buttonSelectDate = (Button) view.findViewById(R.id.buttonSelectDiaManual);
@@ -132,7 +162,7 @@ public class ManualFragment extends Fragment {
 
                 realm.beginTransaction();
                 int id1= AppConfigBd.manualId.get();
-                ManualEvent manualEvent = new ManualEvent(inicio.getTimeInMillis(), fin.getTimeInMillis(), "evento manual");
+                ManualEvent manualEvent = new ManualEvent(nombre.getText().toString(), inicio.getTimeInMillis(), fin.getTimeInMillis(), "evento manual", (SettingControl) spinner.getSelectedItem());
                 int id2=AppConfigBd.manualId.get();
                 if(id1!=id2)
                     MainActivityDemo.alertaGuardado(getContext());

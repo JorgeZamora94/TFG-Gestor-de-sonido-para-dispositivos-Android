@@ -12,19 +12,33 @@ public class ManualEvent extends RealmObject {
     @PrimaryKey
     private int id;
 
+    private String nombre;
+
     private long inicio;
     private long fin;
 
     private String mensaje;
 
+    private SettingControl settingControl;
+
     public ManualEvent() {
     }
 
-    public ManualEvent(long inicio, long fin, String mensaje) {
+    public ManualEvent(String nombre, long inicio, long fin, String mensaje, SettingControl settingControl) {
         this.id = AppConfigBd.manualId.incrementAndGet();
+        this.nombre = nombre;
         this.inicio = inicio;
         this.fin = fin;
         this.mensaje = mensaje;
+        this.settingControl = settingControl;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public int getId() {
@@ -59,6 +73,14 @@ public class ManualEvent extends RealmObject {
         this.mensaje = mensaje;
     }
 
+    public SettingControl getSettingControl() {
+        return settingControl;
+    }
+
+    public void setSettingControl(SettingControl settingControl) {
+        this.settingControl = settingControl;
+    }
+
     @Override
     public String toString() {
         return "ManualEvent{" +
@@ -66,6 +88,7 @@ public class ManualEvent extends RealmObject {
                 ", inicio=" + inicio +
                 ", fin=" + fin +
                 ", mensaje='" + mensaje + '\'' +
+                ", settingControl=" + settingControl +
                 '}';
     }
 }

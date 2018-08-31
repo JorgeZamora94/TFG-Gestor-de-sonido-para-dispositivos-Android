@@ -1,0 +1,103 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.fragments.SettingControlFragment">
+
+    <EditText
+        android:id="@+id/editTextName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:hint="Nombre de la configuración de audio"/>
+
+    <TextView
+        android:id="@+id/textViewMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Volumen principal"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+
+        android:layout_below="@+id/editTextName"/>
+
+    <SeekBar
+        android:id="@+id/seekBarMain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewMain"/>
+
+    <TextView
+        android:id="@+id/textViewMusic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Volumen de la música"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+
+        android:layout_below="@+id/seekBarMain"/>
+
+    <SeekBar
+        android:id="@+id/seekBarMusic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewMusic"/>
+
+    <TextView
+        android:id="@+id/textViewAlarm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Volumen de la alarma"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_below="@+id/seekBarMusic"/>
+
+    <SeekBar
+        android:id="@+id/seekBarAlarm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewAlarm"/>
+
+    <TextView
+        android:id="@+id/textViewCall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Volumen de conversación"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+
+        android:layout_below="@+id/seekBarAlarm"/>
+
+    <SeekBar
+        android:id="@+id/seekBarCall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewCall"/>
+
+    <TextView
+        android:id="@+id/textViewNotification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Volumen de las notificaciones"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+
+        android:layout_below="@+id/seekBarCall"/>
+
+    <SeekBar
+        android:id="@+id/seekBarNotification"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewNotification"/>
+
+    <Button
+        android:id="@+id/buttonSaveConfig"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="Guarda configuración de audio"
+        android:layout_below="@+id/seekBarNotification"/>
+
+</RelativeLayout>

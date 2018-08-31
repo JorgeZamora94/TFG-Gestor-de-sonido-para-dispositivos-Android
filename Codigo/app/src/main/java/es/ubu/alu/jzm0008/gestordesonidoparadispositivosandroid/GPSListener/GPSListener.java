@@ -20,6 +20,7 @@ import java.util.Calendar;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.activities.MainActivityDemo;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.bd.model.GPSEvent;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.bd.model.ManualEvent;
+import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.modificadorSonido.AudioController;
 import io.realm.Realm;
 import io.realm.RealmResults;
 
@@ -65,7 +66,7 @@ public class GPSListener implements LocationListener {
         Realm realm = Realm.getDefaultInstance();
         RealmResults<GPSEvent> manuales = realm.where(GPSEvent.class).findAll();
         Calendar ahora = Calendar.getInstance();
-        for(GPSEvent eventoGps : manuales) {
+        for(final GPSEvent eventoGps : manuales) {
             if(location.getLongitude()==eventoGps.getLon() && location.getLatitude() == eventoGps.getLat()){
                 Handler handler = new Handler(Looper.getMainLooper());
 
@@ -74,6 +75,8 @@ public class GPSListener implements LocationListener {
                     @Override
                     public void run() {
                         MainActivityDemo.alertaEventoGPS(context);
+                        AudioController audioController = new AudioController(context);
+                        audioController.cambiaSonido(eventoGps.getSettingControl());
                     }
                 });
             }

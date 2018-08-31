@@ -11,17 +11,29 @@ import io.realm.annotations.PrimaryKey;
 public class GPSEvent extends RealmObject {
     @PrimaryKey
     private int id;
+    String nombre;
     private double lon,lat;
     private String mensaje;
+    private SettingControl settingControl;
 
     public GPSEvent() {
     }
 
-    public GPSEvent(double lon, double lat, String mensaje) {
+    public GPSEvent(String nombre, double lon, double lat, String mensaje, SettingControl settingControl) {
         this.id = AppConfigBd.gpsId.incrementAndGet();
+        this.nombre = nombre;
         this.lon = lon;
         this.lat = lat;
         this.mensaje = mensaje;
+        this.settingControl = settingControl;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public int getId() {
@@ -56,6 +68,14 @@ public class GPSEvent extends RealmObject {
         this.mensaje = mensaje;
     }
 
+    public SettingControl getSettingControl() {
+        return settingControl;
+    }
+
+    public void setSettingControl(SettingControl settingControl) {
+        this.settingControl = settingControl;
+    }
+
     @Override
     public String toString() {
         return "GPSEvent{" +
@@ -63,6 +83,7 @@ public class GPSEvent extends RealmObject {
                 ", lon=" + lon +
                 ", lat=" + lat +
                 ", mensaje='" + mensaje + '\'' +
+                ", settingControl=" + settingControl +
                 '}';
     }
 }

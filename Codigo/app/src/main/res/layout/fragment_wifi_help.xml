@@ -1,0 +1,21 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.helpFragments.WifiHelp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="\n
+    1. Para guardar un evento Wifi tendremos que seleccionar en el menú lateral desplegable y seleccionar la casilla de eventos Wifi.\n
+    2. Introduciremos el nombre del evento.\n
+    3. Introduciremos en el cuadro de texto el nombre de la red Wifi que deseemos detectar.\n
+    4. En la lista desplegable de configuraciones seleccionaremos la configuración deseada.\n
+    5. Para guardar el evento lo que tendremos que hacer será pinchar en el botón de guardar el evento Wifi.\n"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:textSize="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"/>
+
+</FrameLayout>

@@ -1,0 +1,19 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.helpFragments.CalendarHelp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="\n
+    1. Para guardar un evento de calendario lo que tendremos que hacer será seleccionar en el menú lateral la casilla de eventos de calendario.\n
+    2. Una vez en la pantalla de eventos de calendario lo que tendremos que hacer será introducir el titulo del evento sobre el que queremos que se active la configuración en el cuadro de texto.\n
+    3. Seleccionaremos en la lista desplegable la configuración deseada a aplicar.\n
+    4. Guardaremos el evento pinchando en el botón de guardar evento."
+        android:textSize="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"/>
+
+</FrameLayout>

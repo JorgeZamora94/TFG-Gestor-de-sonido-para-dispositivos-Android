@@ -1,0 +1,20 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.helpFragments.PeriodicHelp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="\n
+    1. Para crear un evento periódico tendremos que seleccionar en el menú desplegable de la izquierda la casilla de eventos periódicos.\n
+    2. Aquí tendremos que seleccionar la hora de inicio y la hora de finalización del evento desde los botones respectivos, los cuales nos sacarán un selector de hora, para establecer dicha hora.\n
+    3. Una vez seleccionadas las horas de inicio y de finalización, tendremos que seleccionar el día de la semana que queremos y la configuración deseada a aplicar. Para ello tenemos dos listas desplegables para seleccionar estas opciones.\n
+    4. Una vez que tengamos todos estos atributos seleccionados lo que tendremos que hacer será pinchar el el botón de guardar configuración para guardar los cambios realizados."
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:textSize="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"/>
+
+</FrameLayout>

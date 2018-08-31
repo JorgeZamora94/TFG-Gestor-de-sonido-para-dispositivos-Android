@@ -10,24 +10,32 @@ public class CalendarEvent extends RealmObject {
     @PrimaryKey
     private int id;
 
+    String nombre;
     String idCalendarEvent;
     String mensaje;
+    SettingControl settingControl;
 
     public CalendarEvent() {
     }
 
-    public CalendarEvent(String idCalendarEvent, String mensaje) {
+    public CalendarEvent(String nombre, String idCalendarEvent, String mensaje, SettingControl settingControl) {
         this.id = AppConfigBd.calendarId.incrementAndGet();
+        this.nombre = nombre;
         this.idCalendarEvent = idCalendarEvent;
         this.mensaje = mensaje;
+        this.settingControl = settingControl;
     }
 
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getIdCalendarEvent() {
@@ -36,6 +44,14 @@ public class CalendarEvent extends RealmObject {
 
     public void setIdCalendarEvent(String idCalendarEvent) {
         this.idCalendarEvent = idCalendarEvent;
+    }
+
+    public SettingControl getSettingControl() {
+        return settingControl;
+    }
+
+    public void setSettingControl(SettingControl settingControl) {
+        this.settingControl = settingControl;
     }
 
     public String getMensaje() {
@@ -52,6 +68,7 @@ public class CalendarEvent extends RealmObject {
                 "id=" + id +
                 ", idCalendarEvent='" + idCalendarEvent + '\'' +
                 ", mensaje='" + mensaje + '\'' +
+                ", settingControl=" + settingControl +
                 '}';
     }
 }

@@ -11,18 +11,30 @@ import io.realm.annotations.PrimaryKey;
 public class PeriodicEvent extends RealmObject {
     @PrimaryKey
     private int id;
+    private String nombre;
     private long inicio;
     private long fin;
     private String calendario;
+    private SettingControl settingControl;
 
     public PeriodicEvent() {
     }
 
-    public PeriodicEvent(long inicio, long fin, String calendario) {
+    public PeriodicEvent(String nombre, long inicio, long fin, String calendario, SettingControl settingControl) {
         this.id = AppConfigBd.periodicId.incrementAndGet();
+        this.nombre = nombre;
         this.inicio = inicio;
         this.fin = fin;
         this.calendario = calendario;
+        this.settingControl = settingControl;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public int getId() {
@@ -55,5 +67,24 @@ public class PeriodicEvent extends RealmObject {
 
     public void setCalendario(String calendario) {
         this.calendario = calendario;
+    }
+
+    public SettingControl getSettingControl() {
+        return settingControl;
+    }
+
+    public void setSettingControl(SettingControl settingControl) {
+        this.settingControl = settingControl;
+    }
+
+    @Override
+    public String toString() {
+        return "PeriodicEvent{" +
+                "id=" + id +
+                ", inicio=" + inicio +
+                ", fin=" + fin +
+                ", calendario='" + calendario + '\'' +
+                ", settingControl=" + settingControl +
+                '}';
     }
 }

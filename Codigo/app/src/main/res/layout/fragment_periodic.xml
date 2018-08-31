@@ -2,7 +2,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.EventFragments.PeriodicFragment">
+    tools:context="es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.fragments.PeriodicFragment">
+
+
+    <EditText
+        android:id="@+id/eventPeriodicNameEditText"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center"
+        android:layout_marginTop="25dp"
+        android:hint="Introduce aquí el nombre del evento periódico" />
 
 
     <Button
@@ -34,6 +45,16 @@
         android:layout_height="wrap_content"
         android:layout_gravity="top|center"
         android:layout_marginTop="300dp"
+        android:textAlignment="center"/>
+
+    <Spinner
+        android:id="@+id/periodicoConfigSpinner"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center"
+        android:layout_marginTop="400dp"
         android:textAlignment="center"/>
     <Button
         android:id="@+id/savePeriodicoButton"

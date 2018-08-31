@@ -1,4 +1,4 @@
-package es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.ObservadorGenerico;
+package es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.observadorGenerico;
 
 import android.content.Context;
 import android.content.Intent;

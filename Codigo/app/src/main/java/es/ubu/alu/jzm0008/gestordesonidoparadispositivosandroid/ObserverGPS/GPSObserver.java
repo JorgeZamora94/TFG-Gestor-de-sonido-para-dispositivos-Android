@@ -16,6 +16,7 @@ import android.support.v4.app.ActivityCompat;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.activities.MainActivityDemo;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.bd.model.GPSEvent;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.bd.model.ManualEvent;
+import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.modificadorSonido.AudioController;
 import io.realm.Realm;
 import io.realm.RealmResults;
 
@@ -64,7 +65,9 @@ public class GPSObserver implements LocationListener {
         RealmResults<GPSEvent> gps = realm.where(GPSEvent.class).findAll();
         for(GPSEvent event : gps) {
             if (event.getLat() == location.getLatitude() && event.getLon() == location.getLongitude()) {
-                MainActivityDemo.alertaEventoGPS(context);
+                //MainActivityDemo.alertaEventoGPS(context);
+                AudioController audioController = new AudioController(context);
+                audioController.cambiaSonido(event.getSettingControl());
             }
         }
         this.location = location;

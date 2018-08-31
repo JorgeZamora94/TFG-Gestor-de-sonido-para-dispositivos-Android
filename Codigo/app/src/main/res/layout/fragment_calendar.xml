@@ -2,7 +2,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.EventFragments.CalendarFragment">
+    tools:context="es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.fragments.CalendarFragment">
+
+    <EditText
+        android:id="@+id/eventCalendarNameEditText"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center"
+        android:layout_marginTop="100dp"
+        android:hint="Introduce aquí el nombre del evento de calendario" />
+
 
     <EditText
         android:id="@+id/calendarEditText"
@@ -14,6 +25,15 @@
         android:layout_marginTop="200dp"
         android:hint="Introduce aquí la palabra clave del calendario" />
 
+    <Spinner
+        android:id="@+id/calendarSpinner"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|top"
+        android:layout_marginTop="300dp"
+        android:textAlignment="center"/>
 
     <Button
         android:id="@+id/calendarButton"

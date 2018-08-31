@@ -1,8 +1,6 @@
-package es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.EventFragments;
+package es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.fragments;
 
 import android.app.TimePickerDialog;
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -16,13 +14,16 @@ import android.widget.TimePicker;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Iterator;
 import java.util.List;
 
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.R;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.activities.MainActivityDemo;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.app.AppConfigBd;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.bd.model.PeriodicEvent;
+import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.bd.model.SettingControl;
 import io.realm.Realm;
+import io.realm.RealmResults;
 
 
 public class PeriodicFragment extends Fragment {
@@ -31,6 +32,7 @@ public class PeriodicFragment extends Fragment {
     private Button selectoHora2;
     private Button savePeriodico;
     private Spinner diaSemana;
+    private Spinner spinner;
 
     private EditText nombre;
 
@@ -38,6 +40,8 @@ public class PeriodicFragment extends Fragment {
     private Calendar fin;
 
     Realm realm = Realm.getDefaultInstance();
+    RealmResults<SettingControl> settingsControls = realm.where(SettingControl.class).findAll();
+
 
 
     public PeriodicFragment() {
@@ -49,6 +53,8 @@ public class PeriodicFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view;
         view = inflater.inflate(R.layout.fragment_periodic, container, false);
+
+        nombre = (EditText) view.findViewById(R.id.eventPeriodicNameEditText);
 
         selectoHora1 = (Button) view.findViewById(R.id.selectTimePeriodico1Button);
 
@@ -115,7 +121,25 @@ public class PeriodicFragment extends Fragment {
 
         diaSemana.setAdapter(adaptadorDias);
 
+        Iterator it = settingsControls.listIterator();
+        List lista = new ArrayList<>();
+        while(it.hasNext()){
+            SettingControl s = (SettingControl) it.next();
+            lista.add(s);
+        }
+        ArrayAdapter adaptadorConfig =
+                new ArrayAdapter( getActivity().getBaseContext(),
+                        android.R.layout.simple_spinner_item, lista);
+
+        spinner = (Spinner) view.findViewById(R.id.periodicoConfigSpinner);
+        adaptadorConfig.setDropDownViewResource(
+                android.R.layout.simple_spinner_dropdown_item);
+
+        spinner.setAdapter(adaptadorConfig);
+
+
         savePeriodico = (Button) view.findViewById(R.id.savePeriodicoButton);
+
 
         savePeriodico.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -150,7 +174,7 @@ public class PeriodicFragment extends Fragment {
 
                 }
                 inicio.set(Calendar.DAY_OF_WEEK,i);
-                PeriodicEvent periodicEvent = new PeriodicEvent(inicio.getTimeInMillis(), fin.getTimeInMillis(), "evento periodico");
+                PeriodicEvent periodicEvent = new PeriodicEvent(nombre.getText().toString(), inicio.getTimeInMillis(), fin.getTimeInMillis(), "evento periodico", (SettingControl) spinner.getSelectedItem());
                 int id2=AppConfigBd.periodicId.get();
                 if(id1!=id2)
                     MainActivityDemo.alertaGuardado(getContext());

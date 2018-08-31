@@ -1,0 +1,20 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.helpFragments.ManualHelp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="\n
+        1. Para generar un evento manual tendremos que seleccionar en el menú desplegable de la izquierda la casilla de eventos manuales.\n
+        2. En esta pantalla lo primero que tendremos que hacer será seleccionar el día del evento, pinchando en el botón de selección de día, y seleccionándolo en el pop-up del calendario que sale al pinchar en el botón.\n
+        3. De la misma manera que antes tendremos que seleccionar la hora de inicio y de finalización del evento en los selectores de hora emergentes de los botones de selección.\n
+        4. Tendremos también que seleccionar la configuración deseada desde la lista de objetos emergente.\n
+        5. Para guardar este evento manual tendremos que pinchar en el botón de guardar configuración."
+        android:textSize="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"/>
+
+</FrameLayout>

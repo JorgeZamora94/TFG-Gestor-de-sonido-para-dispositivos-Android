@@ -8,6 +8,7 @@ import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.bd.model.Calenda
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.bd.model.GPSEvent;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.bd.model.ManualEvent;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.bd.model.PeriodicEvent;
+import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.bd.model.SettingControl;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.bd.model.WifiEvent;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
@@ -21,6 +22,7 @@ public class AppConfigBd extends Application {
     public static AtomicInteger gpsId;
     public static AtomicInteger wifiId;
     public static AtomicInteger calendarId;
+    public static AtomicInteger settingsId;
 
     @Override
     public void onCreate() {
@@ -32,6 +34,7 @@ public class AppConfigBd extends Application {
         gpsId = getIdByTable(realm, GPSEvent.class);
         wifiId = getIdByTable(realm, WifiEvent.class);
         calendarId = getIdByTable(realm, CalendarEvent.class);
+        settingsId = getIdByTable(realm, SettingControl.class);
         realm.close();
     }
 
