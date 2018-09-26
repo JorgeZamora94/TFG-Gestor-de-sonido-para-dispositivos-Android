@@ -1,13 +1,37 @@
 \apendice{Documentación técnica de programación}
 
 \section{Introducción}
-
+A continuación veremos como se ha estado trabajando para generar la aplicación y algunos conceptos necesarios.
 \section{Estructura de directorios}
+.\TFG-Gestor-de-sonido-para-dispositivos-Android\Codigo\app\src\main *** RUTA PRINCIPAL ***
+
+Código java de la aplicación:
+.\java
+Hay que diferenciar la parte de objetos, controladores y aplicación principal.
+
+Hay que sacar imágenes finales de la estructura.
+
+Parte gráfica de la aplicación:
+.\res
+Guardamos los bitmaps de los iconos, layouts, estructuras de menús, literales de los menús...
 
 \section{Manual del programador}
+\subsection{Ficheros de configuración}
+En nuestro proyecto encontraremos tres ficheros de configuración, dos ficheros que utiliza Gradle, para añadir dependencias a nuestro proyecto y lineas de ejecución de este, y un archivo manifest donde indicaremos todo lo relacionado con la ejecución de librerías de android, versionado de la aplicación y diferentes componentes android.
+\subsection{Observadores}
+Los observadores en nuestra aplicación son una serie de clases que se encargarán de ver si se lanza agún tipo de evento, el cual active alguna de nuestras configuraciones.
+
+Para ello tendremos dos tipos de observadores: un observador GPS y un observador genérico.
+\subsubsection{Observador GPS}
+El observador GPS es la clase encargada de detectar cunado hay cambios en nuestra localización GPS, es decir, cada vez que nos movamos X metros o pase Y tiempo se lanzará un evento, el cual realizará las comprobaciones pertinentes para ver si hay configurado algún evento de GPS con esas coordenadas, y si es así activar la configuración 
 
 \section{Compilación, instalación y ejecución del proyecto}
-
+\section{Compilación, instalación y ejecución del proyecto}
+Una vez ya realizados los pasos anteriores vistos en el manual del programador podremos realizar los siguiente pasos.
+\subsection{Compilación de la aplicación}
+Para ello tendremos que tener el proyecto abierto con el Android Studio y seleccionar en la barra de herramientas el botón del desplegable de "Build", y ahí seleccionaremos "Build Project" o "Rebuid Project" si ya lo habíamos buildeado anterior mente.
+\subsection{Instalación de la APP y ejecución del proyecto}
+Para instalar la aplicación dentro de un simulador Android de IDE Android Studio lo que haremos será crear un dispositivo virtual con la versión de Android que queramos simular. Una vez tengamos creada la máquina virtual de Android lo que haremos será pinchar en el botón de "Run" en la barra de herramientas de Android Studio, o abriendo el desplegable "Run" y seleccionando la opción "Run 'app'". Una vez hecho esto, tendremos que seleccionar un dispositivo sobre el que instalar y ejecutar la aplicación, por consiguiente se nos abrirá una ventana donde seleccionar el dispositivo simulado sobre el que correr la aplicación, permitiéndonos también crear nuevos dispositivos simulados. Una vez seleccionado el dispositivo pincharemos en el botón "OK" y esperaremos a que el proyecto se buildee, y que la máquina virtual se arranque. Una vez arrancada la máquina virtual automáticamente se instalará y se ejecutará.
 \section{Pruebas del sistema}
 
 \subsection{Pruebas unitarias de la base de datos}
