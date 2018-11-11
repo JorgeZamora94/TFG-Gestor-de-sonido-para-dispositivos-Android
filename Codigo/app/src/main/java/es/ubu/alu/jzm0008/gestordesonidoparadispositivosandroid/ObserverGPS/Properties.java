@@ -1,4 +1,4 @@
-package es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.ObserverGPS;
+package es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.observergps;
 
 
 

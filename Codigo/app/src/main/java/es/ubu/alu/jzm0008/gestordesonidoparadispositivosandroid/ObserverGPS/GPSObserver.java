@@ -1,4 +1,4 @@
-package es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.ObserverGPS;
+package es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.observergps;
 
 
 import android.Manifest;
@@ -13,10 +13,8 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.support.v4.app.ActivityCompat;
 
-import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.activities.MainActivityDemo;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.bd.model.GPSEvent;
-import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.bd.model.ManualEvent;
-import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.modificadorSonido.AudioController;
+import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.modificadorsonido.AudioController;
 import io.realm.Realm;
 import io.realm.RealmResults;
 

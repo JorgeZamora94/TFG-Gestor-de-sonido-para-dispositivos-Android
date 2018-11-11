@@ -1,4 +1,4 @@
-package es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.observadorGenerico;
+package es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.observadorgenerico;
 
 import java.io.Serializable;
 import java.util.Calendar;

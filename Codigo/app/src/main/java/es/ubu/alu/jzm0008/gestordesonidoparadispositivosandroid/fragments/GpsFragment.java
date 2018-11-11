@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.GPSListener.GPSListener;
+import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.gpslistener.GPSListener;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.R;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.activities.MainActivityDemo;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.app.AppConfigBd;

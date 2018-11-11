@@ -1,19 +1,31 @@
 package es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.activities;
 
+import android.Manifest;
+
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -23,20 +35,21 @@ import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.fragments.Manual
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.fragments.PeriodicFragment;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.fragments.SettingControlFragment;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.fragments.WifiFragment;
-import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.GPSListener.GPSListener;
-import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.observadorGenerico.Observador;
-import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.observadorGenerico.ProveedorWifi;
+import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.gpslistener.GPSListener;
+import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.helpfragments.ConfigHelp;
+import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.observadorgenerico.Observador;
+import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.observadorgenerico.ProveedorWifi;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.R;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.bd.model.CalendarEvent;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.bd.model.ManualEvent;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.bd.model.PeriodicEvent;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.bd.model.WifiEvent;
-import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.helpFragments.CalendarHelp;
-import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.helpFragments.GPSHelp;
-import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.helpFragments.ManualHelp;
-import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.helpFragments.PeriodicHelp;
-import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.helpFragments.WifiHelp;
-import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.modificadorSonido.AudioController;
+import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.helpfragments.CalendarHelp;
+import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.helpfragments.GPSHelp;
+import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.helpfragments.ManualHelp;
+import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.helpfragments.PeriodicHelp;
+import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.helpfragments.WifiHelp;
+import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.modificadorsonido.AudioController;
 import io.realm.Realm;
 import io.realm.RealmResults;
 import me.everything.providers.android.calendar.CalendarProvider;
@@ -48,15 +61,19 @@ public class MainActivityDemo extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private TimerTask observador;
+    private boolean activatedCalendar = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        verifyPermission();
+
         setContentView(R.layout.activity_main_demo);
         setToolbar();
 
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        navigationView = (NavigationView) findViewById(R.id.navview);
+        drawerLayout = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.navview);
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -79,12 +96,20 @@ public class MainActivityDemo extends AppCompatActivity {
                         fragmentTransaction = true;
                         break;
                     case R.id.nuevo_gps:
-                        fragment = new GpsFragment();
-                        fragmentTransaction = true;
+                        if(android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+                            if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                                fragment = new GpsFragment();
+                                fragmentTransaction = true;
+                            }
+                        }
                         break;
                     case R.id.nuevo_calendario:
-                        fragment = new CalendarFragment();
-                        fragmentTransaction = true;
+                        if(android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+                            if (checkSelfPermission(Manifest.permission.READ_CALENDAR) == PackageManager.PERMISSION_GRANTED) {
+                                fragment = new CalendarFragment();
+                                fragmentTransaction = true;
+                            }
+                        }
                         break;
                     case R.id.ayuda_manual:
                         fragment = new ManualHelp();
@@ -99,17 +124,31 @@ public class MainActivityDemo extends AppCompatActivity {
                         fragmentTransaction = true;
                         break;
                     case R.id.ayuda_gps:
-                        fragment = new GPSHelp();
-                        fragmentTransaction = true;
+                        if(android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+                            if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                                fragment = new GPSHelp();
+                                fragmentTransaction = true;
+                            }
+                        }
+
                         break;
                     case R.id.ayuda_calendario:
-                        fragment = new CalendarHelp();
+                        if(android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+                            if (checkSelfPermission(Manifest.permission.READ_CALENDAR) == PackageManager.PERMISSION_GRANTED) {
+                                fragment = new CalendarHelp();
+                                fragmentTransaction = true;
+                            }
+                        }
+                        break;
+                    case R.id.ayuda_configuracion:
+                        fragment = new ConfigHelp();
                         fragmentTransaction = true;
                         break;
                     case R.id.nueva_configuracion:
                         fragment = new SettingControlFragment();
                         fragmentTransaction = true;
                         break;
+
 
                 }
 
@@ -123,18 +162,35 @@ public class MainActivityDemo extends AppCompatActivity {
             }
         });
 
-        GPSListener gps = new GPSListener(this);
+        if(android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                new GPSListener(this);
+            }
+        }
+        if(android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                activatedCalendar = true;
+            }
+        }
         activaHilo();
 
     }
 
+    /**
+     * Método que se encarga de setear el toolbar de la aplicación
+     */
     private void setToolbar() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_home);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
+    /**
+     * Método que se encarga de cambiar los fragmentos de nuestra aplicación.
+     * @param item fragmento a cambiar.
+     * @return confirmación de si se ha cambiado o no el fragmento.
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -146,27 +202,11 @@ public class MainActivityDemo extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public static void alertaGuardado(Context context){
-        Toast.makeText(context, "Evento guardado", Toast.LENGTH_SHORT).show();
-    }
-
-    public static void alertaEventoGPS(Context context){
-        Toast.makeText(context, "Evento gps detectado", Toast.LENGTH_SHORT).show();
-    }
-    public static void alertaEventoWifi(Context context){
-        Toast.makeText(context, "Evento wifi detectado", Toast.LENGTH_SHORT).show();
-    }
-    public static void alertaEventoPeriodico(Context context){
-        Toast.makeText(context, "Evento periodico detectado", Toast.LENGTH_SHORT).show();
-    }
-    public static void alertaEventoManual(Context context){
-        Toast.makeText(context, "Evento manual detectado", Toast.LENGTH_SHORT).show();
-    }
-    public static void alertaEventoCalendario(Context context){
-        Toast.makeText(context, "Evento calendario detectado", Toast.LENGTH_SHORT).show();
-    }
-
-
+    /**
+     * Método que se encarga de verificar si hay un evento lanzado o no.
+     * @param context contexto de la aplicación.
+     * @param realm instancia de la base de datos Realm en la que se encuentran los datos.
+     */
     public static void controlador(Context context, Realm realm){
         realm.refresh();
         realm.close();
@@ -203,24 +243,24 @@ public class MainActivityDemo extends AppCompatActivity {
             }
         }
 
-
-        CalendarProvider provider = new CalendarProvider(context);
-        List<me.everything.providers.android.calendar.Calendar> calendars = provider.getCalendars().getList();
-        for(int y = 0; y <= 50;y++) {
-            Data<Event> events = provider.getEvents(y);
-            for (Event event : events.getList()) {
-                Calendar inicio = Calendar.getInstance();
-                Calendar fin = Calendar.getInstance();
-                inicio.setTimeInMillis(event.dTStart);
-                fin.setTimeInMillis(event.dTend);
-                if (inicio.before(ahora) && fin.after(ahora)) {
-                    for (CalendarEvent calendarEvent : calendarEvents) {
-                        if (calendarEvent.getIdCalendarEvent().equals(event.title)) {
-                            AudioController audioController = new AudioController(context);
-                            audioController.cambiaSonido(calendarEvent.getSettingControl());
+        if(ActivityCompat.checkSelfPermission( context, Manifest.permission.READ_CALENDAR) == PackageManager.PERMISSION_GRANTED ) {
+            CalendarProvider provider = new CalendarProvider(context);
+            for (int y = 0; y <= 50; y++) {
+                Data<Event> events = provider.getEvents(y);
+                for (Event event : events.getList()) {
+                    Calendar inicio = Calendar.getInstance();
+                    Calendar fin = Calendar.getInstance();
+                    inicio.setTimeInMillis(event.dTStart);
+                    fin.setTimeInMillis(event.dTend);
+                    if (inicio.before(ahora) && fin.after(ahora)) {
+                        for (CalendarEvent calendarEvent : calendarEvents) {
+                            if (calendarEvent.getIdCalendarEvent().equals(event.title)) {
+                                AudioController audioController = new AudioController(context);
+                                audioController.cambiaSonido(calendarEvent.getSettingControl());
+                            }
                         }
-                    }
 
+                    }
                 }
             }
         }
@@ -240,10 +280,39 @@ public class MainActivityDemo extends AppCompatActivity {
         }
     }
 
+    /**
+     * Método que se encarga de crear un hilo de ejecución Timer, y de arrancarlo.
+     */
     public void activaHilo(){
         Timer timerObj = new Timer();
         observador = new Observador(this);
         timerObj.schedule(observador, 5000, 15000);
+    }
+
+    /**
+     * Método que se encarga de sacar un texto por pantalla de manera informatica.
+     * @param context Contexto de la aplicación.
+     */
+    public static void alertaGuardado(Context context) {
+        Toast.makeText(context, "Evento guardado correctamente", Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * Método que se encarga de verificar la concesión de permisos en nuestra aplicación.
+     */
+    private void verifyPermission() {
+        Log.i("VerificacionPermisos", "Comprobación de permisos");
+        if(android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            int permsRequestCode = 100;
+            String[] perms = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.READ_CALENDAR};
+            int readCalendarPermission = checkSelfPermission(Manifest.permission.READ_CALENDAR);
+            int fineLocationPermission = checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION);
+
+            if (fineLocationPermission == PackageManager.PERMISSION_GRANTED && readCalendarPermission == PackageManager.PERMISSION_GRANTED) {
+            } else {
+                requestPermissions(perms, permsRequestCode);
+            }
+        }
     }
 
 }

@@ -1,4 +1,4 @@
-package es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.modificadorSonido;
+package es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.modificadorsonido;
 
 
 import android.content.Context;

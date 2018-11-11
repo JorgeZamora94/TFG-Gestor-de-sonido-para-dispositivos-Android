@@ -1,11 +1,11 @@
-package es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.GPSService;
+package es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.gpsservice;
 
 import android.app.IntentService;
 import android.content.Intent;
 import android.content.Context;
 import android.widget.Toast;
 
-import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.GPSListener.GPSListener;
+import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.gpslistener.GPSListener;
 
 public class GPSService extends IntentService {
 
@@ -18,8 +18,6 @@ public class GPSService extends IntentService {
         context.startService(intent);
 
         GPSListener gpsListener = new GPSListener(context);
-        System.out.println("Service");
-        System.out.println(gpsListener.getLocation());
 
         if(gpsListener.getLocation()!=null){
             Toast.makeText(context,gpsListener.getLocation().toString(),Toast.LENGTH_SHORT).show();

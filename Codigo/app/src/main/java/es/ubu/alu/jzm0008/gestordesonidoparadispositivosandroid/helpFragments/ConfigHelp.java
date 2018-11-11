@@ -1,4 +1,4 @@
-package es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.helpFragments;
+package es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.helpfragments;
 
 
 import android.os.Bundle;

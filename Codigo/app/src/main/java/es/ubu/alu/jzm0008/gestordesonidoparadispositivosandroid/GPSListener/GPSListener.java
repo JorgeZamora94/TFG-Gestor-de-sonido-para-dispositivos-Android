@@ -1,4 +1,4 @@
-package es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.GPSListener;
+package es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.gpslistener;
 
 import android.Manifest;
 import android.app.Activity;
@@ -13,14 +13,10 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
 import android.support.v4.app.ActivityCompat;
-import android.widget.Toast;
+import android.util.Log;
 
-import java.util.Calendar;
-
-import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.activities.MainActivityDemo;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.bd.model.GPSEvent;
-import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.bd.model.ManualEvent;
-import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.modificadorSonido.AudioController;
+import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.modificadorsonido.AudioController;
 import io.realm.Realm;
 import io.realm.RealmResults;
 
@@ -28,9 +24,7 @@ import static android.content.Context.LOCATION_SERVICE;
 
 public class GPSListener implements LocationListener {
     private final Context context;
-    boolean isGPSEnabled =false;
-    boolean isNetworkEnabled =false;
-    boolean canGetLocation = false;
+    private boolean isGPSEnabled =false;
 
     static final int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
 
@@ -65,7 +59,6 @@ public class GPSListener implements LocationListener {
     public void onLocationChanged(Location location){
         Realm realm = Realm.getDefaultInstance();
         RealmResults<GPSEvent> manuales = realm.where(GPSEvent.class).findAll();
-        Calendar ahora = Calendar.getInstance();
         for(final GPSEvent eventoGps : manuales) {
             if(location.getLongitude()==eventoGps.getLon() && location.getLatitude() == eventoGps.getLat()){
                 Handler handler = new Handler(Looper.getMainLooper());
@@ -74,7 +67,6 @@ public class GPSListener implements LocationListener {
 
                     @Override
                     public void run() {
-                        MainActivityDemo.alertaEventoGPS(context);
                         AudioController audioController = new AudioController(context);
                         audioController.cambiaSonido(eventoGps.getSettingControl());
                     }
@@ -85,13 +77,13 @@ public class GPSListener implements LocationListener {
     }
 
     public void onStatusChanged(String Provider, int status, Bundle extras){
-
+        Log.i("GPSListener", "StatusChanged");
     }
     public void onProviderEnabled(String Provider){
-
+        Log.i("GPSListener", "Enabled");
     }
     public void onProviderDisabled(String Provider){
-
+        Log.i("GPSListener", "Disabled");
     }
     public IBinder onBind(Intent arg0){
         return null;

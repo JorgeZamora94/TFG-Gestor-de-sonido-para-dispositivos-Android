@@ -1,6 +1,5 @@
-package es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.GPSService;
+package es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.gpsservice;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 

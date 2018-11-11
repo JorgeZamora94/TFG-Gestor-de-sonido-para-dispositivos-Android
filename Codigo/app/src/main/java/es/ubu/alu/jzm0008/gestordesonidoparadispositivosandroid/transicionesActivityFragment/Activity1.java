@@ -1,4 +1,4 @@
-package es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.transicionesActivityFragment;
+package es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.transicionesactivityfragment;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
