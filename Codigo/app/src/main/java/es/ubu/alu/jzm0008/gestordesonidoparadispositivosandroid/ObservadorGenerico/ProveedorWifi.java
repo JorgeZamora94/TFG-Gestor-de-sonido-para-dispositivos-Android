@@ -9,8 +9,8 @@ import android.support.annotation.Nullable;
 
 public class ProveedorWifi  {
 
-    Context context;
-    WifiManager wifiManager;
+    private Context context;
+    private WifiManager wifiManager;
     public ProveedorWifi(Context context){
         this.context = context;
         wifiManager= (WifiManager) context.getSystemService(context.WIFI_SERVICE);

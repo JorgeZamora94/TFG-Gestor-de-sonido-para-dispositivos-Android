@@ -8,8 +8,8 @@ import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.bd.model.Setting
 
 public class AudioController
 {
-    SettingControl settingControl = new SettingControl();
-    Context context = null;
+    private SettingControl settingControl = new SettingControl();
+    private Context context = null;
 
     public AudioController(Context context){
         this.context = context;

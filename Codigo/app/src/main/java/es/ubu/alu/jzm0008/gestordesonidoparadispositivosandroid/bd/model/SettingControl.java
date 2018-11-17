@@ -15,7 +15,6 @@ public class SettingControl extends RealmObject {
         private int volumenCall;
         private int volumenNotification;
 
-        //Constructor vacÃ­o necesario para Realm.
         public SettingControl(){
 
         }

@@ -24,14 +24,14 @@ import static android.content.Context.LOCATION_SERVICE;
 
 public class GPSListener implements LocationListener {
     private final Context context;
-    private boolean isGPSEnabled =false;
 
-    static final int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
+    private static final int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
 
-    Location location;
+    private Location location;
     protected LocationManager locationManager;
 
     public GPSListener(Context context){
+        boolean isGPSEnabled =false;
         this.context=context;
         if (ActivityCompat.checkSelfPermission( context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions((Activity) context,
@@ -41,12 +41,10 @@ public class GPSListener implements LocationListener {
         locationManager = (LocationManager) context.getSystemService(LOCATION_SERVICE);
         isGPSEnabled = locationManager.isProviderEnabled(locationManager.GPS_PROVIDER);
 
-        if(isGPSEnabled){
-            if(location==null) {
-                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 10, this);
-                if (locationManager != null) {
-                    this.location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-                }
+        if(isGPSEnabled && location==null) {
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 10, this);
+            if (locationManager != null) {
+                this.location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
             }
         }
     }

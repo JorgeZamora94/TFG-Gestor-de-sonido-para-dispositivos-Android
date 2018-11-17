@@ -23,18 +23,17 @@ import static android.content.Context.LOCATION_SERVICE;
 public class GPSObserver implements LocationListener {
 
     private final Context context;
-    boolean isGPSEnabled =false;
-    boolean isNetworkEnabled =false;
-    boolean canGetLocation = false;
+    private boolean isGPSEnabled =false;
+    private boolean isNetworkEnabled =false;
+    private boolean canGetLocation = false;
 
-    static final int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
+    private static final int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
 
-    Location location;
+    private Location location;
     protected LocationManager locationManager;
 
-    private Properties properties;
     public GPSObserver(Context context){
-        this.properties = new Properties();
+        Properties properties = new Properties();
         this.context=context;
         if (ActivityCompat.checkSelfPermission( context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions((Activity) context,
@@ -44,12 +43,10 @@ public class GPSObserver implements LocationListener {
         locationManager = (LocationManager) context.getSystemService(LOCATION_SERVICE);
         isGPSEnabled = locationManager.isProviderEnabled(locationManager.GPS_PROVIDER);
 
-        if(isGPSEnabled){
-            if(location==null) {
-                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,properties.getTiempo(),properties.getDistancia(), this);
-                if (locationManager != null) {
-                    this.location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-                }
+        if(isGPSEnabled && location==null) {
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,properties.getTiempo(),properties.getDistancia(), this);
+            if (locationManager != null) {
+                this.location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
             }
         }
     }
@@ -72,13 +69,13 @@ public class GPSObserver implements LocationListener {
     }
 
     public void onStatusChanged(String Provider, int status, Bundle extras){
-
+        //OnStatusChanged
     }
     public void onProviderEnabled(String Provider){
-
+        //OnProviderEnabled
     }
     public void onProviderDisabled(String Provider){
-
+        //OnProviderDisabled
     }
     public IBinder onBind(Intent arg0){
         return null;

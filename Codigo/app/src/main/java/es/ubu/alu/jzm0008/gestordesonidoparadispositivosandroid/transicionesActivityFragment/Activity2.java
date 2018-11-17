@@ -10,8 +10,8 @@ import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.R;
 
 public class Activity2 extends AppCompatActivity {
 
-    Button boton1;
-    Button boton2;
+    private Button boton1;
+    private Button boton2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
