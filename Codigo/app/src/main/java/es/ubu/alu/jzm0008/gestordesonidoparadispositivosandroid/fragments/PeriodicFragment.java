@@ -39,8 +39,8 @@ public class PeriodicFragment extends Fragment {
     private Calendar inicio;
     private Calendar fin;
 
-    Realm realm = Realm.getDefaultInstance();
-    RealmResults<SettingControl> settingsControls = realm.where(SettingControl.class).findAll();
+    private Realm realm = Realm.getDefaultInstance();
+    private RealmResults<SettingControl> settingsControls = realm.where(SettingControl.class).findAll();
 
 
 

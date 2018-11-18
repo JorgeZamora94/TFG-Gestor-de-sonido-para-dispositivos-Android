@@ -10,10 +10,10 @@ public class CalendarEvent extends RealmObject {
     @PrimaryKey
     private int id;
 
-    String nombre;
-    String idCalendarEvent;
-    String mensaje;
-    SettingControl settingControl;
+    private String nombre;
+    private String idCalendarEvent;
+    private String mensaje;
+    private SettingControl settingControl;
 
     public CalendarEvent() {
     }

@@ -23,9 +23,7 @@ import static android.content.Context.LOCATION_SERVICE;
 public class GPSObserver implements LocationListener {
 
     private final Context context;
-    private boolean isGPSEnabled =false;
-    private boolean isNetworkEnabled =false;
-    private boolean canGetLocation = false;
+
 
     private static final int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
 
@@ -33,6 +31,7 @@ public class GPSObserver implements LocationListener {
     protected LocationManager locationManager;
 
     public GPSObserver(Context context){
+        boolean isGPSEnabled =false;
         Properties properties = new Properties();
         this.context=context;
         if (ActivityCompat.checkSelfPermission( context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {

@@ -47,7 +47,7 @@ public class GPSService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
-
+        //OnHandleIntent
     }
 
 }

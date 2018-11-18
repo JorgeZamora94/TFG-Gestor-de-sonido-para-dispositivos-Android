@@ -52,13 +52,11 @@ import me.everything.providers.core.Data;
 public class MainActivityDemo extends AppCompatActivity {
 
     private DrawerLayout drawerLayout;
-    private NavigationView navigationView;
-    private TimerTask observador;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        NavigationView navigationView;
         verifyPermission();
 
         setContentView(R.layout.activity_main_demo);
@@ -139,6 +137,8 @@ public class MainActivityDemo extends AppCompatActivity {
                     case R.id.nueva_configuracion:
                         fragment = new SettingControlFragment();
                         fragmentTransaction = true;
+                        break;
+                    default:
                         break;
 
 
@@ -267,7 +267,7 @@ public class MainActivityDemo extends AppCompatActivity {
      */
     public void activaHilo(){
         Timer timerObj = new Timer();
-        observador = new Observador(this);
+        TimerTask observador = new Observador(this);
         timerObj.schedule(observador, 5000, 15000);
     }
 

@@ -29,21 +29,21 @@ import io.realm.RealmResults;
 
 public class ManualFragment extends Fragment {
 
-    Realm realm = Realm.getDefaultInstance();
-    RealmResults<SettingControl> settingsControls = realm.where(SettingControl.class).findAll();
+    private Realm realm = Realm.getDefaultInstance();
+    private RealmResults<SettingControl> settingsControls = realm.where(SettingControl.class).findAll();
 
 
-    Spinner spinner = null;
+    private Spinner spinner = null;
 
-    Button buttonSelectDate;
-    Button buttonSelectTime1;
-    Button buttonSelectTime2;
-    Button buttonsaveManual;
+    private Button buttonSelectDate;
+    private Button buttonSelectTime1;
+    private Button buttonSelectTime2;
+    private Button buttonsaveManual;
 
-    Calendar dia;
-    Calendar inicio;
-    Calendar fin;
-    EditText nombre;
+    private Calendar dia;
+    private Calendar inicio;
+    private Calendar fin;
+    private EditText nombre;
 
 
 

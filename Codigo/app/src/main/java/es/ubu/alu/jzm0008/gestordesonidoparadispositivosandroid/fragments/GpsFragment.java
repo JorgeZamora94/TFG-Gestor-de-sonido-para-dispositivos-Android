@@ -30,8 +30,8 @@ public class GpsFragment extends Fragment {
     private Spinner spinner;
     private Button button;
     private EditText nombre;
-    Realm realm = Realm.getDefaultInstance();
-    RealmResults<SettingControl> settingsControls = realm.where(SettingControl.class).findAll();
+    private Realm realm = Realm.getDefaultInstance();
+    private RealmResults<SettingControl> settingsControls = realm.where(SettingControl.class).findAll();
 
     public GpsFragment() {
         // Required empty public constructor

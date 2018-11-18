@@ -30,8 +30,8 @@ public class WifiFragment extends Fragment {
     private Button button;
     private EditText nombre;
 
-    Realm realm = Realm.getDefaultInstance();
-    RealmResults<SettingControl> settingsControls = realm.where(SettingControl.class).findAll();
+    private Realm realm = Realm.getDefaultInstance();
+    private RealmResults<SettingControl> settingsControls = realm.where(SettingControl.class).findAll();
 
 
     public WifiFragment() {

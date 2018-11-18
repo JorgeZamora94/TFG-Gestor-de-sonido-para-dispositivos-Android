@@ -28,8 +28,8 @@ public class CalendarFragment extends Fragment {
     private Button button;
     private TextView nameEvent;
     private TextView nameCalendarEvent;
-    Realm realm = Realm.getDefaultInstance();
-    RealmResults<SettingControl> settingsControls = realm.where(SettingControl.class).findAll();
+    private Realm realm = Realm.getDefaultInstance();
+    private RealmResults<SettingControl> settingsControls = realm.where(SettingControl.class).findAll();
 
 
 

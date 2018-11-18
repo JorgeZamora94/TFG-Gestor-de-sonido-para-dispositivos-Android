@@ -11,7 +11,7 @@ import io.realm.annotations.PrimaryKey;
 public class GPSEvent extends RealmObject {
     @PrimaryKey
     private int id;
-    String nombre;
+    private String nombre;
     private double lon,lat;
     private String mensaje;
     private SettingControl settingControl;
