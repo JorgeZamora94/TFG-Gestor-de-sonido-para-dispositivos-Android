@@ -52,6 +52,7 @@ import me.everything.providers.core.Data;
 public class MainActivityDemo extends AppCompatActivity {
 
     private DrawerLayout drawerLayout;
+    MenuItem lastItem = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -145,6 +146,9 @@ public class MainActivityDemo extends AppCompatActivity {
                 }
 
                 if (fragmentTransaction) {
+                    if(lastItem != null)
+                        lastItem.setChecked(false);
+                    lastItem = item;
                     getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
                     item.setChecked(true);
                     getSupportActionBar().setTitle(item.getTitle());
