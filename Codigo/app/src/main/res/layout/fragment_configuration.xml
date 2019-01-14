@@ -1,0 +1,57 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollViewConfig"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.fragments.ConfigurationFragment">
+
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/manual_activado"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center|top"
+        android:id="@+id/manual_activado"/>
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/periodico_activado"
+        android:layout_marginTop="150dp"
+        android:layout_gravity="center|top"
+        android:id="@+id/periodico_activado"/>
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/gps_activado"
+        android:layout_marginTop="250dp"
+        android:layout_gravity="center|top"
+        android:id="@+id/gps_activado"/>
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/wifi_activado"
+        android:layout_marginTop="350dp"
+        android:layout_gravity="center|top"
+        android:id="@+id/wifi_activado"/>
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/calendario_activado"
+        android:layout_marginTop="450dp"
+        android:layout_gravity="center|top"
+        android:id="@+id/calendario_activado"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/guarda_configuracion"
+        android:layout_marginTop="550dp"
+        android:layout_gravity="center|top"
+        android:id="@+id/guarda_config_bd" />
+
+</FrameLayout>
+</ScrollView>

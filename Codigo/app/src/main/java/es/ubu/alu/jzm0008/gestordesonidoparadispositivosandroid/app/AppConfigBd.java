@@ -4,6 +4,7 @@ import android.app.Application;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
+import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.bd.model.AppConfig;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.bd.model.CalendarEvent;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.bd.model.GPSEvent;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.bd.model.ManualEvent;
@@ -23,6 +24,8 @@ public class AppConfigBd extends Application {
     public static AtomicInteger wifiId;
     public static AtomicInteger calendarId;
     public static AtomicInteger settingsId;
+    public static AtomicInteger configurationId;
+
 
     @Override
     public void onCreate() {
@@ -35,6 +38,7 @@ public class AppConfigBd extends Application {
         wifiId = getIdByTable(realm, WifiEvent.class);
         calendarId = getIdByTable(realm, CalendarEvent.class);
         settingsId = getIdByTable(realm, SettingControl.class);
+        configurationId = getIdByTable(realm, AppConfig.class);
         realm.close();
     }
 
