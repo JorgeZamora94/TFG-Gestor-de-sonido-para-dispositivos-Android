@@ -14,12 +14,12 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.gpslistener.GPSListener;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.R;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.activities.MainActivityDemo;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.app.AppConfigBd;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.bd.model.GPSEvent;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.bd.model.SettingControl;
+import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.observergps.GPSObserver;
 import io.realm.Realm;
 import io.realm.RealmResults;
 
@@ -70,7 +70,7 @@ public class GpsFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                GPSListener gps = new GPSListener(getContext());
+                GPSObserver gps = new GPSObserver(getContext());
 
                 realm.beginTransaction();
                 int id1= AppConfigBd.gpsId.get();

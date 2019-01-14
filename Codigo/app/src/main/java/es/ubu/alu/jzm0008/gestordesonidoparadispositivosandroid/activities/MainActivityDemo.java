@@ -12,6 +12,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.view.menu.MenuItemImpl;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
@@ -23,8 +24,12 @@ import java.util.Calendar;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.app.AppConfigBd;
+import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.bd.model.AppConfig;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.fragments.CalendarFragment;
+import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.fragments.ConfigurationFragment;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.fragments.GpsFragment;
+import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.fragments.MainFragment;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.fragments.ManualFragment;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.fragments.PeriodicFragment;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.fragments.SettingControlFragment;
@@ -43,6 +48,7 @@ import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.helpfragments.Ma
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.helpfragments.PeriodicHelp;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.helpfragments.WifiHelp;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.modificadorsonido.AudioController;
+import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.observergps.GPSObserver;
 import io.realm.Realm;
 import io.realm.RealmResults;
 import me.everything.providers.android.calendar.CalendarProvider;
@@ -53,11 +59,12 @@ public class MainActivityDemo extends AppCompatActivity {
 
     private DrawerLayout drawerLayout;
     MenuItem lastItem = null;
+    NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        NavigationView navigationView;
+
         verifyPermission();
 
         setContentView(R.layout.activity_main_demo);
@@ -65,7 +72,8 @@ public class MainActivityDemo extends AppCompatActivity {
 
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navview);
-
+        generaConfiguracion();
+        cargaPantallaInicial();
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -73,7 +81,12 @@ public class MainActivityDemo extends AppCompatActivity {
                 boolean fragmentTransaction = false;
                 Fragment fragment = null;
 
+
                 switch (item.getItemId()) {
+                    case R.id.inicio_app:
+                        fragment = new MainFragment();
+                        fragmentTransaction = true;
+                        break;
                     case R.id.nuevo_manual:
                         fragment = new ManualFragment();
                         fragmentTransaction = true;
@@ -139,6 +152,10 @@ public class MainActivityDemo extends AppCompatActivity {
                         fragment = new SettingControlFragment();
                         fragmentTransaction = true;
                         break;
+                    case R.id.configuracion_aplicacion:
+                        fragment = new ConfigurationFragment();
+                        fragmentTransaction = true;
+                        break;
                     default:
                         break;
 
@@ -159,7 +176,19 @@ public class MainActivityDemo extends AppCompatActivity {
         });
 
         activaHilo();
+        if(android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                GPSObserver gpsObserver = new GPSObserver(this);
+            }
+        }
 
+    }
+
+    public void cargaPantallaInicial() {
+        getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new MainFragment()).commit();
+        MenuItem item = navigationView.getMenu().getItem(0);
+        item.setChecked(true);
+        getSupportActionBar().setTitle(R.string.inicio);
     }
 
     /**
@@ -191,79 +220,83 @@ public class MainActivityDemo extends AppCompatActivity {
     /**
      * Método que se encarga de verificar si hay un evento lanzado o no.
      * @param context contexto de la aplicación.
-     * @param realm instancia de la base de datos Realm en la que se encuentran los datos.
      */
-    public static void controlador(Context context, Realm realm){
-        realm.refresh();
-        realm.close();
-        realm = Realm.getDefaultInstance();
+    public static void controlador(Context context){
+
+        Realm realm = Realm.getDefaultInstance();
+        realm.beginTransaction();
+        realm.commitTransaction();
         RealmResults<ManualEvent> manuales = realm.where(ManualEvent.class).findAll();
         RealmResults<PeriodicEvent> periodicos = realm.where(PeriodicEvent.class).findAll();
         RealmResults<CalendarEvent> calendarEvents = realm.where(CalendarEvent.class).findAll();
-
+        AppConfig config = realm.where(AppConfig.class).findFirst();
+        RealmResults<AppConfig> configList = realm.where(AppConfig.class).findAll();
 
 
         Calendar ahora = Calendar.getInstance();
-        for(ManualEvent eventoManual : manuales) {
-            Calendar inicio = Calendar.getInstance(); inicio.setTimeInMillis(eventoManual.getInicio());
-            Calendar fin = Calendar.getInstance();fin.setTimeInMillis(eventoManual.getFin());
+        if(config.isManual())
+            for(ManualEvent eventoManual : manuales) {
+                Calendar inicio = Calendar.getInstance(); inicio.setTimeInMillis(eventoManual.getInicio());
+                Calendar fin = Calendar.getInstance();fin.setTimeInMillis(eventoManual.getFin());
 
-            if(inicio.before(ahora) && fin.after(ahora)){
-                AudioController audioController = new AudioController(context);
-                audioController.cambiaSonido(eventoManual.getSettingControl());
+                if(inicio.before(ahora) && fin.after(ahora)){
+                    AudioController audioController = new AudioController(context);
+                    audioController.cambiaSonido(eventoManual.getSettingControl());
+                }
             }
-        }
 
         ahora = Calendar.getInstance();
-        for(PeriodicEvent eventoPeriodico : periodicos) {
-            Calendar inicio = Calendar.getInstance();inicio.setTimeInMillis(eventoPeriodico.getInicio());
-            Calendar fin = Calendar.getInstance();fin.setTimeInMillis(eventoPeriodico.getFin());
-            ahora = Calendar.getInstance();
-            int in = inicio.get(Calendar.HOUR)*60 + inicio.get(Calendar.MINUTE);
-            int fn = fin.get(Calendar.HOUR)*60 + fin.get(Calendar.MINUTE);
-            int ah = ahora.get(Calendar.HOUR)*60 + ahora.get(Calendar.MINUTE);
-            int diaSemana = inicio.get(Calendar.DAY_OF_WEEK);
-            if(in < ah && fn > ah && ahora.get(Calendar.DAY_OF_WEEK) == diaSemana){
-                AudioController audioController = new AudioController(context);
-                audioController.cambiaSonido(eventoPeriodico.getSettingControl());
+        if(config.isPeriodic())
+            for(PeriodicEvent eventoPeriodico : periodicos) {
+                Calendar inicio = Calendar.getInstance();inicio.setTimeInMillis(eventoPeriodico.getInicio());
+                Calendar fin = Calendar.getInstance();fin.setTimeInMillis(eventoPeriodico.getFin());
+                ahora = Calendar.getInstance();
+                int in = inicio.get(Calendar.HOUR)*60 + inicio.get(Calendar.MINUTE);
+                int fn = fin.get(Calendar.HOUR)*60 + fin.get(Calendar.MINUTE);
+                int ah = ahora.get(Calendar.HOUR)*60 + ahora.get(Calendar.MINUTE);
+                int diaSemana = inicio.get(Calendar.DAY_OF_WEEK);
+                if(in < ah && fn > ah && ahora.get(Calendar.DAY_OF_WEEK) == diaSemana){
+                    AudioController audioController = new AudioController(context);
+                    audioController.cambiaSonido(eventoPeriodico.getSettingControl());
+                }
             }
-        }
-
-        if(ActivityCompat.checkSelfPermission( context, Manifest.permission.READ_CALENDAR) == PackageManager.PERMISSION_GRANTED ) {
-            CalendarProvider provider = new CalendarProvider(context);
-            for (int y = 0; y <= 50; y++) {
-                Data<Event> events = provider.getEvents(y);
-                for (Event event : events.getList()) {
-                    Calendar inicio = Calendar.getInstance();
-                    Calendar fin = Calendar.getInstance();
-                    inicio.setTimeInMillis(event.dTStart);
-                    fin.setTimeInMillis(event.dTend);
-                    if (inicio.before(ahora) && fin.after(ahora)) {
-                        for (CalendarEvent calendarEvent : calendarEvents) {
-                            if (calendarEvent.getIdCalendarEvent().equals(event.title)) {
-                                AudioController audioController = new AudioController(context);
-                                audioController.cambiaSonido(calendarEvent.getSettingControl());
+        if(config.isCalendar())
+            if(ActivityCompat.checkSelfPermission( context, Manifest.permission.READ_CALENDAR) == PackageManager.PERMISSION_GRANTED ) {
+                CalendarProvider provider = new CalendarProvider(context);
+                for (int y = 0; y <= 50; y++) {
+                    Data<Event> events = provider.getEvents(y);
+                    for (Event event : events.getList()) {
+                        Calendar inicio = Calendar.getInstance();
+                        Calendar fin = Calendar.getInstance();
+                        inicio.setTimeInMillis(event.dTStart);
+                        fin.setTimeInMillis(event.dTend);
+                        if (inicio.before(ahora) && fin.after(ahora)) {
+                            for (CalendarEvent calendarEvent : calendarEvents) {
+                                if (calendarEvent.getIdCalendarEvent().equals(event.title)) {
+                                    AudioController audioController = new AudioController(context);
+                                    audioController.cambiaSonido(calendarEvent.getSettingControl());
+                                }
                             }
-                        }
 
+                        }
                     }
                 }
             }
-        }
 
         RealmResults<WifiEvent> wifiEvents = realm.where(WifiEvent.class).findAll();
 
         ProveedorWifi proveedorWifi = new ProveedorWifi(context);
         String ssidLeido = proveedorWifi.getSSID();
 
-        for (WifiEvent wifiEvent : wifiEvents) {
-            if(wifiEvent.getSsid().equals(ssidLeido)) {
+        if(config.isWifi())
+            for (WifiEvent wifiEvent : wifiEvents) {
+                if(wifiEvent.getSsid().equals(ssidLeido)) {
 
-                AudioController audioController = new AudioController(context);
-                audioController.cambiaSonido(wifiEvent.getSettingControl());
+                    AudioController audioController = new AudioController(context);
+                    audioController.cambiaSonido(wifiEvent.getSettingControl());
 
+                }
             }
-        }
     }
 
     /**
@@ -276,11 +309,11 @@ public class MainActivityDemo extends AppCompatActivity {
     }
 
     /**
-     * Método que se encarga de sacar un texto por pantalla de manera informatica.
+     * Método que se encarga de sacar un texto por pantalla de manera informativa.
      * @param context Contexto de la aplicación.
      */
     public static void alertaGuardado(Context context) {
-        Toast.makeText(context, "Evento guardado correctamente", Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, R.string.confirmacion_guardado, Toast.LENGTH_SHORT).show();
     }
 
     /**
@@ -299,4 +332,25 @@ public class MainActivityDemo extends AppCompatActivity {
         }
     }
 
+
+    /**
+     * Método que se encarga de generar una nueva configuración para la app si esta no tiene ninguna
+     */
+    private void generaConfiguracion() {
+        Realm realm = Realm.getDefaultInstance();
+        realm.beginTransaction();
+        realm.commitTransaction();
+        AppConfig config = realm.where(AppConfig.class).findFirst();
+        if(config == null) {
+            realm.beginTransaction();
+            int id1= AppConfigBd.configurationId.get();
+            AppConfig configBean = new AppConfig(id1, 100, true, true, true, true, true);
+            realm.copyToRealm(configBean);
+            realm.commitTransaction();
+        }
+    }
+
+    public static void alertaGuardadoSetting(Context context) {
+        Toast.makeText(context, R.string.confirmacion_guardado_config, Toast.LENGTH_SHORT).show();
+    }
 }

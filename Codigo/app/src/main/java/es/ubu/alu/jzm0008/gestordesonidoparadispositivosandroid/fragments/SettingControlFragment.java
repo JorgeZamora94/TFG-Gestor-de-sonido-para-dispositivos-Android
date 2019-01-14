@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.R;
+import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.activities.MainActivityDemo;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.bd.model.SettingControl;
 import io.realm.Realm;
 
@@ -76,6 +77,7 @@ public class SettingControlFragment extends Fragment {
                 alarmVolBar.setProgress(50);
                 callVolBar.setProgress(50);
                 notificationVolBar.setProgress(50);
+                MainActivityDemo.alertaGuardadoSetting(getContext());
             }
         });
 

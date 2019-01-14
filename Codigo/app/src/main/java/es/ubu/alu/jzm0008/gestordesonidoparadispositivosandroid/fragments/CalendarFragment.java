@@ -74,7 +74,7 @@ public class CalendarFragment extends Fragment {
                 realm.beginTransaction();
                 int id1= AppConfigBd.calendarId.get();
 
-                CalendarEvent calendarEvent = new CalendarEvent(nameEvent.getText().toString(), nameCalendarEvent.getText().toString(), "calendar event", (SettingControl) spinner.getSelectedItem());
+                CalendarEvent calendarEvent = new CalendarEvent(nameCalendarEvent.getText().toString(), nameEvent.getText().toString(),  "calendar event", (SettingControl) spinner.getSelectedItem());
                 int id2=AppConfigBd.calendarId.get();
                 if(id1!=id2)
                     MainActivityDemo.alertaGuardado(getContext());
