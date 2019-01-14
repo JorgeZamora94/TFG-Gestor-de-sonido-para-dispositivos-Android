@@ -1,20 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nuevo_periodico"
-            android:title="Evento periódico" />
-         <item
-            android:id="@+id/nuevo_gps"
-            android:title="Evento GPS" />
-        <item
-            android:id="@+id/nuevo_wifi"
-            android:title="Evento wifi" />
-        <item
-            android:id="@+id/nuevo_manual"
-            android:title="Evento manual" />
-        <item
-            android:id="@+id/nuevo_calendario"
-            android:title="Evento calendario" />
+        <item android:title="@string/menu_inicio">
+            <menu>
+                <item
+                    android:id="@+id/inicio_app"
+                    android:title="@string/inicio" />
+            </menu>
+        </item>
+        <item android:title="@string/menu_event">
+            <menu>
+                <item
+                    android:id="@+id/nuevo_periodico"
+                    android:title="@string/periodic" />
+                 <item
+                    android:id="@+id/nuevo_gps"
+                    android:title="@string/gps" />
+                <item
+                    android:id="@+id/nuevo_wifi"
+                    android:title="@string/wifi" />
+                <item
+                    android:id="@+id/nuevo_manual"
+                    android:title="@string/manual" />
+                <item
+                    android:id="@+id/nuevo_calendario"
+                    android:title="@string/calendar" />
+                <item
+                    android:id="@+id/nueva_configuracion"
+                    android:title="@string/config" />
+            </menu>
+        </item>
+        <item android:title="@string/menu_ayuda">
+            <menu>
+                <item
+                    android:id="@+id/ayuda_configuracion"
+                    android:title="@string/config_help" />
+                <item
+                    android:id="@+id/ayuda_manual"
+                    android:title="@string/manual_help" />
+                <item
+                    android:id="@+id/ayuda_periodico"
+                    android:title="@string/periodic_help" />
+                <item
+                    android:id="@+id/ayuda_wifi"
+                    android:title="@string/wifi_help" />
+                <item
+                    android:id="@+id/ayuda_gps"
+                    android:title="@string/gps_help" />
+                <item
+                    android:id="@+id/ayuda_calendario"
+                    android:title="@string/calendar_help" />
+            </menu>
+        </item>
+        <item android:title="@string/menu_config">
+            <menu>
+                <item
+                    android:id="@+id/configuracion_aplicacion"
+                    android:title="@string/app_config" />
+            </menu>
+        </item>
     </group>
 </menu>
