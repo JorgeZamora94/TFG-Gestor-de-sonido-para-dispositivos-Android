@@ -10,13 +10,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
-        android:hint="Nombre de la configuración de audio"/>
+        android:hint="@string/nombre_config"/>
 
     <TextView
         android:id="@+id/textViewMain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Volumen principal"
+        android:text="@string/volumen_principal"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
 
@@ -32,7 +32,7 @@
         android:id="@+id/textViewMusic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Volumen de la música"
+        android:text="@string/volumen_musica"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
 
@@ -48,7 +48,7 @@
         android:id="@+id/textViewAlarm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Volumen de la alarma"
+        android:text="@string/volumen_alarma"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
         android:layout_below="@+id/seekBarMusic"/>
@@ -63,7 +63,7 @@
         android:id="@+id/textViewCall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Volumen de conversación"
+        android:text="@string/volumen_conversacion"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
 
@@ -79,7 +79,7 @@
         android:id="@+id/textViewNotification"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Volumen de las notificaciones"
+        android:text="@string/volumen_notificaciones"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
 
@@ -97,7 +97,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:text="Guarda configuración de audio"
+        android:text="@string/guarda_configuracion"
         android:layout_below="@+id/seekBarNotification"/>
 
 </RelativeLayout>

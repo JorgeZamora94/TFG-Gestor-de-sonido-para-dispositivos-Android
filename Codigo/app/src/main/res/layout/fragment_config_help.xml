@@ -1,19 +1,21 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollViewConfigHelp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.helpFragments.ConfigHelp">
+    tools:context="es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.helpfragments.ConfigHelp">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="\n
-    1. Para añadir una nueva configuración de sonido tendremos que seleccionar en el menú desplegable de la izquierda la casilla de configuraciones de sonido.\n
-    2. Una vez dentro de esta pantalla seleccionaremos los niveles de volumen e introduciremos el nombre de la configuración.\n
-    3. Para guardar la configuración tendremos que pinchar en el botón de guardar configuración."
-        android:layout_gravity="center_vertical|center_horizontal"
+        android:text="@string/config_help_text"
         android:textSize="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"/>
 
 </FrameLayout>
+</ScrollView>
