@@ -1,11 +1,138 @@
 \apendice{Documentación de usuario}
 
 \section{Introducción}
-En desarrollo
-\section{Requisitos de usuarios}
-En desarrollo
-\section{Instalación}
-En desarrollo
-\section{Manual del usuario}
-En desarrollo
 
+A continuación describiremos como trabajar con la aplicación desarrollada y los requisitos que se necesiten para poder utilizarla y como poder instalar la aplicación.
+\section{Requisitos de usuarios}
+El usuario tendrá que tener un dispositivo Android que tenga GPS y conexión Wifi. La versión de Android podrá ser desde la 19 hasta la 26.
+
+\section{Instalación}
+
+Una vez tengamos la aplicación, lo que tendremos que hacer será pinchar en la APK, y el dispositivo Android instalará automáticamente la aplicación. Cuando vayamos a crear el primer evento GPS y de calendario nos pedirá permisos la aplicación, y se tendrán que aceptar para que la aplicación funcione correctamente.
+
+\section{Manual del usuario}
+
+\subsection{¿ Qué es y para que sirve esta aplicación?}
+En este proyecto se desarrollará una aplicación móvil para usuarios de Android. Lo que se intentará sera el automatizar de una manera sencilla el manejo de los volúmenes de sonido de nuestro dispositivo Android, para ello se podrán crear diferentes eventos que se comprobarán de manera automática y periódicamente y que cambiarán estos volúmenes.
+Los eventos que se podrán programar serán eventos manuales, eventos periódicos, eventos wifi, eventos Gps y eventos de calendario.
+\subsection{¿ Pero qué son los eventos?}
+Los eventos son condiciones que podremos definir para activar las configuraciones de sonido.
+Podremos encontrar los siguientes eventos:
+\subsubsection{Manuales}
+En estos eventos tendremos que definir el día y la hora entre los que queramos que se cambie a la configuración deseada.
+\subsubsection{Periódicos}
+En estos eventos tendremos que definir el día de la semana y las horas en las que queramos que se active la configuración deseada.
+\subsubsection{Wifi}
+En estos eventos tendremos que definir el nombre de la red Wifi y la configuración a establecerá. Si el dispositivo móvil detecta que hay una red Wifi al alcance con ese nombre se establecerá la configuración deseada.
+\subsubsection{Gps}
+En estos eventos tendremos que definir la configuración deseada, y cuando guardemos la configuración, el dispositivo móvil detectará la posición GPS y la guardará. Cuando estemos cerca de esa posición GPS se cambiará de configuración de sonido.
+\subsection{Calendario}
+En estos eventos se tendrá que definir el Id de una tarea de calendario, y la configuración de sonido a la que queramos cambiar. Si encuentra ese nombre de tarea en uno de los calendarios del móvil, se cambiará la configuración de sonido.
+\subsection{¿ Pero qué son las configuraciones de sonido?}
+Las configuraciones de sonido son, los diferentes volúmenes que tiene el móvil, agrupados en una sola entidad. Dentro de una configuración de sonido modificaremos el sonido principal del móvil, llamadas, notificaciones, música y alarma.
+
+\subsection{Añadir nuevas configuraciones}
+Para añadir una nueva configuración de sonido tendremos que seleccionar en el menú desplegable de la izquierda la casilla de configuraciones de sonido.
+Una vez dentro de esta pantalla seleccionaremos los niveles de volumen e introduciremos el nombre de la configuración.
+Para guardar la configuración tendremos que pinchar en el botón de guardar configuración.
+Centrándonos en los elementos de esta pantalla encontraremos:
+\begin{enumerate}
+\item Cuadro de texto para insertar el nombre de la configuración.
+\item Selector de volumen principal.
+\item Selector del volumen de la música
+\item Selector del volumen de la alarma
+\item Selector del volumen de conversación.
+\item Selector del volumen de las notificaciones
+\end{enumerate}
+
+\subsection{Añadir eventos periódicos}
+Para crear un evento periódico tendremos que seleccionar en el menú desplegable de la izquierda la casilla de eventos periódicos.
+Aquí tendremos que seleccionar la hora de inicio y la hora de finalización del evento desde los botones respectivos, los cuales nos sacarán un selector de hora, para establecer dicha hora.
+Una vez seleccionadas las horas de inicio y de finalización, tendremos que seleccionar el día de la semana que queremos y la configuración deseada a aplicar. Para ello tenemos dos listas desplegables para seleccionar estas opciones.
+Una vez que tengamos todos estos atributos seleccionados lo que tendremos que hacer será pinchar el el botón de guardar configuración para guardar los cambios realizados.
+Centrándonos en los elementos de esta pantalla encontraremos:
+\begin{enumerate}
+\item Cuadro de texto donde tendremos que introducir el nombre del evento a crear.
+\item Botones para seleccionar las horas de inicio y finalización del evento.
+\item Menú desplegable donde seleccionaremos el día de la semana donde queremos crear el evento.
+\item Menú desplegable donde seleccionaremos la configuración de sonido anteriormente creada.
+\item Botón para guardar el evento.
+\end{enumerate}
+
+\subsection{Añadir evento manual}
+
+Para generar un evento manual tendremos que seleccionar en el menú desplegable de la izquierda la casilla de eventos manuales.
+En esta pantalla lo primero que tendremos que hacer será seleccionar el día del evento, pinchando en el botón de selección de día, y seleccionándolo en el pop-up del calendario que sale al pinchar en el botón.
+De la misma manera que antes tendremos que seleccionar la hora de inicio y de finalización del evento en los selectores de hora emergentes de los botones de selección.
+Tendremos también que seleccionar la configuración deseada desde la lista de objetos emergente.
+Para guardar este evento manual tendremos que pinchar en el botón de guardar configuración.
+
+Centrándonos en los elementos de esta pantalla encontraremos:
+\begin{enumerate}
+\item Cuadro de texto donde tendremos que introducir el nombre del evento a crear.
+\item Botón para seleccionar el día que queremos activar el evento. Este botón nos mostrará un PopUp de un calendario, donde tendremos que seleccionar el día del evento.
+\item Botones para seleccionar las horas de inicio y finalización del evento. Estos botones nos sacarán un PopUp de un reloj, donde tendremos que seleccionar las horas de inicio y fin de los eventos, respectivamente.
+\item Menú desplegable donde seleccionaremos la configuración de sonido anteriormente creada.
+\item Botón para guardar el evento.
+\end{enumerate}
+
+
+
+\subsection{Añadir evento GPS}
+
+Para guardar un evento GPS lo que tendremos es que en la lista de configuraciones desplegable seleccionar la configuración deseada.
+Una vez hecho esto pincharemos en el botón de guardar configuración y automáticamente se nos guardará la posición GPS actual del terminal y la configuración deseada.
+
+Centrándonos en los elementos de esta pantalla encontraremos:
+\begin{enumerate}
+\item Cuadro de texto donde tendremos que introducir el nombre del evento a crear.
+\item Menú desplegable donde seleccionaremos la configuración de sonido anteriormente creada.
+\item Botón para guardar el evento.
+\end{enumerate}
+
+
+\subsection{Añadir evento Wifi}
+Para guardar un evento Wifi tendremos que seleccionar en el menú lateral desplegable y seleccionar la casilla de eventos Wifi.
+Introduciremos el nombre del evento.
+Introduciremos en el cuadro de texto el nombre de la red Wifi que deseemos detectar.
+En la lista desplegable de configuraciones seleccionaremos la configuración deseada.
+Para guardar el evento lo que tendremos que hacer será pinchar en el botón de guardar el evento Wifi.
+
+Centrándonos en los elementos de esta pantalla encontraremos:
+\begin{enumerate}
+\item Cuadro de texto donde tendremos que introducir el nombre del evento a crear.
+\item Cuadro de texto donde tendremos que introducir el nombre de la red Wifi sobre la que queramos hacer la comprobación.
+\item Menú desplegable donde seleccionaremos la configuración de sonido anteriormente creada.
+\item Botón para guardar el evento.
+\end{enumerate}
+
+
+
+\subsection{Añadir evento Calendario}
+Para guardar un evento de calendario lo que tendremos que hacer será seleccionar en el menú lateral la casilla de eventos de calendario.
+Una vez en la pantalla de eventos de calendario lo que tendremos que hacer será introducir el titulo del evento sobre el que queremos que se active la configuración en el cuadro de texto.
+Seleccionaremos en la lista desplegable la configuración deseada a aplicar.
+Guardaremos el evento pinchando en el botón de guardar evento.
+
+Centrándonos en los elementos de esta pantalla encontraremos:
+\begin{enumerate}
+\item Cuadro de texto donde tendremos que introducir el nombre del evento a crear.
+\item Cuadro de texto donde tendremos que introducir el nombre del evento de calendario sobre el que queramos hacer la comprobación.
+\item Menú desplegable donde seleccionaremos la configuración de sonido anteriormente creada.
+\item Botón para guardar el evento.
+\end{enumerate}
+
+\subsection{Comprobar eventos y establecer configuraciones asociadas}
+
+Automáticamente la aplicación buscará si hay eventos activos, revisando cada tipo de evento, y si hay alguna condición que active a estos, se realizará el cambio de sonido
+
+
+\subsection{Como activar o desactivar eventos}
+Para que el usuario pueda seleccionar que eventos quiere que se activen, este podrá is a la configuración de la aplicación para activar o desactivar los distintos eventos.
+Para ello iremos a la parte de configuración en el menú lateral y seleccionaremos la opción de configuración.
+
+Encontraremos los siguientes elementos
+\begin{enumerate}
+\item 5 switchs para activar o desactivar los eventos
+\item Botón para guardar la configuración.
+\end{enumerate}
