@@ -28,6 +28,7 @@ import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.app.AppConfigBd;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.bd.model.AppConfig;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.fragments.CalendarFragment;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.fragments.ConfigurationFragment;
+import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.fragments.DeleteEventFragment;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.fragments.GpsFragment;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.fragments.MainFragment;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.fragments.ManualFragment;
@@ -150,6 +151,10 @@ public class MainActivityDemo extends AppCompatActivity {
                         break;
                     case R.id.nueva_configuracion:
                         fragment = new SettingControlFragment();
+                        fragmentTransaction = true;
+                        break;
+                    case R.id.elimina_evento:
+                        fragment = new DeleteEventFragment();
                         fragmentTransaction = true;
                         break;
                     case R.id.configuracion_aplicacion:
