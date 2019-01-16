@@ -6,7 +6,7 @@
     <string name="manual">Manual event</string>
     <string name="calendar">Calendar event</string>
     <string name="gps">Gps event</string>
-    <string name="config">Sound configuration</string>
+    <string name="config">Sound profile</string>
     <string name="app_config">App configuration</string>
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="wifi_help">Wifi event help</string>
@@ -14,9 +14,9 @@
     <string name="manual_help">Manual event help</string>
     <string name="calendar_help">Calendar event help</string>
     <string name="gps_help">Gps event help</string>
-    <string name="config_help">Sound configuration help</string>
+    <string name="config_help">Sound profile help</string>
     <string name="guarda_evento">Save event</string>
-    <string name="guarda_configuracion">Save configuration</string>
+    <string name="guarda_configuracion">Save configuration/profile</string>
     <string name="volumen_notificaciones">Notifications volume</string>
     <string name="volumen_conversacion">Voice volume</string>
     <string name="volumen_alarma">Alarm volume</string>
@@ -44,40 +44,40 @@
         1. To save a Wifi event we will have to select in the drop-down side menu and select the Wifi event box. \n
         2. Enter the name of the event. \n
         3. Enter in the text box the name of the Wi-Fi network that we want to detect. \n
-        4. In the drop-down list of configurations we will select the desired configuration. \n
+        4. In the drop-down list of sound profiles we will select one. \n
         5. To save the event, we will have to click on the button to save the Wifi event."</string>
     <string name="periodic_help_text">\n
         1. To create a periodic event we will have to select the box of periodic events in the drop-down menu on the left.\n
         2. Here we will have to select the start time and the end time of the event.\n
-        3. Once you have selected the start and end times, we will have to select the day of the week we want and the desired configuration. For this we have two drop-down lists to select these options.\n
+        3. Once you have selected the start and end times, we will have to select the day of the week we want and the desired sound profile. For this we have two drop-down lists to select these options.\n
         4. Once we have all these selected attributes, we will have to click on the button to save the configuration to save the changes made.</string>
     <string name="manual_help_text">\n
         1. To generate a manual event we will have to select the box of manual events in the drop-down menu on the left.\n
         2. In this screen the first thing that we will have to do is select the day of the event, clicking on the day selection button, and selecting it in the pop-up of the calendar that comes out by clicking on the button.\n
         3. In the same way as before we will have to select the start and end time of the event in the time-selected selectors of the radio buttons.\n
-        4. We will also have to select the desired configuration from the list of pop-up objects.\n
+        4. We will also have to select the desired sound profile from the list of pop-up objects.\n
         5. To save this manual event we will have to click on the save configuration button.</string>
     <string name="calendar_help_text">\n
         1. To save a calendar event, we will have to select the calendar events box in the side menu.\n
         2. Once on the calendar events screen, what we will have to do is enter the title of the event on which we want the configuration to be activated in the text box.\n
-        3. Select the desired configuration to be applied in the drop-down list.\n
+        3. Select the desired sound profile to be applied in the drop-down list.\n
         4. We will save the event by clicking on the save event button.</string>
     <string name="gps_help_text">\n
         1. To generate a gps event we will have to select the gps event box in the drop-down menu on the left.\n
         2. Introduce the name of the event.\n
-        4. We will also have to select the desired configuration from the list of pop-up objects.\n
+        4. We will also have to select the desired sound profile.\n
         5. To save this gps event we will have to click on the save configuration button and the current gps position will be saved.</string>
     <string name="config_help_text">\n
-        1. To add a new sound configuration we will have to select the sound configurations box from the drop-down menu on the left.\n
+        1. To add a new sound profile we will have to select the sound profile box from the drop-down menu on the left.\n
         2. Once inside this screen we will select the volume levels and enter the name of the configuration.\n
-        3. To save the configuration we will have to click on the button to save configuration.</string>
+        3. To save the configuration we will have to click on the button to save the profile.</string>
     <string name="manual_activado">Manual Control</string>
     <string name="periodico_activado">Periodic Control</string>
     <string name="wifi_activado">Wifi Control</string>
     <string name="gps_activado">GPS Control</string>
     <string name="calendario_activado">Calendar Control</string>
     <string name="confirmacion_guardado">Event saved</string>
-    <string name="confirmacion_guardado_config">Configuration saved</string>
+    <string name="confirmacion_guardado_config">Configuration/profile saved</string>
     <string name="main_fragment">\n\n\nWelcome to Gestor de sonido para dispositivos Android</string>
     <string name="menu_inicio">Main</string>
     <string name="menu_event">Events and sound settings</string>

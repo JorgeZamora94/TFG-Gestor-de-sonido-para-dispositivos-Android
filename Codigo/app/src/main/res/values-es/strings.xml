@@ -6,7 +6,7 @@
     <string name="manual">Evento manual</string>
     <string name="calendar">Evento de calendario</string>
     <string name="gps">Evento gps</string>
-    <string name="config">Configuraciones de sonido</string>
+    <string name="config">Perfiles de sonido</string>
     <string name="app_config">Configuración de la app</string>
     <string name="wifi_help">Ayuda evento wifi</string>
     <string name="periodic_help">Ayuda evento periodico</string>
@@ -18,33 +18,33 @@
         1. Para guardar un evento Wifi tendremos que seleccionar en el menú lateral desplegable y seleccionar la casilla de eventos Wifi.\n
         2. Introduciremos el nombre del evento.\n
         3. Introduciremos en el cuadro de texto el nombre de la red Wifi que deseemos detectar.\n
-        4. En la lista desplegable de configuraciones seleccionaremos la configuración deseada.\n
+        4. En la lista desplegable de perfiles de audios seleccionaremos el perfil deseada.\n
         5. Para guardar el evento lo que tendremos que hacer será pinchar en el botón de guardar el evento Wifi.\n</string>
     <string name="periodic_help_text">\n
         1. Para crear un evento periódico tendremos que seleccionar en el menú desplegable de la izquierda la casilla de eventos periódicos.\n
         2. Aquí tendremos que seleccionar la hora de inicio y la hora de finalización del evento desde los botones respectivos, los cuales nos sacarán un selector de hora, para establecer dicha hora.\n
-        3. Una vez seleccionadas las horas de inicio y de finalización, tendremos que seleccionar el día de la semana que queremos y la configuración deseada a aplicar. Para ello tenemos dos listas desplegables para seleccionar estas opciones.\n
+        3. Una vez seleccionadas las horas de inicio y de finalización, tendremos que seleccionar el día de la semana que queremos y el perfil deseado a aplicar. Para ello tenemos dos listas desplegables para seleccionar estas opciones.\n
         4. Una vez que tengamos todos estos atributos seleccionados lo que tendremos que hacer será pinchar en el botón de guardar configuración para guardar los cambios realizados.</string>
     <string name="manual_help_text">\n
         1. Para generar un evento manual tendremos que seleccionar en el menú desplegable de la izquierda la casilla de eventos manuales.\n
         2. En esta pantalla lo primero que tendremos que hacer será seleccionar el día del evento, pinchando en el botón de selección de día, y seleccionándolo en el pop-up del calendario que sale al pinchar en el botón.\n
         3. De la misma manera que antes tendremos que seleccionar la hora de inicio y de finalización del evento en los selectores de hora emergentes de los botones de selección.\n
-        4. Tendremos también que seleccionar la configuración deseada desde la lista de objetos emergente.\n
+        4. Tendremos también que seleccionar el perfil de sonido deseado.\n
         5. Para guardar este evento manual tendremos que pinchar en el botón de guardar configuración.</string>
     <string name="calendar_help_text">\n
         1. Para guardar un evento de calendario lo que tendremos que hacer será seleccionar en el menú lateral la casilla de eventos de calendario.\n
         2. Una vez en la pantalla de eventos de calendario lo que tendremos que hacer será introducir el titulo del evento sobre el que queremos que se active la configuración en el cuadro de texto.\n
-        3. Seleccionaremos en la lista desplegable la configuración deseada a aplicar.\n
+        3. Seleccionaremos en la lista desplegable el perfil de sonido a aplicar.\n
         4. Guardaremos el evento pinchando en el botón de guardar evento.</string>
     <string name="gps_help_text">\n
         1. Para generar un evento gps tendremos que seleccionar en el menú desplegable de la izquierda la casilla de evento gps.\n
         2. Introduciremos el nombre del evento\n
-        4. Tendremos también que seleccionar la configuración deseada desde la lista de objetos emergente.\n
+        4. Tendremos también que seleccionar el perfil de sonido deseado.\n
         5. Para guardar este evento gps tendremos que pinchar en el botón de guardar configuración y la posición gps actual será guardada.</string>
     <string name="config_help_text">\n
-        1. Para añadir una nueva configuración de sonido tendremos que seleccionar en el menú desplegable de la izquierda la casilla de configuraciones de sonido.\n
+        1. Para añadir un nuevo perfil de sonido tendremos que seleccionar en el menú desplegable de la izquierda la casilla de configuraciones de sonido.\n
         2. Una vez dentro de esta pantalla seleccionaremos los niveles de volumen e introduciremos el nombre de la configuración.\n
-        3. Para guardar la configuración tendremos que pinchar en el botón de guardar configuración.</string>
+        3. Para guardar la configuración tendremos que pinchar en el botón de guardar perfil.</string>
     <string name="lunes">Lunes</string>
     <string name="martes">Martes</string>
     <string name="miercoles">Miercoles</string>
@@ -68,7 +68,7 @@
     <string name="volumen_alarma">Volumen de la alarma</string>
     <string name="volumen_conversacion">Volumen de conversación</string>
     <string name="volumen_notificaciones">Volumen de notificaciones</string>
-    <string name="guarda_configuracion">Guarda configuración</string>
+    <string name="guarda_configuracion">Guarda configuración/perfil</string>
     <string name="guarda_evento">Guarda evento</string>
     <string name="manual_activado">Control Manual</string>
     <string name="periodico_activado">Control Periódico</string>
@@ -76,7 +76,7 @@
     <string name="gps_activado">Control GPS</string>
     <string name="calendario_activado">Control de calendario</string>
     <string name="confirmacion_guardado">Evento guardado</string>
-    <string name="confirmacion_guardado_config">Configuración guardada</string>
+    <string name="confirmacion_guardado_config">Configuración/perfil guardada</string>
     <string name="main_fragment">\n\n\nBienvenido a Gestor de sonido para dispositivos Android</string>
     <string name="menu_inicio">Inicio</string>
     <string name="menu_event">Eventos y configuraciones de sonido</string>
