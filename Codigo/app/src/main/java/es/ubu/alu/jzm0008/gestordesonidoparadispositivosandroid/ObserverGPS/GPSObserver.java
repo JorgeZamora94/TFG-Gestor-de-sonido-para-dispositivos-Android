@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.support.v4.app.ActivityCompat;
 
+import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.bd.model.AppConfig;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.bd.model.GPSEvent;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.modificadorsonido.AudioController;
 import io.realm.Realm;
@@ -31,8 +32,7 @@ public class GPSObserver implements LocationListener {
     protected LocationManager locationManager;
 
     public GPSObserver(Context context){
-        boolean isGPSEnabled =false;
-        Properties properties = new Properties();
+        boolean isGPSEnabled;
         this.context=context;
         if (ActivityCompat.checkSelfPermission( context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions((Activity) context,
@@ -43,7 +43,7 @@ public class GPSObserver implements LocationListener {
         isGPSEnabled = locationManager.isProviderEnabled(locationManager.GPS_PROVIDER);
 
         if(isGPSEnabled && location==null) {
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,properties.getTiempo(),properties.getDistancia(), this);
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,0,50, this);
             if (locationManager != null) {
                 this.location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
             }
@@ -56,14 +56,17 @@ public class GPSObserver implements LocationListener {
 
     public void onLocationChanged(Location location){
         Realm realm = Realm.getDefaultInstance();
+        realm.beginTransaction();
+        realm.commitTransaction();
         RealmResults<GPSEvent> gps = realm.where(GPSEvent.class).findAll();
-        for(GPSEvent event : gps) {
-            if (event.getLat() == location.getLatitude() && event.getLon() == location.getLongitude()) {
-                //MainActivityDemo.alertaEventoGPS(context);
-                AudioController audioController = new AudioController(context);
-                audioController.cambiaSonido(event.getSettingControl());
+        AppConfig config = realm.where(AppConfig.class).findFirst();
+        if(config.isGps())
+            for(GPSEvent event : gps) {
+                if (event.getLat() == location.getLatitude() && event.getLon() == location.getLongitude()) {
+                    AudioController audioController = new AudioController(context);
+                    audioController.cambiaSonido(event.getSettingControl());
+                }
             }
-        }
         this.location = location;
     }
 

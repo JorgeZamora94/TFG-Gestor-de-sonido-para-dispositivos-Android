@@ -83,4 +83,6 @@
     <string name="menu_event">Events and sound settings</string>
     <string name="menu_ayuda">Help</string>
     <string name="menu_config">App configuration</string>
+    <string name="elimina_evento">Event list</string>
+    <string name="alerta_gps">Event not created, gps might be disabled</string>
 </resources>

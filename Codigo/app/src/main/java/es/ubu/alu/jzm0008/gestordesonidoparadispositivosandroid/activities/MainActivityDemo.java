@@ -321,6 +321,10 @@ public class MainActivityDemo extends AppCompatActivity {
         Toast.makeText(context, R.string.confirmacion_guardado, Toast.LENGTH_SHORT).show();
     }
 
+    public static void alertaGps(Context context) {
+        Toast.makeText(context, R.string.alerta_gps, Toast.LENGTH_LONG).show();
+    }
+
     /**
      * Método que se encarga de verificar la concesión de permisos en nuestra aplicación.
      */
