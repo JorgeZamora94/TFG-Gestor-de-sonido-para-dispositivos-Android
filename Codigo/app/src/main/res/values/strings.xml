@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">GestorDeSonidoParaDispositivosAndroid</string>
+    <string name="app_name" translatable="false">Gestor de sonido</string>
     <string name="inicio">Introduction</string>
     <string name="wifi">Wifi event</string>
     <string name="periodic">Periodic event</string>
