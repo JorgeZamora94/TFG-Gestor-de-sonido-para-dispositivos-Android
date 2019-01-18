@@ -103,13 +103,13 @@ public class PeriodicFragment extends Fragment {
         });
 
         final List<String> diasSemana = new ArrayList();
-        diasSemana.add("Lunes");
-        diasSemana.add("Martes");
-        diasSemana.add("Miercoles");
-        diasSemana.add("Jueves");
-        diasSemana.add("Viernes");
-        diasSemana.add("Sabado");
-        diasSemana.add("Domingo");
+        diasSemana.add(getString(R.string.lunes));
+        diasSemana.add(getString(R.string.martes));
+        diasSemana.add(getString(R.string.miercoles));
+        diasSemana.add(getString(R.string.jueves));
+        diasSemana.add(getString(R.string.viernes));
+        diasSemana.add(getString(R.string.sabado));
+        diasSemana.add(getString(R.string.domingo));
 
         ArrayAdapter adaptadorDias =
                 new ArrayAdapter( getActivity().getBaseContext(),
@@ -169,10 +169,31 @@ public class PeriodicFragment extends Fragment {
                     case "Viernes":
                         i = 6;
                         break;
-                    case "Sabado":
+                    case "Sábado":
                         i = 7;
                         break;
                     case "Domingo":
+                        i = 1;
+                        break;
+                    case "Monday":
+                        i = 2;
+                        break;
+                    case "Tuesday":
+                        i = 3;
+                        break;
+                    case "Wednesday":
+                        i = 4;
+                        break;
+                    case "Thursday":
+                        i = 5;
+                        break;
+                    case "Friday":
+                        i = 6;
+                        break;
+                    case "Saturday":
+                        i = 7;
+                        break;
+                    case "Sunday":
                         i = 1;
                         break;
 
