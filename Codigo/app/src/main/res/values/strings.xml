@@ -87,4 +87,6 @@
     <string name="alerta_gps">Event not created, gps might be disabled</string>
     <string name="alerta_campos">Event not created, please insert all the information</string>
     <string name="alerta_campos_perfil">Profile not created, please insert all the information</string>
+    <string name="selecciona_perfil">Select an audio profile</string>
+    <string name="selecciona_dia">Select a week day</string>
 </resources>

@@ -50,6 +50,15 @@
         android:id="@+id/buttonSelectHFinManual"
         android:layout_gravity="top|center"/>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center"
+        android:layout_marginTop="450dp"
+        android:text="@string/selecciona_perfil"/>
+
     <Spinner
         android:id="@+id/spinnerConfManual"
         android:layout_width="match_parent"
@@ -57,7 +66,7 @@
         android:layout_marginRight="20dp"
         android:layout_height="wrap_content"
         android:layout_gravity="top|center"
-        android:layout_marginTop="450dp"
+        android:layout_marginTop="500dp"
         android:textAlignment="center"/>
 
 
@@ -67,7 +76,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="500dp"
+        android:layout_marginTop="600dp"
         android:id="@+id/buttonSaveManual"
         android:layout_gravity="top|center"/>
 

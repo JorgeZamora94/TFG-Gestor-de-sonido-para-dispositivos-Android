@@ -19,6 +19,14 @@
         android:layout_marginTop="100dp"
         android:hint="@string/nombre_gps" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center"
+        android:layout_marginTop="200dp"
+        android:text="@string/selecciona_perfil"/>
 
     <Spinner
         android:id="@+id/gpsSpinner"

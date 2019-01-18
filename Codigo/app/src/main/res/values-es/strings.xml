@@ -86,4 +86,6 @@
     <string name="alerta_gps">Evento no creado, el gps debe de estar desactivado</string>
     <string name="alerta_campos">Evento no creado, rellene todos los campos</string>
     <string name="alerta_campos_perfil">Perfil no creado, rellene todos los campos</string>
+    <string name="selecciona_perfil">Selecciona un perfil de audio</string>
+    <string name="selecciona_dia">Selecciona un día de la semana</string>
 </resources>
