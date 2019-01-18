@@ -325,6 +325,14 @@ public class MainActivityDemo extends AppCompatActivity {
         Toast.makeText(context, R.string.alerta_gps, Toast.LENGTH_LONG).show();
     }
 
+    public static void alertaCamposSinRellenar(Context context) {
+        Toast.makeText(context, R.string.alerta_campos, Toast.LENGTH_LONG).show();
+    }
+
+    public static void alertaCamposSinRellenarConfig(Context context) {
+        Toast.makeText(context, R.string.alerta_campos_perfil, Toast.LENGTH_LONG).show();
+    }
+
     /**
      * Método que se encarga de verificar la concesión de permisos en nuestra aplicación.
      */

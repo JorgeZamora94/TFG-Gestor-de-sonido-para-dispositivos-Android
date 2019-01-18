@@ -70,24 +70,30 @@ public class GpsFragment extends Fragment {
             button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    GPSObserver gps = new GPSObserver(getContext());
+                if(nombre.getText() == null || nombre.getText().toString().equals("") ||
+                        spinner.getSelectedItem() == null) {
+                    MainActivityDemo.alertaCamposSinRellenar(getContext());
+                } else {
+                    try {
+                        GPSObserver gps = new GPSObserver(getContext());
 
-                    realm.beginTransaction();
-                    int id1= AppConfigBd.gpsId.get();
+                        realm.beginTransaction();
+                        int id1= AppConfigBd.gpsId.get();
 
-                    GPSEvent gpsEvent = new GPSEvent(nombre.getText().toString(), gps.getLocation().getLongitude(), gps.getLocation().getLatitude(),"gpsEvent", (SettingControl) spinner.getSelectedItem());
-                    int id2=AppConfigBd.gpsId.get();
-                    if(id1!=id2)
-                        MainActivityDemo.alertaGuardado(getContext());
-                    realm.copyToRealm(gpsEvent);
+                        GPSEvent gpsEvent = new GPSEvent(nombre.getText().toString(), gps.getLocation().getLongitude(), gps.getLocation().getLatitude(),"gpsEvent", (SettingControl) spinner.getSelectedItem());
+                        int id2=AppConfigBd.gpsId.get();
+                        if(id1!=id2)
+                            MainActivityDemo.alertaGuardado(getContext());
+                        realm.copyToRealm(gpsEvent);
 
-                } catch (Exception e) {
-                    Log.e("GPS", "Error al guardar un evento GPS");
-                    MainActivityDemo.alertaGps(getContext());
-                } finally {
-                    realm.commitTransaction();
+                    } catch (Exception e) {
+                        Log.e("GPS", "Error al guardar un evento GPS");
+                        MainActivityDemo.alertaGps(getContext());
+                    } finally {
+                        realm.commitTransaction();
+                    }
                 }
+
 
 
             }

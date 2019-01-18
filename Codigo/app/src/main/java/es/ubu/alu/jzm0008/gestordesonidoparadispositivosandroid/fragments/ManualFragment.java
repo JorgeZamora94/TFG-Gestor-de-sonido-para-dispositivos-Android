@@ -40,9 +40,9 @@ public class ManualFragment extends Fragment {
     private Button buttonSelectTime2;
     private Button buttonsaveManual;
 
-    private Calendar dia;
-    private Calendar inicio;
-    private Calendar fin;
+    private Calendar dia = null;
+    private Calendar inicio = null;
+    private Calendar fin = null;
     private EditText nombre;
 
 
@@ -155,19 +155,29 @@ public class ManualFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                inicio.set(dia.get(Calendar.YEAR), dia.get(Calendar.MONTH), dia.get(Calendar.DAY_OF_MONTH));
+                if(nombre.getText() == null || nombre.getText().toString().equals("") ||
+                        dia == null ||
+                        inicio == null ||
+                        fin == null ||
+                        spinner.getSelectedItem() == null) {
+                    MainActivityDemo.alertaCamposSinRellenar(getContext());
+                } else {
+                    inicio.set(dia.get(Calendar.YEAR), dia.get(Calendar.MONTH), dia.get(Calendar.DAY_OF_MONTH));
 
-                fin.set(dia.get(Calendar.YEAR), dia.get(Calendar.MONTH), dia.get(Calendar.DAY_OF_MONTH));
+                    fin.set(dia.get(Calendar.YEAR), dia.get(Calendar.MONTH), dia.get(Calendar.DAY_OF_MONTH));
 
 
-                realm.beginTransaction();
-                int id1= AppConfigBd.manualId.get();
-                ManualEvent manualEvent = new ManualEvent(nombre.getText().toString(), inicio.getTimeInMillis(), fin.getTimeInMillis(), "evento manual", (SettingControl) spinner.getSelectedItem());
-                int id2=AppConfigBd.manualId.get();
-                if(id1!=id2)
-                    MainActivityDemo.alertaGuardado(getContext());
-                realm.copyToRealm(manualEvent);
-                realm.commitTransaction();
+                    realm.beginTransaction();
+                    int id1= AppConfigBd.manualId.get();
+                    ManualEvent manualEvent = new ManualEvent(nombre.getText().toString(), inicio.getTimeInMillis(), fin.getTimeInMillis(), "evento manual", (SettingControl) spinner.getSelectedItem());
+                    int id2=AppConfigBd.manualId.get();
+                    if(id1!=id2)
+                        MainActivityDemo.alertaGuardado(getContext());
+                    realm.copyToRealm(manualEvent);
+                    realm.commitTransaction();
+                }
+
+
 
             }
         });

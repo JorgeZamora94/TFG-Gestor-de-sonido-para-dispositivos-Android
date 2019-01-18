@@ -84,4 +84,6 @@
     <string name="menu_config">Configuración de la app</string>
     <string name="elimina_evento">Listado de eventos</string>
     <string name="alerta_gps">Evento no creado, el gps debe de estar desactivado</string>
+    <string name="alerta_campos">Evento no creado, rellene todos los campos</string>
+    <string name="alerta_campos_perfil">Perfil no creado, rellene todos los campos</string>
 </resources>

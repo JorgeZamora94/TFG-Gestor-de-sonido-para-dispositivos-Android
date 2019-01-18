@@ -85,4 +85,6 @@
     <string name="menu_config">App configuration</string>
     <string name="elimina_evento">Event list</string>
     <string name="alerta_gps">Event not created, gps might be disabled</string>
+    <string name="alerta_campos">Event not created, please insert all the information</string>
+    <string name="alerta_campos_perfil">Profile not created, please insert all the information</string>
 </resources>

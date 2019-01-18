@@ -70,16 +70,22 @@ public class CalendarFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+                if(nameCalendarEvent.getText() == null || nameCalendarEvent.getText().toString().equals("") ||
+                        nameEvent.getText() == null || nameEvent.getText().toString().equals("") ||
+                        spinner.getSelectedItem() == null) {
+                    MainActivityDemo.alertaCamposSinRellenar(getContext());
+                } else {
+                    realm.beginTransaction();
+                    int id1= AppConfigBd.calendarId.get();
 
-                realm.beginTransaction();
-                int id1= AppConfigBd.calendarId.get();
+                    CalendarEvent calendarEvent = new CalendarEvent(nameCalendarEvent.getText().toString(), nameEvent.getText().toString(),  "calendar event", (SettingControl) spinner.getSelectedItem());
+                    int id2=AppConfigBd.calendarId.get();
+                    if(id1!=id2)
+                        MainActivityDemo.alertaGuardado(getContext());
+                    realm.copyToRealm(calendarEvent);
+                    realm.commitTransaction();
+                }
 
-                CalendarEvent calendarEvent = new CalendarEvent(nameCalendarEvent.getText().toString(), nameEvent.getText().toString(),  "calendar event", (SettingControl) spinner.getSelectedItem());
-                int id2=AppConfigBd.calendarId.get();
-                if(id1!=id2)
-                    MainActivityDemo.alertaGuardado(getContext());
-                realm.copyToRealm(calendarEvent);
-                realm.commitTransaction();
             }
         });
 

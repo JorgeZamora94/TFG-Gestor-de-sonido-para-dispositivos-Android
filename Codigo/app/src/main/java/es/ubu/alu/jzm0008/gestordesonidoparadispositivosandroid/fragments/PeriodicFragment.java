@@ -36,8 +36,8 @@ public class PeriodicFragment extends Fragment {
 
     private EditText nombre;
 
-    private Calendar inicio;
-    private Calendar fin;
+    private Calendar inicio = null;
+    private Calendar fin = null;
 
     private Realm realm = Realm.getDefaultInstance();
     private RealmResults<SettingControl> settingsControls = realm.where(SettingControl.class).findAll();
@@ -144,9 +144,13 @@ public class PeriodicFragment extends Fragment {
         savePeriodico.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
-                    realm.beginTransaction();
+            if(inicio == null ||
+                    fin == null ||
+                    nombre.getText() == null || nombre.getText().toString().equals("") ||
+                    spinner.getSelectedItem() == null) {
+                MainActivityDemo.alertaCamposSinRellenar(getContext());
+            } else {
+                realm.beginTransaction();
                 int id1= AppConfigBd.periodicId.get();
                 int i = diaSemana.getSelectedItemPosition();
                 switch (diaSemana.getSelectedItem().toString()){
@@ -179,9 +183,8 @@ public class PeriodicFragment extends Fragment {
                 if(id1!=id2)
                     MainActivityDemo.alertaGuardado(getContext());
                 realm.copyToRealm(periodicEvent);
-                    realm.commitTransaction();
-
-
+                realm.commitTransaction();
+            }
 
             }
         });
