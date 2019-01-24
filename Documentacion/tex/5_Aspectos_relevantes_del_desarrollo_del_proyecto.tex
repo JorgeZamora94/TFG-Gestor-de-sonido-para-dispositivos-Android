@@ -36,3 +36,13 @@ WifiManager es la clase Java de Android, que nos permite obtener la información
 
 \subsection{Navigation Drawer}
 Para facilitar la experiencia de usuario se pensó en la utilización de este tipo de menú, ya que es muy cómodo de utilizar y no ocupa espacio dentro de la interfaz de trabajo del usuario.
+
+\subsection{Configuración de los eventos}
+Para permitir al usuario una mayor capacidad de interacción con la aplicación, se permitirá el ajuste de los eventos que se quieran tener activos en cada momento, es decir, se permitirá el borrado de los eventos previamente creados, y a su vez elegir que eventos quieren que se traten.
+
+\subsection{Permisos}
+Para poder utilizar ciertos tipos de sensores y servicios de los dispositivos móviles, es necesaria la aceptación de una serie de permisos, para que nuestra aplicación funcione correctamente. En nuestro caso los permisos que se tendrán que conceder para poder utilizar toda la funcionalidad de la aplicación son los permisos de localización y los permisos de lectura / escritura del calendario del dispositivo.
+
+Para pedir dichos permisos dentro de la aplicación se hace una comprobación de si estos han sido concedidos por el usuario, si estos no han sido concedidos, cuando se arranca la aplicación saldrá un mensaje pidiendo acceso a dichos elementos.
+
+Dentro del desarrollo de la aplicación estos tendrán que ser declarados en el archivo Manifest de la aplicación a si como controlados dentro del código a la hora de ejecutarse.
