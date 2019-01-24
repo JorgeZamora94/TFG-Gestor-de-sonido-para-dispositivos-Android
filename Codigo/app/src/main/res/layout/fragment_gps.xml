@@ -45,7 +45,7 @@
         android:layout_marginRight="20dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center|top"
-        android:layout_marginTop="400dp"
+        android:layout_marginTop="700dp"
         android:text="@string/guarda_evento" />
 
 </FrameLayout>

@@ -1,7 +1,12 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollViewSoundProfile"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context="es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.fragments.SettingControlFragment">
 
     <EditText
@@ -96,8 +101,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="500dp"
         android:text="@string/guarda_configuracion"
         android:layout_below="@+id/seekBarNotification"/>
 
 </RelativeLayout>
+</ScrollView>

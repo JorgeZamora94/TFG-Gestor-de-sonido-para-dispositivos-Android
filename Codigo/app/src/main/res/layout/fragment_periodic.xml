@@ -87,7 +87,7 @@
         android:layout_height="wrap_content"
         android:text="@string/guarda_evento"
         android:layout_gravity="top|center"
-        android:layout_marginTop="600dp"/>
+        android:layout_marginTop="700dp"/>
 
 </FrameLayout>
 </ScrollView>
