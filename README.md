@@ -7,7 +7,7 @@
 - https://youtu.be/FOTPMFUQlCg
 
 ## Enlace APK:
-https://universidaddeburgos-my.sharepoint.com/:u:/g/personal/jzm0008_alu_ubu_es/EfgwLbrrX-lIv_GHL_a10AQBl0YC0hI10lwabuBjqQFyaQ?e=U5BG9E
+https://universidaddeburgos-my.sharepoint.com/:u:/g/personal/jzm0008_alu_ubu_es/ETKkvFsplRBBmVhsbne1n0cBEnisQAKCet-b115reLwT7g?e=sqVInp
 
 
 
@@ -35,3 +35,8 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
+
+## Licencia de la documentación (vídeos, imágenes, documentos)
+
+Licencia de Creative Commons
+Este obra está bajo una licencia de Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional.
