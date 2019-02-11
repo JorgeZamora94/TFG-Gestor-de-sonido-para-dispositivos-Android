@@ -5,6 +5,7 @@
             <menu>
                 <item
                     android:id="@+id/inicio_app"
+                    android:icon="@mipmap/icons8_home_page"
                     android:title="@string/inicio" />
             </menu>
         </item>
@@ -12,24 +13,31 @@
             <menu>
                 <item
                     android:id="@+id/nuevo_periodico"
+                    android:icon="@mipmap/icons8_available_updates"
                     android:title="@string/periodic" />
                  <item
                     android:id="@+id/nuevo_gps"
-                    android:title="@string/gps" />
+                     android:icon="@mipmap/icons8_marker"
+                     android:title="@string/gps" />
                 <item
                     android:id="@+id/nuevo_wifi"
+                    android:icon="@mipmap/icons8_wifi"
                     android:title="@string/wifi" />
                 <item
                     android:id="@+id/nuevo_manual"
+                    android:icon="@mipmap/icons8_hand"
                     android:title="@string/manual" />
                 <item
                     android:id="@+id/nuevo_calendario"
+                    android:icon="@mipmap/icons8_calendar"
                     android:title="@string/calendar" />
                 <item
                     android:id="@+id/nueva_configuracion"
+                    android:icon="@mipmap/icons8_speaker"
                     android:title="@string/config" />
                 <item
                     android:id="@+id/elimina_evento"
+                    android:icon="@mipmap/icons8_menu"
                     android:title="@string/elimina_evento" />
             </menu>
         </item>
@@ -37,28 +45,39 @@
             <menu>
                 <item
                     android:id="@+id/ayuda_configuracion"
+                    android:icon="@mipmap/icons8_speaker"
                     android:title="@string/config_help" />
                 <item
                     android:id="@+id/ayuda_manual"
+                    android:icon="@mipmap/icons8_hand"
                     android:title="@string/manual_help" />
                 <item
                     android:id="@+id/ayuda_periodico"
+                    android:icon="@mipmap/icons8_available_updates"
                     android:title="@string/periodic_help" />
                 <item
                     android:id="@+id/ayuda_wifi"
+                    android:icon="@mipmap/icons8_wifi"
                     android:title="@string/wifi_help" />
                 <item
                     android:id="@+id/ayuda_gps"
+                    android:icon="@mipmap/icons8_marker"
                     android:title="@string/gps_help" />
                 <item
                     android:id="@+id/ayuda_calendario"
+                    android:icon="@mipmap/icons8_calendar"
                     android:title="@string/calendar_help" />
+                <item
+                    android:id="@+id/contacto"
+                    android:icon="@mipmap/icons8_voice_recognition"
+                    android:title="@string/contacto" />
             </menu>
         </item>
         <item android:title="@string/menu_config">
             <menu>
                 <item
                     android:id="@+id/configuracion_aplicacion"
+                    android:icon="@mipmap/icons8_services"
                     android:title="@string/app_config" />
             </menu>
         </item>

@@ -8,19 +8,22 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.view.menu.MenuItemImpl;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 
-
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -28,6 +31,7 @@ import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.app.AppConfigBd;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.bd.model.AppConfig;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.fragments.CalendarFragment;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.fragments.ConfigurationFragment;
+import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.fragments.ContactoFragment;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.fragments.DeleteEventFragment;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.fragments.GpsFragment;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.fragments.MainFragment;
@@ -59,8 +63,11 @@ import me.everything.providers.core.Data;
 public class MainActivityDemo extends AppCompatActivity {
 
     private DrawerLayout drawerLayout;
-    MenuItem lastItem = null;
-    NavigationView navigationView;
+    private MenuItem lastItem = null;
+    private NavigationView navigationView;
+
+    public static String infoConfig = "";
+    public static int idFragment = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +88,7 @@ public class MainActivityDemo extends AppCompatActivity {
 
                 boolean fragmentTransaction = false;
                 Fragment fragment = null;
-
+                idFragment = item.getItemId();
 
                 switch (item.getItemId()) {
                     case R.id.inicio_app:
@@ -149,6 +156,10 @@ public class MainActivityDemo extends AppCompatActivity {
                         fragment = new ConfigHelp();
                         fragmentTransaction = true;
                         break;
+                    case R.id.contacto:
+                        fragment = new ContactoFragment();
+                        fragmentTransaction = true;
+                        break;
                     case R.id.nueva_configuracion:
                         fragment = new SettingControlFragment();
                         fragmentTransaction = true;
@@ -187,6 +198,11 @@ public class MainActivityDemo extends AppCompatActivity {
             }
         }
 
+    }
+
+    public static void recargaPantallaPrincipal() {
+        if(idFragment == R.id.inicio_app)
+            recargaPantallaPrincipal();
     }
 
     public void cargaPantallaInicial() {
@@ -247,6 +263,7 @@ public class MainActivityDemo extends AppCompatActivity {
                 if(inicio.before(ahora) && fin.after(ahora)){
                     AudioController audioController = new AudioController(context);
                     audioController.cambiaSonido(eventoManual.getSettingControl());
+                    infoConfig = eventoManual.getSettingControl().toString();
                 }
             }
 
@@ -263,12 +280,34 @@ public class MainActivityDemo extends AppCompatActivity {
                 if(in < ah && fn > ah && ahora.get(Calendar.DAY_OF_WEEK) == diaSemana){
                     AudioController audioController = new AudioController(context);
                     audioController.cambiaSonido(eventoPeriodico.getSettingControl());
+                    infoConfig = eventoPeriodico.getSettingControl().toString();
                 }
             }
+
+
+        RealmResults<WifiEvent> wifiEvents = realm.where(WifiEvent.class).findAll();
+
+        ProveedorWifi proveedorWifi = new ProveedorWifi(context);
+        String ssidLeido = proveedorWifi.getSSID();
+        if(config.isWifi())
+            for (WifiEvent wifiEvent : wifiEvents) {
+                if(wifiEvent.getSsid().equals(ssidLeido)) {
+
+                    AudioController audioController = new AudioController(context);
+                    audioController.cambiaSonido(wifiEvent.getSettingControl());
+                    infoConfig = wifiEvent.getSettingControl().toString();
+                }
+            }
+
         if(config.isCalendar())
             if(ActivityCompat.checkSelfPermission( context, Manifest.permission.READ_CALENDAR) == PackageManager.PERMISSION_GRANTED ) {
                 CalendarProvider provider = new CalendarProvider(context);
-                for (int y = 0; y <= 50; y++) {
+                List<me.everything.providers.android.calendar.Calendar> calendars = provider.getCalendars().getList();
+                List<Long> listaIds = new ArrayList<>();
+                for(me.everything.providers.android.calendar.Calendar calendar : calendars){
+                    listaIds.add(calendar.id);
+                }
+                for (Long y : listaIds) {
                     Data<Event> events = provider.getEvents(y);
                     for (Event event : events.getList()) {
                         Calendar inicio = Calendar.getInstance();
@@ -280,6 +319,7 @@ public class MainActivityDemo extends AppCompatActivity {
                                 if (calendarEvent.getIdCalendarEvent().equals(event.title)) {
                                     AudioController audioController = new AudioController(context);
                                     audioController.cambiaSonido(calendarEvent.getSettingControl());
+                                    infoConfig = calendarEvent.getSettingControl().toString();
                                 }
                             }
 
@@ -287,21 +327,7 @@ public class MainActivityDemo extends AppCompatActivity {
                     }
                 }
             }
-
-        RealmResults<WifiEvent> wifiEvents = realm.where(WifiEvent.class).findAll();
-
-        ProveedorWifi proveedorWifi = new ProveedorWifi(context);
-        String ssidLeido = proveedorWifi.getSSID();
-
-        if(config.isWifi())
-            for (WifiEvent wifiEvent : wifiEvents) {
-                if(wifiEvent.getSsid().equals(ssidLeido)) {
-
-                    AudioController audioController = new AudioController(context);
-                    audioController.cambiaSonido(wifiEvent.getSettingControl());
-
-                }
-            }
+        sendNotification(context);
     }
 
     /**
@@ -370,4 +396,21 @@ public class MainActivityDemo extends AppCompatActivity {
     public static void alertaGuardadoSetting(Context context) {
         Toast.makeText(context, R.string.confirmacion_guardado_config, Toast.LENGTH_SHORT).show();
     }
+
+    public static void sendNotification(Context context) {
+
+        if(!infoConfig.equals("")) {
+            NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context, "1")
+                    .setSmallIcon(R.drawable.ic_launcher_background)
+                    .setContentTitle("Volume Controller")
+                    .setContentText(infoConfig)
+                    .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+
+            NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
+
+            notificationManager.notify(1, mBuilder.build());
+        }
+
+    }
+
 }

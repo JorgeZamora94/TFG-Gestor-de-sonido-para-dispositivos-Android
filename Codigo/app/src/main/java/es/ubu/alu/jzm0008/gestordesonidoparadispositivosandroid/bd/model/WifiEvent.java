@@ -66,11 +66,6 @@ public class WifiEvent extends RealmObject {
 
     @Override
     public String toString() {
-        return "WifiEvent{" +
-                "id=" + id +
-                ", ssid='" + ssid + '\'' +
-                ", mensaje='" + mensaje + '\'' +
-                ", settingControl=" + settingControl +
-                '}';
+        return "Evento wifi\n Nombre: " + nombre + "\n Nombre red wifi: " + getSsid() + "\n Perfil de sonido: " + settingControl;
     }
 }

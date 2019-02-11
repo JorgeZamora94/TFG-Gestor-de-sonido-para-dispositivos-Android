@@ -88,4 +88,10 @@
     <string name="alerta_campos_perfil">Perfil no creado, rellene todos los campos</string>
     <string name="selecciona_perfil">Selecciona un perfil de audio</string>
     <string name="selecciona_dia">Selecciona un día de la semana</string>
+    <string name="contacto">Contáctenos</string>
+    <string name="distancia">Inserta la distancia</string>
+    <string name="selecciona_evento">Selecciona un evento</string>
+    <string name="info_main">Desde la configuración de la aplicación podrás seleccionar los eventos que quieras controlar.
+                    \nDesde la opción del listado de eventos, podremos ver los eventos creados y borrarlos.</string>
+
 </resources>

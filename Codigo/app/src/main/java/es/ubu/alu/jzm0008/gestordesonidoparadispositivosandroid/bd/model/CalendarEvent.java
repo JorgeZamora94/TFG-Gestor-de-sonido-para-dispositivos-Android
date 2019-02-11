@@ -64,11 +64,7 @@ public class CalendarEvent extends RealmObject {
 
     @Override
     public String toString() {
-        return "CalendarEvent{" +
-                "id=" + id +
-                ", idCalendarEvent='" + idCalendarEvent + '\'' +
-                ", mensaje='" + mensaje + '\'' +
-                ", settingControl=" + settingControl +
-                '}';
+        return "Evento de calendario:" +
+                "\n Nombre: " + nombre + "\n Nombre evento: " + idCalendarEvent + "\n Perfil de sonido " + settingControl;
     }
 }

@@ -2,6 +2,7 @@ package es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.observadorgener
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.wifi.SupplicantState;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.IBinder;
@@ -17,6 +18,11 @@ public class ProveedorWifi  {
 
         WifiInfo wifiInfo = wifiManager.getConnectionInfo();
         String ssid = wifiInfo.getSSID();
+
+        wifiInfo = wifiManager.getConnectionInfo();
+        if (wifiInfo.getSupplicantState() == SupplicantState.COMPLETED) {
+            ssid = wifiInfo.getSSID();
+        }
 
         return  ssid;
     }

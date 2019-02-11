@@ -26,8 +26,6 @@ public class ConfigurationFragment extends Fragment {
     private Switch activoCalendario;
     private Button boton;
 
-
-
     public ConfigurationFragment() {
         // Required empty public constructor
     }

@@ -1,6 +1,7 @@
 package es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.observadorgenerico;
 
 import android.content.Context;
+import android.util.Log;
 
 import java.util.TimerTask;
 
@@ -9,16 +10,18 @@ import io.realm.Realm;
 
 public class Observador extends TimerTask {
     private Context context;
-    private Realm realm;
 
     public Observador(Context context) {
         this.context = context;
-        realm = Realm.getDefaultInstance();
     }
 
     public void run() {
+        try {
+            MainActivityDemo.controlador(context);
+        } catch (Exception e) {
+            Log.e("Timer", "Error en el controlador genético");
+        }
 
-        MainActivityDemo.controlador(context, Realm.getDefaultInstance());
 
     }
 

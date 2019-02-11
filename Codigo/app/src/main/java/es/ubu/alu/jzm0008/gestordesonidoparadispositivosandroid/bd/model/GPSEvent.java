@@ -11,6 +11,7 @@ import io.realm.annotations.PrimaryKey;
 public class GPSEvent extends RealmObject {
     @PrimaryKey
     private int id;
+    private int distancia;
     private String nombre;
     private double lon,lat;
     private String mensaje;
@@ -19,8 +20,9 @@ public class GPSEvent extends RealmObject {
     public GPSEvent() {
     }
 
-    public GPSEvent(String nombre, double lon, double lat, String mensaje, SettingControl settingControl) {
+    public GPSEvent(String nombre,int distancia, double lon, double lat, String mensaje, SettingControl settingControl) {
         this.id = AppConfigBd.gpsId.incrementAndGet();
+        this.distancia = distancia;
         this.nombre = nombre;
         this.lon = lon;
         this.lat = lat;
@@ -76,14 +78,16 @@ public class GPSEvent extends RealmObject {
         this.settingControl = settingControl;
     }
 
+    public int getDistancia() {
+        return distancia;
+    }
+
+    public void setDistancia(int distancia) {
+        this.distancia = distancia;
+    }
+
     @Override
     public String toString() {
-        return "GPSEvent{" +
-                "id=" + id +
-                ", lon=" + lon +
-                ", lat=" + lat +
-                ", mensaje='" + mensaje + '\'' +
-                ", settingControl=" + settingControl +
-                '}';
+        return "Evento gps\n Nombre: " + nombre + "\n Longitud: " + lon + "\n Latitud: " + lat + "\n Distancia: " + distancia + "\n Perfil de sonido: " + settingControl;
     }
 }

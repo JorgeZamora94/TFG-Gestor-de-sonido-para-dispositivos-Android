@@ -76,7 +76,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="700dp"
+        android:layout_marginTop="600dp"
         android:id="@+id/buttonSaveManual"
         android:layout_gravity="top|center"/>
 

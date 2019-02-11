@@ -10,7 +10,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -25,9 +27,7 @@ import io.realm.Realm;
 import io.realm.RealmObject;
 import io.realm.RealmResults;
 
-/**
- * A simple {@link Fragment} subclass.
- */
+
 public class DeleteEventFragment extends Fragment {
 
 
@@ -36,21 +36,21 @@ public class DeleteEventFragment extends Fragment {
     }
 
 
-    Realm realm = Realm.getDefaultInstance();
-    RealmResults<WifiEvent> wifi = realm.where(WifiEvent.class).findAll();
-    RealmResults<ManualEvent> manual = realm.where(ManualEvent.class).findAll();
-    RealmResults<PeriodicEvent> periodic = realm.where(PeriodicEvent.class).findAll();
-    RealmResults<CalendarEvent> calendar = realm.where(CalendarEvent.class).findAll();
-    RealmResults<GPSEvent> gps = realm.where(GPSEvent.class).findAll();
+    private Realm realm = Realm.getDefaultInstance();
+    private RealmResults<WifiEvent> wifi = realm.where(WifiEvent.class).findAll();
+    private RealmResults<ManualEvent> manual = realm.where(ManualEvent.class).findAll();
+    private RealmResults<PeriodicEvent> periodic = realm.where(PeriodicEvent.class).findAll();
+    private RealmResults<CalendarEvent> calendar = realm.where(CalendarEvent.class).findAll();
+    private RealmResults<GPSEvent> gps = realm.where(GPSEvent.class).findAll();
 
 
 
-    Spinner spinner = null;
+    private Spinner spinner = null;
+    private TextView textoInfo = null;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         Button button = null;
         View view = inflater.inflate(R.layout.fragment_delete_event, container, false);
 
@@ -82,13 +82,14 @@ public class DeleteEventFragment extends Fragment {
         spinner.setAdapter(adaptador);
 
         button = (Button) view.findViewById(R.id.deleteButton);
-
+        textoInfo = (TextView) view.findViewById(R.id.eventoSeleccionadoText);
 
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 RealmObject evento = (RealmObject) spinner.getSelectedItem();
+                textoInfo.setText(evento.toString());
             }
 
             @Override

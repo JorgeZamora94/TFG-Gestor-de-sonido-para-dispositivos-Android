@@ -1,5 +1,6 @@
 package es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.bd.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.app.AppConfigBd;
@@ -79,12 +80,7 @@ public class PeriodicEvent extends RealmObject {
 
     @Override
     public String toString() {
-        return "PeriodicEvent{" +
-                "id=" + id +
-                ", inicio=" + inicio +
-                ", fin=" + fin +
-                ", calendario='" + calendario + '\'' +
-                ", settingControl=" + settingControl +
-                '}';
+        SimpleDateFormat sdf = new SimpleDateFormat("hh:mm");
+        return "Evento periódico\n Nombre:" + nombre + "\n Inicio: " + sdf.format(inicio) + "\n Fin: " + sdf.format(fin) + "\n Día de la semana: " + calendario + "\n Perfil de sonido: " + settingControl;
     }
 }

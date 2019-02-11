@@ -89,4 +89,9 @@
     <string name="alerta_campos_perfil">Profile not created, please insert all the information</string>
     <string name="selecciona_perfil">Select an audio profile</string>
     <string name="selecciona_dia">Select a week day</string>
+    <string name="contacto">Contact us</string>
+    <string name="distancia">Insert the distance</string>
+    <string name="selecciona_evento">Select an event</string>
+    <string name="info_main">From the configuration of the application you can select the events you want to control.
+                    \nFrom the option of the list of events, we can see the events created and delete them.</string>
 </resources>

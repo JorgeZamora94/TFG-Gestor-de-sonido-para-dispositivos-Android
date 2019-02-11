@@ -1,0 +1,56 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollViewContact"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.fragments.ContactoFragment">
+
+    <ImageButton
+        android:id="@+id/google"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:src="@mipmap/icons8_play_button_96"
+        android:contentDescription="Google"
+        android:layout_gravity="top|center"
+        android:background="@null"
+        />
+
+    <ImageButton
+        android:id="@+id/facebook"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:src="@mipmap/icons8_facebook_96"
+        android:layout_gravity="top|center"
+        android:background="@null"
+        android:contentDescription="Facebook"/>
+
+    <ImageButton
+        android:id="@+id/instagram"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/icons8_instagram_96"
+        android:layout_gravity="top|center"
+        android:layout_marginTop="300dp"
+        android:background="@null"
+        android:contentDescription="Instagram"/>
+
+    <ImageButton
+        android:id="@+id/twitter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="400dp"
+        android:layout_gravity="top|center"
+        android:src="@mipmap/icons8_twitter_96"
+        android:background="@null"
+        android:contentDescription="Twitter"
+        />
+
+
+</FrameLayout>
+</ScrollView>

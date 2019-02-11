@@ -31,6 +31,7 @@ public class GpsFragment extends Fragment {
     private Spinner spinner;
     private Button button;
     private EditText nombre;
+    private EditText distancia;
     private Realm realm = Realm.getDefaultInstance();
     private RealmResults<SettingControl> settingsControls = realm.where(SettingControl.class).findAll();
 
@@ -61,15 +62,17 @@ public class GpsFragment extends Fragment {
 
             spinner.setAdapter(adaptador);
 
-
+            distancia = (EditText) view.findViewById(R.id.distanciaGps);
 
             button = (Button) view.findViewById(R.id.gpsButton);
-
 
 
             button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String asdf = distancia.getText().toString();
+
+                int distanciaNumerica = distancia.toString() == null || distancia.getText().toString().trim().equals("") ? 0 : Integer.parseInt(distancia.getText().toString());
                 if(nombre.getText() == null || nombre.getText().toString().equals("") ||
                         spinner.getSelectedItem() == null) {
                     MainActivityDemo.alertaCamposSinRellenar(getContext());
@@ -80,7 +83,7 @@ public class GpsFragment extends Fragment {
                         realm.beginTransaction();
                         int id1= AppConfigBd.gpsId.get();
 
-                        GPSEvent gpsEvent = new GPSEvent(nombre.getText().toString(), gps.getLocation().getLongitude(), gps.getLocation().getLatitude(),"gpsEvent", (SettingControl) spinner.getSelectedItem());
+                        GPSEvent gpsEvent = new GPSEvent(nombre.getText().toString(), distanciaNumerica, gps.getLocation().getLongitude(), gps.getLocation().getLatitude(),"gpsEvent", (SettingControl) spinner.getSelectedItem());
                         int id2=AppConfigBd.gpsId.get();
                         if(id1!=id2)
                             MainActivityDemo.alertaGuardado(getContext());

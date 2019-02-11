@@ -79,7 +79,7 @@ public class SettingControl extends RealmObject {
     public int getId() {return id;}
 
     public String toString(){
-            return getNameConfiguration();
+            return getNameConfiguration() ;
         }
 
     }

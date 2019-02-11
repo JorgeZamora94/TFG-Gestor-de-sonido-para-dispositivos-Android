@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.transicionesActivityFragment.Fragment1">
+    tools:context="es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.transicionesactivityfragment.Fragment1">
 
     <TextView
         android:layout_width="match_parent"

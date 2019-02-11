@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TimePicker;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
@@ -69,7 +70,8 @@ public class PeriodicFragment extends Fragment {
                         inicio = Calendar.getInstance();
                         inicio.set(Calendar.HOUR_OF_DAY, hourOfDay);
                         inicio.set(Calendar.MINUTE, minute);
-                        selectoHora1.setText(hourOfDay+":"+minute);
+                        SimpleDateFormat sdf = new SimpleDateFormat("hh:mm");
+                        selectoHora1.setText(sdf.format(inicio.getTime()));
                     }
                 },calendar.get(Calendar.HOUR_OF_DAY),calendar.get(Calendar.MINUTE),false);
                 timePickerDialog.show();
@@ -94,7 +96,8 @@ public class PeriodicFragment extends Fragment {
                         fin = Calendar.getInstance();
                         fin.set(Calendar.HOUR_OF_DAY, hourOfDay);
                         fin.set(Calendar.MINUTE, minute);
-                        selectoHora2.setText(hourOfDay+":"+minute);
+                        SimpleDateFormat sdf = new SimpleDateFormat("hh:mm");
+                        selectoHora2.setText(sdf.format(fin.getTime()));
                     }
                 },calendar.get(Calendar.HOUR_OF_DAY),calendar.get(Calendar.MINUTE),false);
                 timePickerDialog.show();
@@ -199,7 +202,7 @@ public class PeriodicFragment extends Fragment {
 
                 }
                 inicio.set(Calendar.DAY_OF_WEEK,i);
-                PeriodicEvent periodicEvent = new PeriodicEvent(nombre.getText().toString(), inicio.getTimeInMillis(), fin.getTimeInMillis(), "evento periodico", (SettingControl) spinner.getSelectedItem());
+                PeriodicEvent periodicEvent = new PeriodicEvent(nombre.getText().toString(), inicio.getTimeInMillis(), fin.getTimeInMillis(), "diaSemana.getSelectedItem().toString()", (SettingControl) spinner.getSelectedItem());
                 int id2=AppConfigBd.periodicId.get();
                 if(id1!=id2)
                     MainActivityDemo.alertaGuardado(getContext());

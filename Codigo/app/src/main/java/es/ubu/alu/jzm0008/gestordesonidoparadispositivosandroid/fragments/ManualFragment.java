@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TimePicker;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
@@ -97,8 +98,8 @@ public class ManualFragment extends Fragment {
 
                                 dia = Calendar.getInstance();
                                 dia.set(year, monthOfYear, dayOfMonth);
-
-                                buttonSelectDate.setText(dayOfMonth+"-"+monthOfYear+"-"+year);
+                                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                                buttonSelectDate.setText(sdf.format(dia.getTime()));
                             }
                         }, mYear, mMonth, mDay);
 
@@ -119,7 +120,8 @@ public class ManualFragment extends Fragment {
                         inicio = Calendar.getInstance();
                         inicio.set(Calendar.HOUR_OF_DAY, hourOfDay);
                         inicio.set(Calendar.MINUTE, minute);
-                        buttonSelectTime1.setText(hourOfDay+":"+minute);
+                        SimpleDateFormat sdf = new SimpleDateFormat("hh:mm");
+                        buttonSelectTime1.setText(sdf.format(inicio.getTime()));
                     }
                 },calendar.get(Calendar.HOUR_OF_DAY),calendar.get(Calendar.MINUTE),false);
                 timePickerDialog.show();
@@ -141,7 +143,8 @@ public class ManualFragment extends Fragment {
                         fin = Calendar.getInstance();
                         fin.set(Calendar.HOUR_OF_DAY, hourOfDay);
                         fin.set(Calendar.MINUTE, minute);
-                        buttonSelectTime2.setText(hourOfDay+":"+minute);
+                        SimpleDateFormat sdf = new SimpleDateFormat("hh:mm");
+                        buttonSelectTime2.setText(sdf.format(fin.getTime()));
                     }
                 },calendar.get(Calendar.HOUR_OF_DAY),calendar.get(Calendar.MINUTE),false);
                 timePickerDialog.show();

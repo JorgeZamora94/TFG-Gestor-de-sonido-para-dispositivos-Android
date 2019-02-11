@@ -1,5 +1,6 @@
 package es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.bd.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.app.AppConfigBd;
@@ -83,12 +84,7 @@ public class ManualEvent extends RealmObject {
 
     @Override
     public String toString() {
-        return "ManualEvent{" +
-                "id=" + id +
-                ", inicio=" + inicio +
-                ", fin=" + fin +
-                ", mensaje='" + mensaje + '\'' +
-                ", settingControl=" + settingControl +
-                '}';
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy mm:hh");
+        return "Evento manual\n Nombre: " + nombre + "\n Inicio: " + sdf.format(inicio) + "\n Fin: " + sdf.format(fin) + "\n Perfil de sonido: " + settingControl;
     }
 }
