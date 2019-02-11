@@ -2,7 +2,7 @@
 
 \section{Inicio del proyecto}
 
-Lo que me motivó a la hora de desarrollar este proyecto fue la necesidad de permitirme de una manera rápida y sencilla poder configurar mi terminal móvil para evitar situaciones embarazosas o no deseadas en las que el móvil suena cuando no debia, o por el contrario no sonaba cuando estabas disponible.
+Lo que me motivó a la hora de desarrollar este proyecto fue la necesidad de permitirme de una manera rápida y sencilla poder configurar mi terminal móvil para evitar situaciones embarazosas o no deseadas en las que el móvil suena cuando no debía, o por el contrario no sonaba cuando estabas disponible.
 
 Para ello decidí realizar una aplicación que permitiera a un usuario no experto de los dispositivos móviles el poder mantener gestionado en todo momento y de manera sencilla el sonido de su dispositivo.
 
@@ -11,7 +11,7 @@ Para ello decidí realizar una aplicación que permitiera a un usuario no expert
 Dentro de lo posible se intentó llevar a cabo el desarrollo del proyecto siguiendo una metodología ágil, siendo esta Scrum, intentando ir sacando de manera ágil el contenido del proyecto.
 Aunque no ha sido conseguido, como forma educativa se ha intentado seguir lo máximo posible esta idea.
 
-Para ello se generaron una serie de hitos a ir cumpliendo divididos en diferentes sprints, que se buscaba que fuera el contenido de trabajo que se podía generar en una semana. Se debería de haber ido quedando con el tutor para la revisión de estos sprints pero por diferentes motivos se fueron fui haciendo revisiones autocríticas para la revisión de estos a la vez que se quedaba con el tutor y se mantenia conversación por correo electrónico.
+Para ello se generaron una serie de hitos a ir cumpliendo divididos en diferentes sprints, que se buscaba que fuera el contenido de trabajo que se podía generar en una semana. Se debería de haber ido quedando con el tutor para la revisión de estos sprints pero por diferentes motivos se fueron fui haciendo revisiones auto críticas para la revisión de estos a la vez que se quedaba con el tutor y se mantenía conversación por correo electrónico.
 Cara la planificación de estos sprints se utilizó ZenHub, una herramienta que representa un tablero canvas.
 
 \subsection{Persistencia de los datos}
@@ -46,3 +46,13 @@ Para poder utilizar ciertos tipos de sensores y servicios de los dispositivos m�
 Para pedir dichos permisos dentro de la aplicación se hace una comprobación de si estos han sido concedidos por el usuario, si estos no han sido concedidos, cuando se arranca la aplicación saldrá un mensaje pidiendo acceso a dichos elementos.
 
 Dentro del desarrollo de la aplicación estos tendrán que ser declarados en el archivo Manifest de la aplicación a si como controlados dentro del código a la hora de ejecutarse.
+
+\subsection{Notificaciones}
+Nuestra aplicación utilizará una serie de notificaciones para la comunicación recíproca entre la aplicación y el usuario que la está utilizando. Podremos diferenciar 3 tipos de notificaciones que se darán durante el uso de la aplicación.
+
+\subsubsection{Notificación del nivel del volumen}
+Es una notificación emergente en la parte superior del dispositivo que nos indica que  niveles de volumen se han establecido en un momento determinado, cuando un evento configurado es activado.
+\subsubsection{Notificación en la barra de estados del dispositivo}
+Igualmente que en las notificaciones anteriores, esta notificación será lanzada cunado un evento configurado sea activado por la aplicación y se realice un cambio de configuración. Esta notificación aparecerá en el menú desplegable superior de nuestro dispositivo, en la cual encontraremos el nombre de la configuración de sonido que ha sido activada.
+\subsubsection{Notificación por mensaje emergente}
+Estas notificaciones serán lanzadas cuando vayamos a guardar eventos o configuraciones, estos pequeños mensajes nos darán la confirmación de si se ha guardado de manera correcta la información o no.

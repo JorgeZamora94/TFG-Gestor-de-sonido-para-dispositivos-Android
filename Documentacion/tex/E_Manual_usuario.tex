@@ -4,13 +4,14 @@
 
 A continuación describiremos como trabajar con la aplicación desarrollada y los requisitos que se necesiten para poder utilizarla y como poder instalar la aplicación.
 \section{Requisitos de usuarios}
-El usuario tendrá que tener un dispositivo Android que tenga GPS y conexión Wifi. La versión de Android podrá ser desde la 19 hasta la 26.
+El usuario tendrá que tener un dispositivo Android que tenga GPS y conexión Wifi. La aplicación podrá ser arrancada desde la versión 19 de Android.
 
 \section{Instalación}
 
-Una vez tengamos la aplicación, lo que tendremos que hacer será pinchar en la APK, y el dispositivo Android instalará automáticamente la aplicación. Cuando vayamos a crear el primer evento GPS y de calendario nos pedirá permisos la aplicación, y se tendrán que aceptar para que la aplicación funcione correctamente.
+Una vez tengamos la aplicación, lo que tendremos que hacer será pinchar en la APK, y el dispositivo Android instalará automáticamente la aplicación. Puede ser que nuestro dispositivo rechace la instalación de la APK ya que no tiene "garantías" dicha APK al no provenir dicha aplicación del Play Store de Google, a si que es posible que tengamos que habilitar desde los ajustes de nuestro dispositivo la instalación de aplicaciones de procedencia desconocida o de terceros. Esta opción la podremos activar o desactivar desde Ajustes/Seguridad.
 
 \section{Manual del usuario}
+A continuación se indicará el contenido de la aplicación, como los eventos que se podrán utilizar y los diferentes elementos que nos encontraremos en ella.
 
 \subsection{¿ Qué es y para que sirve esta aplicación?}
 En este proyecto se desarrollará una aplicación móvil para usuarios de Android. Lo que se intentará sera el automatizar de una manera sencilla el manejo de los volúmenes de sonido de nuestro dispositivo Android, para ello se podrán crear diferentes eventos que se comprobarán de manera automática y periódicamente y que cambiarán estos volúmenes.
@@ -26,13 +27,13 @@ En estos eventos tendremos que definir el día de la semana y las horas en las q
 En estos eventos tendremos que definir el nombre de la red Wifi y la configuración a establecerá. Si el dispositivo móvil detecta que hay una red Wifi al alcance con ese nombre se establecerá la configuración deseada.
 \subsubsection{Gps}
 En estos eventos tendremos que definir la configuración deseada, y cuando guardemos la configuración, el dispositivo móvil detectará la posición GPS y la guardará. Cuando estemos cerca de esa posición GPS se cambiará de configuración de sonido.
-\subsection{Calendario}
+\subsubsection{Calendario}
 En estos eventos se tendrá que definir el Id de una tarea de calendario, y la configuración de sonido a la que queramos cambiar. Si encuentra ese nombre de tarea en uno de los calendarios del móvil, se cambiará la configuración de sonido.
-\subsection{¿ Pero qué son las configuraciones de sonido?}
+\subsection{¿ Pero qué son las configuraciones de sonido ?}
 Las configuraciones de sonido son, los diferentes volúmenes que tiene el móvil, agrupados en una sola entidad. Dentro de una configuración de sonido modificaremos el sonido principal del móvil, llamadas, notificaciones, música y alarma.
 
-\subsection{Añadir nuevas configuraciones}
-Para añadir una nueva configuración de sonido tendremos que seleccionar en el menú desplegable de la izquierda la casilla de configuraciones de sonido.
+\subsection{Añadir nuevos perfiles de sonido}
+Para añadir un nuevo perfil de sonido tendremos que seleccionar en el menú desplegable de la izquierda la casilla de perfiles de sonido.
 Una vez dentro de esta pantalla seleccionaremos los niveles de volumen e introduciremos el nombre de la configuración.
 Para guardar la configuración tendremos que pinchar en el botón de guardar configuración.
 Centrándonos en los elementos de esta pantalla encontraremos:
@@ -47,13 +48,13 @@ Centrándonos en los elementos de esta pantalla encontraremos:
 
 \subsection{Añadir eventos periódicos}
 Para crear un evento periódico tendremos que seleccionar en el menú desplegable de la izquierda la casilla de eventos periódicos.
-Aquí tendremos que seleccionar la hora de inicio y la hora de finalización del evento desde los botones respectivos, los cuales nos sacarán un selector de hora, para establecer dicha hora.
-Una vez seleccionadas las horas de inicio y de finalización, tendremos que seleccionar el día de la semana que queremos y la configuración deseada a aplicar. Para ello tenemos dos listas desplegables para seleccionar estas opciones.
+Aquí tendremos que seleccionar la hora de inicio y la hora de fin del evento desde los botones respectivos, los cuales nos sacarán un selector de hora, para establecer dicha hora.
+Una vez seleccionadas las horas de inicio y de fin, tendremos que seleccionar el día de la semana que queremos y la configuración deseada a aplicar. Para ello tenemos dos listas desplegables para seleccionar estas opciones.
 Una vez que tengamos todos estos atributos seleccionados lo que tendremos que hacer será pinchar el el botón de guardar configuración para guardar los cambios realizados.
 Centrándonos en los elementos de esta pantalla encontraremos:
 \begin{enumerate}
 \item Cuadro de texto donde tendremos que introducir el nombre del evento a crear.
-\item Botones para seleccionar las horas de inicio y finalización del evento.
+\item Botones para seleccionar las horas de inicio y fin del evento.
 \item Menú desplegable donde seleccionaremos el día de la semana donde queremos crear el evento.
 \item Menú desplegable donde seleccionaremos la configuración de sonido anteriormente creada.
 \item Botón para guardar el evento.
@@ -77,7 +78,6 @@ Centrándonos en los elementos de esta pantalla encontraremos:
 \end{enumerate}
 
 
-
 \subsection{Añadir evento GPS}
 
 Para guardar un evento GPS lo que tendremos es que en la lista de configuraciones desplegable seleccionar la configuración deseada.
@@ -86,12 +86,13 @@ Una vez hecho esto pincharemos en el botón de guardar configuración y automát
 Centrándonos en los elementos de esta pantalla encontraremos:
 \begin{enumerate}
 \item Cuadro de texto donde tendremos que introducir el nombre del evento a crear.
-\item Menú desplegable donde seleccionaremos la configuración de sonido anteriormente creada.
+\item Menú desplegable donde seleccionaremos el perfil de sonido anteriormente creada.
 \item Botón para guardar el evento.
 \end{enumerate}
 
 
 \subsection{Añadir evento Wifi}
+
 Para guardar un evento Wifi tendremos que seleccionar en el menú lateral desplegable y seleccionar la casilla de eventos Wifi.
 Introduciremos el nombre del evento.
 Introduciremos en el cuadro de texto el nombre de la red Wifi que deseemos detectar.
@@ -105,8 +106,6 @@ Centrándonos en los elementos de esta pantalla encontraremos:
 \item Menú desplegable donde seleccionaremos la configuración de sonido anteriormente creada.
 \item Botón para guardar el evento.
 \end{enumerate}
-
-
 
 \subsection{Añadir evento Calendario}
 Para guardar un evento de calendario lo que tendremos que hacer será seleccionar en el menú lateral la casilla de eventos de calendario.
@@ -124,7 +123,7 @@ Centrándonos en los elementos de esta pantalla encontraremos:
 
 \subsection{Comprobar eventos y establecer configuraciones asociadas}
 
-Automáticamente la aplicación buscará si hay eventos activos, revisando cada tipo de evento, y si hay alguna condición que active a estos, se realizará el cambio de sonido
+Automáticamente la aplicación buscará si hay eventos activos, revisando cada tipo de evento, y si hay alguna condición que active a estos, se realizará el cambio de sonido.
 
 
 \subsection{Como activar o desactivar eventos}
@@ -136,3 +135,17 @@ Encontraremos los siguientes elementos
 \item 5 switchs para activar o desactivar los eventos
 \item Botón para guardar la configuración.
 \end{enumerate}
+
+\subsection{Eliminar eventos}
+Si queremos eliminar algún evento, tendremos que tener previamente creado alguno. Nos iremos a la opción del menú desplegable de listado de eventos, en el menú desplegable elegiremos el evento a borrar y cuando le demos al boton de eliminar, este evento se eliminará de manera automática.
+
+Encontraremos los siguientes elementos:
+\begin{enumerate}
+\item Selector de los eventos.
+\item Información sobre el evento seleccionado.
+\item Botón que borrará el evento seleccionado.
+\end{enumerate}
+
+\section{Manual del usuario dentro de la aplicación}
+Para una mayor facilidad se ha introducido una pequeña guía de uso de la aplicación dentro de esta, a sí como una serie de enlaces a las diferentes formas de contacto para el soporte de la aplicación.
+
