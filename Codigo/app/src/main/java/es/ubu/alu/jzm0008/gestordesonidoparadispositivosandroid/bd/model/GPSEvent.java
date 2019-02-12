@@ -1,7 +1,5 @@
 package es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.bd.model;
 
-import android.location.Location;
-
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.app.AppConfigBd;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;

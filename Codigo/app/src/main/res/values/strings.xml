@@ -39,7 +39,7 @@
     <string name="nombre_calendario">Enter the name of the calendar event</string>
     <string name="nombre_gps">Enter the name of the GPS event</string>
     <string name="clave_calendario">" Enter the keyword of the event"</string>
-    <string name="nombre_config">Enter the name of the configuration</string>
+    <string name="nombre_config">Enter the name of the profile</string>
     <string name="wifi_help_text">" \n
         1. To save a Wifi event we will have to select in the drop-down side menu and select the Wifi event box. \n
         2. Enter the name of the event. \n
@@ -50,13 +50,13 @@
         1. To create a periodic event we will have to select the box of periodic events in the drop-down menu on the left.\n
         2. Here we will have to select the start time and the end time of the event.\n
         3. Once you have selected the start and end times, we will have to select the day of the week we want and the desired sound profile. For this we have two drop-down lists to select these options.\n
-        4. Once we have all these selected attributes, we will have to click on the button to save the configuration to save the changes made.</string>
+        4. Once we have all these selected attributes, we will have to click on the button to save the periodic event.</string>
     <string name="manual_help_text">\n
         1. To generate a manual event we will have to select the box of manual events in the drop-down menu on the left.\n
         2. In this screen the first thing that we will have to do is select the day of the event, clicking on the day selection button, and selecting it in the pop-up of the calendar that comes out by clicking on the button.\n
         3. In the same way as before we will have to select the start and end time of the event in the time-selected selectors of the radio buttons.\n
         4. We will also have to select the desired sound profile from the list of pop-up objects.\n
-        5. To save this manual event we will have to click on the save configuration button.</string>
+        5. To save this manual event we will have to click on the save event button.</string>
     <string name="calendar_help_text">\n
         1. To save a calendar event, we will have to select the calendar events box in the side menu.\n
         2. Once on the calendar events screen, what we will have to do is enter the title of the event on which we want the configuration to be activated in the text box.\n
@@ -65,12 +65,13 @@
     <string name="gps_help_text">\n
         1. To generate a gps event we will have to select the gps event box in the drop-down menu on the left.\n
         2. Introduce the name of the event.\n
+        3. Enter the distance.\n
         4. We will also have to select the desired sound profile.\n
-        5. To save this gps event we will have to click on the save configuration button and the current gps position will be saved.</string>
+        5. To save this gps event we will have to click on the save event button and the current gps position will be saved.</string>
     <string name="config_help_text">\n
         1. To add a new sound profile we will have to select the sound profile box from the drop-down menu on the left.\n
-        2. Once inside this screen we will select the volume levels and enter the name of the configuration.\n
-        3. To save the configuration we will have to click on the button to save the profile.</string>
+        2. Once inside this screen we will select the volume levels and enter the name of the profile.\n
+        3. To save the profile we will have to click on the button to save the profile.</string>
     <string name="manual_activado">Manual Control</string>
     <string name="periodico_activado">Periodic Control</string>
     <string name="wifi_activado">Wifi Control</string>
@@ -80,7 +81,7 @@
     <string name="confirmacion_guardado_config">Configuration/profile saved</string>
     <string name="main_fragment">\n\n\nWelcome to Gestor de sonido para dispositivos Android</string>
     <string name="menu_inicio">Main</string>
-    <string name="menu_event">Events and sound settings</string>
+    <string name="menu_event">Events and sound profiles</string>
     <string name="menu_ayuda">Help</string>
     <string name="menu_config">App configuration</string>
     <string name="elimina_evento">Event list</string>

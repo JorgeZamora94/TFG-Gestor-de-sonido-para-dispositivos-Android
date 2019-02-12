@@ -1,7 +1,12 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollViewWifi"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context="es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.fragments.MainFragment">
 
     <TextView
@@ -23,3 +28,4 @@
         android:layout_marginRight="20dp"/>
 
 </FrameLayout>
+</ScrollView>

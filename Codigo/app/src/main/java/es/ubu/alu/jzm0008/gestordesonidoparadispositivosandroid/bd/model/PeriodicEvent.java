@@ -1,7 +1,6 @@
 package es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.bd.model;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.app.AppConfigBd;
 import io.realm.RealmObject;

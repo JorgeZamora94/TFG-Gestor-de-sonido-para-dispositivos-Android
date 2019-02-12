@@ -70,7 +70,6 @@ public class GpsFragment extends Fragment {
             button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String asdf = distancia.getText().toString();
 
                 int distanciaNumerica = distancia.toString() == null || distancia.getText().toString().trim().equals("") ? 0 : Integer.parseInt(distancia.getText().toString());
                 if(nombre.getText() == null || nombre.getText().toString().equals("") ||

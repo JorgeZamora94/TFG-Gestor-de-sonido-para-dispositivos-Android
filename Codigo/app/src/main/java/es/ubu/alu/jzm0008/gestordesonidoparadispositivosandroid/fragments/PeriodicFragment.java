@@ -202,7 +202,7 @@ public class PeriodicFragment extends Fragment {
 
                 }
                 inicio.set(Calendar.DAY_OF_WEEK,i);
-                PeriodicEvent periodicEvent = new PeriodicEvent(nombre.getText().toString(), inicio.getTimeInMillis(), fin.getTimeInMillis(), "diaSemana.getSelectedItem().toString()", (SettingControl) spinner.getSelectedItem());
+                PeriodicEvent periodicEvent = new PeriodicEvent(nombre.getText().toString(), inicio.getTimeInMillis(), fin.getTimeInMillis(), diaSemana.getSelectedItem().toString(), (SettingControl) spinner.getSelectedItem());
                 int id2=AppConfigBd.periodicId.get();
                 if(id1!=id2)
                     MainActivityDemo.alertaGuardado(getContext());

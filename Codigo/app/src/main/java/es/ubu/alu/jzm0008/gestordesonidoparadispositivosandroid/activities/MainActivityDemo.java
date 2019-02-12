@@ -22,7 +22,6 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -251,8 +250,6 @@ public class MainActivityDemo extends AppCompatActivity {
         RealmResults<PeriodicEvent> periodicos = realm.where(PeriodicEvent.class).findAll();
         RealmResults<CalendarEvent> calendarEvents = realm.where(CalendarEvent.class).findAll();
         AppConfig config = realm.where(AppConfig.class).findFirst();
-        RealmResults<AppConfig> configList = realm.where(AppConfig.class).findAll();
-
 
         Calendar ahora = Calendar.getInstance();
         if(config.isManual())

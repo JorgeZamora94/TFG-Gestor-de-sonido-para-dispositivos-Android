@@ -10,10 +10,9 @@ import android.widget.Switch;
 
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.R;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.activities.MainActivityDemo;
-import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.app.AppConfigBd;
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.bd.model.AppConfig;
 import io.realm.Realm;
-import io.realm.RealmResults;
+
 
 
 public class ConfigurationFragment extends Fragment {

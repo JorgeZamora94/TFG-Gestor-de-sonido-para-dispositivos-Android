@@ -6,7 +6,6 @@ import android.util.Log;
 import java.util.TimerTask;
 
 import es.ubu.alu.jzm0008.gestordesonidoparadispositivosandroid.activities.MainActivityDemo;
-import io.realm.Realm;
 
 public class Observador extends TimerTask {
     private Context context;

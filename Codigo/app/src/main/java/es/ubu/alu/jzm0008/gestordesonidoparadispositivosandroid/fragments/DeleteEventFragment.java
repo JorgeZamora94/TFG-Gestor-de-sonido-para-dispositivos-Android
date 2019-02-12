@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -30,12 +29,6 @@ import io.realm.RealmResults;
 
 public class DeleteEventFragment extends Fragment {
 
-
-    public DeleteEventFragment() {
-        // Required empty public constructor
-    }
-
-
     private Realm realm = Realm.getDefaultInstance();
     private RealmResults<WifiEvent> wifi = realm.where(WifiEvent.class).findAll();
     private RealmResults<ManualEvent> manual = realm.where(ManualEvent.class).findAll();
@@ -47,6 +40,10 @@ public class DeleteEventFragment extends Fragment {
 
     private Spinner spinner = null;
     private TextView textoInfo = null;
+
+    public DeleteEventFragment() {
+        // Required empty public constructor
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
