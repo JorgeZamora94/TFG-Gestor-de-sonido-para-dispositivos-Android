@@ -9,13 +9,14 @@ De manera general los objetivos de la aplicación son posibilitar la gestión de
 \section{Catalogo de requisitos}
 \subsection{Requisitos funcionales}
 \begin{enumerate}
-	\item El usuario podrá guardar configuraciones de audio.
-	\item El usuario podrá guardar eventos periódicos según el día de la semana, seleccionando la hora de inicio y la hora de finalización del evento, y la configuración de audio asociada.
-	\item El usuario podrá establecer eventos manuales seleccionando el día del evento, la hora de inicio y de finalización, y la configuración de sonido deseada.
-	\item El usuario podrá establecer eventos GPS seleccionando la configuración de audio deseada, la localización GPS será la actual del dispositivo.
-	\item El usuario podrá establecer eventos Wifi introduciendo el nombre de la red Wifi deseada, que es a la que luego estará conectado el usuario, y seleccionando una configuración de audio.
-	\item El usuario podrá establecer eventos de calendario introduciendo el título del evento del calendario, distancia entre las localizaciones y seleccionando la configuración de audio deseada a cambiar.
+	\item El usuario podrá guardar perfiles de audio.
+	\item El usuario podrá guardar eventos periódicos introduciendo el nombre del evento, seleccionando el día de la semana, seleccionando la hora de inicio y la hora de fin del evento, y el perfil de audio asociada.
+	\item El usuario podrá establecer eventos manuales introduciendo el nombre del evento, seleccionando el día del evento, la hora de inicio y de fin, y seleccionando el perfil de sonido deseada.
+	\item El usuario podrá establecer eventos GPS introduciendo el nombre del evento, introduciendo la distancia de reconocimiento, seleccionando el perfil de audio deseada, la localización GPS actual será la que se almacene como punto de control.
+	\item El usuario podrá establecer eventos Wifi introduciendo el nombre del evento, introduciendo el nombre de la red Wifi deseada, y seleccionando un perfil de audio.
+	\item El usuario podrá establecer eventos de calendario introduciendo el nombre del evento, introduciendo el título del evento del calendario, y seleccionando el perfil de audio.
 	\item El usuario podrá borrar cualquier evento.
+	\item El usuario podrá activar o desactivar los diferentes tipos de eventos.
 \end{enumerate}
 
 \subsection{Requisitos no funcionales}
@@ -29,19 +30,24 @@ De manera general los objetivos de la aplicación son posibilitar la gestión de
 
 \section{Especificación de requisitos}
 
-\subsection{Casos de uso}
+\subsection{Diagrama de casos de uso}
 
-\tablaSmall{Crear nueva configuración de audio}{l c c c c}{configuracionaudio}
+\imagen{casosdeuso}{Imagen que muestra el diagrama de casos de uso del proyecto.}
+
+\subsection{Casos de uso}
+A continuación se mostrarán los casos de uso que han sido desarrollados en la aplicación.
+
+\tablaSmall{Crear nuevo perfil de audio}{l c c c c}{configuracionaudio}
 { \multicolumn{1}{l}{Información} & Descripción\\}{ 
 Versión & V1.0\\
 Autores & Jorge Zamora Marqués\\
 Requisitos asociados & \\
-Descripción & Se creará una nueva configuración de audio.\\
+Descripción & Se creará un nuevo perfil de audio.\\
 Pre condición & \\
 Secuencia normal 
-	& Selecciona en el menú la opción de configuraciones de sonido.\\
+	& Selecciona en el menú la opción de perfiles de sonido.\\
 	
-	& Introduce nombre de la configuración\\
+	& Introduce nombre del perfil.\\
 	
 	& Selecciona volumen del sistema.\\
 	
@@ -52,7 +58,7 @@ Secuencia normal
 	& Pincha botón de guardado.\\
 	
 	& Se guardan los datos en la base de datos.\\
-Pos condición & Configuración de audio guardada.\\
+Pos condición & Perfil de audio guardado.\\
 Frecuencia esperada & Media\\
 Importancia & Alta\\
 } 
@@ -63,7 +69,7 @@ Versión & V1.0\\
 Autores & Jorge Zamora Marqués\\
 Requisitos asociados & \\
 Descripción & Se creará un nuevo evento periódico.\\
-Pre condición & Haber configuraciones de audio previamente guardadas\\
+Pre condición & Haber perfiles de audio previamente guardados\\
 Secuencia normal 
 	& Selecciona en el menú la opción de eventos periódicos.\\
 	
@@ -73,7 +79,7 @@ Secuencia normal
 	
 	& Selecciona hora de finalización.\\
 	
-	& Selecciona configuración de audio.\\
+	& Selecciona perfil de audio.\\
 		
 	& Pincha botón de guardado.\\
 	
@@ -89,7 +95,7 @@ Versión & V1.0\\
 Autores & Jorge Zamora Marqués\\
 Requisitos asociados & \\
 Descripción & Se creará un nuevo evento manual.\\
-Pre condición & Haber configuraciones de audio previamente guardadas\\
+Pre condición & Haber perfiles de audio previamente guardados\\
 Secuencia normal 
 	& Selecciona en el menú la opción de eventos manuales.\\
 	
@@ -101,7 +107,7 @@ Secuencia normal
 	
 	& Selecciona hora de finalización.\\
 	
-	& Selecciona configuración de audio.\\
+	& Selecciona perfil de audio.\\
 		
 	& Pincha botón de guardado.\\
 	
@@ -117,7 +123,7 @@ Versión & V1.0\\
 Autores & Jorge Zamora Marqués\\
 Requisitos asociados & \\
 Descripción & Se creará un nuevo evento wifi.\\
-Pre condición & Haber configuraciones de audio previamente guardadas\\
+Pre condición & Haber perfiles de audio previamente guardados\\
 Secuencia normal 
 	& Selecciona en el menú la opción de eventos wifi.\\
 	
@@ -125,7 +131,7 @@ Secuencia normal
 	
 	& Introducimos nombre del wifi.\\
 	
-	& Selecciona configuración de audio.\\
+	& Selecciona perfil de audio.\\
 		
 	& Pincha botón de guardado.\\
 	
@@ -141,7 +147,7 @@ Versión & V1.0\\
 Autores & Jorge Zamora Marqués\\
 Requisitos asociados & \\
 Descripción & Se creará un nuevo evento calendario.\\
-Pre condición & Haber configuraciones de audio previamente guardadas\\
+Pre condición & Haber perfiles de audio previamente guardados\\
 Secuencia normal 
 	& Selecciona en el menú la opción de eventos de calendario.\\
 	
@@ -149,7 +155,7 @@ Secuencia normal
 	
 	& Introducimos nombre del evento del calendario.\\
 	
-	& Selecciona configuración de audio.\\
+	& Selecciona perfil de audio.\\
 		
 	& Pincha botón de guardado.\\
 	
@@ -165,7 +171,7 @@ Versión & V1.0\\
 Autores & Jorge Zamora Marqués\\
 Requisitos asociados & \\
 Descripción & Se creará un nuevo evento GPS.\\
-Pre condición & Haber configuraciones de audio previamente guardadas\\
+Pre condición & Haber perfiles de audio previamente guardados\\
 Secuencia normal 
 	& Selecciona en el menú la opción de eventos GPS.\\
 	
@@ -173,7 +179,7 @@ Secuencia normal
 	
 	& Introduce la distancia de reconocimiento.\\	
 	
-	& Selecciona configuración de audio.\\
+	& Selecciona perfil de audio.\\
 		
 	& Pincha botón de guardado.\\
 	
@@ -203,7 +209,7 @@ Frecuencia esperada & Baja\\
 Importancia & Alta\\
 }
 
-\tablaSmall{Borrar evento}{l c c c c}{configApp}
+\tablaSmall{Borrar evento}{l c c c c}{borrarEvento}
 { \multicolumn{1}{l}{Información} & Descripción\\}{ 
 Versión & V1.0\\
 Autores & Jorge Zamora Marqués\\
@@ -221,4 +227,4 @@ Secuencia normal
 Pos condición & Evento borrado.\\
 Frecuencia esperada & Media\\
 Importancia & Alta\\
-} 
+}

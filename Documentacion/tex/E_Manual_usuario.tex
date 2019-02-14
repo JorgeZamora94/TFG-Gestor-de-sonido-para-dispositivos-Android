@@ -32,6 +32,24 @@ En estos eventos se tendrá que definir el Id de una tarea de calendario, y la c
 \subsection{¿ Pero qué son las configuraciones de sonido ?}
 Las configuraciones de sonido son, los diferentes volúmenes que tiene el móvil, agrupados en una sola entidad. Dentro de una configuración de sonido modificaremos el sonido principal del móvil, llamadas, notificaciones, música y alarma.
 
+\subsection{Aceptar los permisos de la aplicación}
+Para poder navegar entre las diferentes pantallas tendremos que utilizar el menú desplegable lateral de la aplicación.
+
+\imagen{menu}{Imagen que muestra el menú de la aplicación.}
+
+\subsection{Aceptar los permisos de la aplicación}
+Lo primero que tendremos que hacer, para poder utilizar toda la potencia de la aplicación será la aceptación de los permisos, para que la aplicación pueda utilizar el GPS y el calendario, para ello nos saldrán dos ventanas emergentes pidiéndonos dichas confirmaciones.
+
+\imagen{permisosubicacion}{Imagen que muestra el mensaje en el cual aceptaremos o denegaremos los permisos para permitir que la aplicación pueda acceder a la ubicación del dispositivo.}
+
+\imagen{permisoscalendario}{Imagen que muestra el mensaje en el cual aceptaremos o denegaremos los permisos para permitir que la aplicación acceda al calendario de nuestro dispositivo.}
+
+\subsection{Pantalla principal de la aplicación}
+La primera pantalla que encontraremos será la pantalla principal de la aplicación en la cual nos encontraremos un mensaje de bienvenida y una pequeña ayuda.
+
+\imagen{principal}{Imagen que muestra la pantalla principal de la aplicación.}
+
+
 \subsection{Añadir nuevos perfiles de sonido}
 Para añadir un nuevo perfil de sonido tendremos que seleccionar en el menú desplegable de la izquierda la casilla de perfiles de sonido.
 Una vez dentro de esta pantalla seleccionaremos los niveles de volumen e introduciremos el nombre de la configuración.
@@ -46,6 +64,8 @@ Centrándonos en los elementos de esta pantalla encontraremos:
 \item Selector del volumen de las notificaciones
 \end{enumerate}
 
+\imagen{perfildesonido}{Imagen que muestra la pantalla para la creación de perfiles de sonido.}
+
 \subsection{Añadir eventos periódicos}
 Para crear un evento periódico tendremos que seleccionar en el menú desplegable de la izquierda la casilla de eventos periódicos.
 Aquí tendremos que seleccionar la hora de inicio y la hora de fin del evento desde los botones respectivos, los cuales nos sacarán un selector de hora, para establecer dicha hora.
@@ -59,6 +79,8 @@ Centrándonos en los elementos de esta pantalla encontraremos:
 \item Menú desplegable donde seleccionaremos la configuración de sonido anteriormente creada.
 \item Botón para guardar el evento.
 \end{enumerate}
+
+\imagen{eventoperiodico}{Imagen que muestra la pantalla para la creación de eventos periódicos.}
 
 \subsection{Añadir evento manual}
 
@@ -77,6 +99,8 @@ Centrándonos en los elementos de esta pantalla encontraremos:
 \item Botón para guardar el evento.
 \end{enumerate}
 
+\imagen{eventomanual}{Imagen que muestra la pantalla para la creación de los eventos manuales.}
+
 
 \subsection{Añadir evento GPS}
 
@@ -86,10 +110,12 @@ Una vez hecho esto pincharemos en el botón de guardar configuración y automát
 Centrándonos en los elementos de esta pantalla encontraremos:
 \begin{enumerate}
 \item Cuadro de texto donde tendremos que introducir el nombre del evento a crear.
+\item Cuadro de texto donde introduciremos la distancia de localización.
 \item Menú desplegable donde seleccionaremos el perfil de sonido anteriormente creada.
 \item Botón para guardar el evento.
 \end{enumerate}
 
+\imagen{eventogps}{Imagen que nos muestra la pantalla para la creación de los eventos de GPS.}
 
 \subsection{Añadir evento Wifi}
 
@@ -107,6 +133,8 @@ Centrándonos en los elementos de esta pantalla encontraremos:
 \item Botón para guardar el evento.
 \end{enumerate}
 
+\imagen{eventowifi}{Imagen que nos muestra la pantalla para la creación de eventos wifi.}
+
 \subsection{Añadir evento Calendario}
 Para guardar un evento de calendario lo que tendremos que hacer será seleccionar en el menú lateral la casilla de eventos de calendario.
 Una vez en la pantalla de eventos de calendario lo que tendremos que hacer será introducir el titulo del evento sobre el que queremos que se active la configuración en el cuadro de texto.
@@ -121,9 +149,11 @@ Centrándonos en los elementos de esta pantalla encontraremos:
 \item Botón para guardar el evento.
 \end{enumerate}
 
+\imagen{eventocalendario}{Imagen que muestra la pantalla para la creación de los eventos de calendario.}
+
 \subsection{Comprobar eventos y establecer configuraciones asociadas}
 
-Automáticamente la aplicación buscará si hay eventos activos, revisando cada tipo de evento, y si hay alguna condición que active a estos, se realizará el cambio de sonido.
+Automáticamente la aplicación buscará si hay eventos activos, revisando cada tipo de evento, y si hay alguna condición que active a estos, se realizará el cambio de sonido. Para saber el evento que está activo en ese preciso momento sólo tendremos que mirar la barra de navegación del dispositivo, y si hay activo algún evento, aparecerá la notificación de la aplicación con el nombre del perfil de sonido que está activo en ese preciso momento. La importancia de los eventos sobre otros son: Calendario > Wifi > Periódico > Manual. El evento de GPS es independiente y se irá activando según la localización.
 
 
 \subsection{Como activar o desactivar eventos}
@@ -136,6 +166,8 @@ Encontraremos los siguientes elementos
 \item Botón para guardar la configuración.
 \end{enumerate}
 
+\imagen{configuracionapp}{Imagen en la que veremos la pantalla que nos permite el activar o desactivar un tipo de evento en concreto}
+
 \subsection{Eliminar eventos}
 Si queremos eliminar algún evento, tendremos que tener previamente creado alguno. Nos iremos a la opción del menú desplegable de listado de eventos, en el menú desplegable elegiremos el evento a borrar y cuando le demos al boton de eliminar, este evento se eliminará de manera automática.
 
@@ -146,6 +178,22 @@ Encontraremos los siguientes elementos:
 \item Botón que borrará el evento seleccionado.
 \end{enumerate}
 
+\imagen{listadoeventos}{Imagen que muestra la pantalla en la cual podremos ver los eventos que están creados y eliminarlos de la aplicación.}
+
 \section{Manual del usuario dentro de la aplicación}
 Para una mayor facilidad se ha introducido una pequeña guía de uso de la aplicación dentro de esta, a sí como una serie de enlaces a las diferentes formas de contacto para el soporte de la aplicación.
+
+\imagen{ayudamanual}{Imagen que muestra la pantalla para la creación de eventos manuales.}
+
+\imagen{ayudaperiodico}{Imagen que muestra la pantalla para la creación de eventos periódicos.}
+
+\imagen{ayudawifi}{Imagen que muestra la pantalla para la creación de eventos wifi.}
+
+\imagen{ayudacalendario}{Imagen que muestra la pantalla para la creación de eventos de calendario.}
+
+\imagen{ayudagps}{Imagen que muestra la pantalla para la creación de eventos gps.}
+
+\imagen{ayudaperfiles}{Imagen que muestra la pantalla para la creación de perfiles de sonido.}
+
+\imagen{contacto}{Imagen que muestra la pantalla para el acceso a las diferentes redes sociales y poder establecer contacto para obtener soporte de la aplicación.}
 

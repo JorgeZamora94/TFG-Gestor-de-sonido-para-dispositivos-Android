@@ -1,41 +1,60 @@
 \capitulo{5}{Aspectos relevantes del desarrollo del proyecto}
+A continuación se expondrán los aspectos más relevantes del desarrollo del proyecto.
 
 \section{Inicio del proyecto}
-
 Lo que me motivó a la hora de desarrollar este proyecto fue la necesidad de permitirme de una manera rápida y sencilla poder configurar mi terminal móvil para evitar situaciones embarazosas o no deseadas en las que el móvil suena cuando no debía, o por el contrario no sonaba cuando estabas disponible.
 
 Para ello decidí realizar una aplicación que permitiera a un usuario no experto de los dispositivos móviles el poder mantener gestionado en todo momento y de manera sencilla el sonido de su dispositivo.
 
 \section{Metodologías}
-
 Dentro de lo posible se intentó llevar a cabo el desarrollo del proyecto siguiendo una metodología ágil, siendo esta Scrum, intentando ir sacando de manera ágil el contenido del proyecto.
-Aunque no ha sido conseguido, como forma educativa se ha intentado seguir lo máximo posible esta idea.
 
-Para ello se generaron una serie de hitos a ir cumpliendo divididos en diferentes sprints, que se buscaba que fuera el contenido de trabajo que se podía generar en una semana. Se debería de haber ido quedando con el tutor para la revisión de estos sprints pero por diferentes motivos se fueron fui haciendo revisiones auto críticas para la revisión de estos a la vez que se quedaba con el tutor y se mantenía conversación por correo electrónico.
-Cara la planificación de estos sprints se utilizó ZenHub, una herramienta que representa un tablero canvas.
+Con mayor o menor fluidez, se han estado generando una serie de Sprints para el desarrollo del proyecto, más concreta mente 8, hasta la fecha.
+
+De estos 8 Sprints, se puede llegar a ver la evolución del proyecto, ya que en los primeros Sprints se buscaba la adquisición de conocimientos, luego la resolución de los casos de uso, para finalmente en los últimos Sprints pulir el contenido de la App así como añadir mejoras a esta.
+
+\section{Herramientas para la construcción y versiones de Android}
+Nada más empezar el desarrollo de la aplicación se especificó que esta sería una aplicación Android, desarrollada en el lenguaje Java, siendo Android 19 la versión mínima y Android 26 la máxima, aunque las pruebas realizadas hasta la fecha con con Android 24.
+Para el desarrollo de la aplicación se utilizaría Android Studio, para la documentación \TeX{}Maker para la edición de la documentación en La\TeX{}, y como repositorio utilizaríamos GitHub, que a su vez con Zen-Hub, nos serviría como herramienta de seguimiento del proyecto.
+
+\section{Aprendizaje e investigación}
+Para la realización del proyecto, tuvimos que adquirir nuevos conocimientos, ya que aunque en la carrera se trabaje con Java, no con Android y sus librerías, con lo cual tuvimos que tomar como referencia tres puntos de los que agarrarnos para la obtención de información de como funciona Android, y cuáles eran las mejores prácticas para realizar el trabajo.
+\subsection{Stack Overflow}
+Es un foro donde se encuentra gran cantidad de información sobre diversos lenguajes de programación.\cite{stackoverflow}
+\subsection{Udemy}
+Es una página web de cursos online, en donde yo realicé un curso para aprender a programar Android. En este caso realicé el curso titulado Programación de Android desde cero. \cite{udemy}
+\subsection{Android Developers}
+Android Developers es la página de referencia para cualquier programador Android, ya que encontramos de una manera rápida y sencilla la información requerida.\cite{developers}
+
+\section{Decisiones propias durante el desarrollo de la aplicación}
+A continuación se verán las decisiones técnicas que se tuvieron que ir tomando para poder sacar el mejor producto posible.
 
 \subsection{Persistencia de los datos}
-Otra decisión importante que se tuvo que tomar una vez ya arrancado el proyecto y avanzado, fue el modo de guardar los datos que introducía el usuario, es decir, cada vez que abriéramos la aplicación tendría que poder obtener los datos que habían sido guardados previamente, ya fueran eventos o configuraciones de sonido.
+Una decisión importante que se tuvo que tomar una vez ya arrancado el proyecto y avanzado, fue el modo de guardar los datos que introducía el usuario, es decir, cada vez que abriéramos la aplicación tendría que poder obtener los datos que habían sido guardados previamente, ya fueran eventos o configuraciones de sonido.
 
 Las opciones que contemplamos fuero SQLlite, una base de datos con un tamaño reducido, que se ejecuta con la propia aplicación y Realm, que es un sistema de gestión de bases de datos diseñado inicialmente para Android y IOS de código abierto.
 Al final se decidió la utilización de la base de datos Realm ya que su utilización era bastante sencilla.
 
 La única complicación, es que hay que generar el id por el que va cada clase, para ello generaremos una clase que se ejecute al principio de cada ejecución de la aplicación, y que se encargara de obtener el ID máximo de cada clase, para evitar problemas de conflictos de PrimaryKey.
 
+\subsection{TimerTask}
+TimerTask fue la solución encontrada al problema de gestionar hilos asíncronos en nuestra aplicación, para que el hilo principal de ejecución no se bloqueara cada vez que se tuviera que comprobar el estado de los eventos.
+TimerTask es un hilo asíncrono el cual se ejecuta cada x tiempo, este tiempo es definido cuando se construye el hilo.
+
 \subsection{LocationManager}
+Otra decisión importante fue la forma de acceder a la posición GPS, pero finalmente se optó por Location Manager, ya que de manera sencilla nos permitía el poder obtener un servicio que nos controlara los cambios en la localización GPS.
 Location Manager es una clase propia de Android que nos permite utilizar los servicios de localización del SO. Con esta clase lo que podremos hacer será obtener la localización por varios métodos, en este caso la localización será la que obtengamos del GPS del móvil. 
 
 \subsection{Easy Content Providers}
+Otra barrera importante fue el acceso a los calendarios de nuestro dispositivo Android, para lo cual se optó por la utilización del proyecto Easy Content Provider, el cual permite obtener de manera sencilla diferentes datos del dispositivo, como por ejemplo los calendarios, contactos, log de llamadas\ldots
 
-Es un proyecto de Android que permite obtener de manera sencilla diferentes datos del dispositivo, como por ejemplo los calendarios, contactos, log de llamadas\ldots
-
-Con esta herramienta hemos conseguido iterar sobre los diferentes calendarios que se encuentran en nuestro dispositivo android, para luego obtener los eventos, y saber si hay alguno activo en ese momento o no.
+Con esta herramienta hemos conseguido iterar sobre los diferentes calendarios que se encuentran en nuestro dispositivo android, para luego obtener los eventos, y saber si hay alguno activo en ese momento o no.\cite{easycontent}
 
 \subsection{WifiManager}
-WifiManager es la clase Java de Android, que nos permite obtener la información del wifi de nuestro terminal. Se estuvo pensando si utilizar toda la lista de redes wifi disponibles, la red con la intensidad mayor o la red wifi a la que estaba conectada el dispositivo, y al final me decanté por la red wifi a la que está conectado el dispositivo, ya que puede dar la casualidad que haya alguna otra red disponible con el mismo nombre que alguna de las que estuvieran configuradas, y de esta manera nos aseguramos que la red wifi con la que trataremos será la que utilice el usuario del terminal.
+Para el acceso a las configuraciones Wifi, se optó por la utilización de WifiManager, que es la clase Java de Android, que nos permite obtener la información del wifi de nuestro terminal. Se estuvo pensando si utilizar toda la lista de redes wifi disponibles, la red con la intensidad mayor o la red wifi a la que estaba conectada el dispositivo, y al final me decanté por la red wifi a la que está conectado el dispositivo, ya que puede dar la casualidad que haya alguna otra red disponible con el mismo nombre que alguna de las que estuvieran configuradas, y de esta manera nos aseguramos que la red wifi con la que trataremos será la que utilice el usuario del terminal.\cite{wifimanager}
 
 \subsection{Navigation Drawer}
-Para facilitar la experiencia de usuario se pensó en la utilización de este tipo de menú, ya que es muy cómodo de utilizar y no ocupa espacio dentro de la interfaz de trabajo del usuario.
+Una vez fuimos creando diversas pantallas, se planteó como poder acceder a ellas de una forma sencilla y rápida, con lo que se pensó que la utilización de un menú lateral desplegable sería la forma mas sencilla, rápida y limpia de poder acceder las diferentes pantallas sin demasiado esfuerzo.
 
 \subsection{Configuración de los eventos}
 Para permitir al usuario una mayor capacidad de interacción con la aplicación, se permitirá el ajuste de los eventos que se quieran tener activos en cada momento, es decir, se permitirá el borrado de los eventos previamente creados, y a su vez elegir que eventos quieren que se traten.
@@ -45,14 +64,23 @@ Para poder utilizar ciertos tipos de sensores y servicios de los dispositivos m�
 
 Para pedir dichos permisos dentro de la aplicación se hace una comprobación de si estos han sido concedidos por el usuario, si estos no han sido concedidos, cuando se arranca la aplicación saldrá un mensaje pidiendo acceso a dichos elementos.
 
-Dentro del desarrollo de la aplicación estos tendrán que ser declarados en el archivo Manifest de la aplicación a si como controlados dentro del código a la hora de ejecutarse.
+Dentro del desarrollo de la aplicación estos tendrán que ser declarados en el archivo Manifest de la aplicación a si como controlados dentro del código a la hora de ejecutarse.\cite{permisos}
 
 \subsection{Notificaciones}
 Nuestra aplicación utilizará una serie de notificaciones para la comunicación recíproca entre la aplicación y el usuario que la está utilizando. Podremos diferenciar 3 tipos de notificaciones que se darán durante el uso de la aplicación.
 
 \subsubsection{Notificación del nivel del volumen}
-Es una notificación emergente en la parte superior del dispositivo que nos indica que  niveles de volumen se han establecido en un momento determinado, cuando un evento configurado es activado.
+Es una notificación emergente en la parte superior del dispositivo que nos indica que  niveles de volumen se han establecido en un momento determinado, cuando un evento configurado es activado.\cite{audiomanager}
 \subsubsection{Notificación en la barra de estados del dispositivo}
-Igualmente que en las notificaciones anteriores, esta notificación será lanzada cunado un evento configurado sea activado por la aplicación y se realice un cambio de configuración. Esta notificación aparecerá en el menú desplegable superior de nuestro dispositivo, en la cual encontraremos el nombre de la configuración de sonido que ha sido activada.
+Igualmente que en las notificaciones anteriores, esta notificación será lanzada cunado un evento configurado sea activado por la aplicación y se realice un cambio de configuración. Esta notificación aparecerá en el menú desplegable superior de nuestro dispositivo, en la cual encontraremos el nombre de la configuración de sonido que ha sido activada.\cite{notificacion}
 \subsubsection{Notificación por mensaje emergente}
-Estas notificaciones serán lanzadas cuando vayamos a guardar eventos o configuraciones, estos pequeños mensajes nos darán la confirmación de si se ha guardado de manera correcta la información o no.
+Estas notificaciones serán lanzadas cuando vayamos a guardar eventos o configuraciones, estos pequeños mensajes nos darán la confirmación de si se ha guardado de manera correcta la información o no.\cite{toast}
+
+\section{Localización de la App}
+Una vez tuvo la aplicación una buena estructura y una buena base, se empezó a implementar la localización de la aplicación, eso quiere decir que la aplicación tendrá dos o varios idiomas. En este caso se implemento una primera versión de la aplicación en inglés.
+
+\section{Pruebas}
+Durante el desarrollo de la aplicación, se tuvieron que realizar una serie de pruebas para comprobar que el código generado realizaba las acciones esperadas correctamente, para ello se realizaron una serie de pruebas unitarias, que corroboraban el buen o mal funcionamiento de la aplicación. Una vez ya asentada la base de la aplicación se empezaron a desarrollar pruebas automáticas con la herramienta de Expresso.
+
+\section{Control de la calidad de código}
+Durante la última mitad de la fase de desarrollo de la aplicación se ha estado utilizando Codacy, una herramienta web que permite el control de la calidad de nuestro código, así como la duplicidad de código, la complejidad de este y que no haya código sin usar o mal estructurado.

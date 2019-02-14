@@ -14,16 +14,56 @@ Los datos con los que hemos estado trabajando han sido objetos, con lo cual los 
 	\item Configuración de la app
 \end{itemize}
 
-Con estas clases se ha configurado toda la aplicación para que pueda cambiar de configuración de sonido según la especificación de requisitos del trabajo.
+\imagen{relacional}{Imagen que muestra la relación entre las entidades en la base de datos.}
 
-
+\imagen{clases}{Imagen que muestra la relación entre clases en la aplicación.}
 
 \section{Diseño procedimental}
+A continuación se añadirán los diferentes diagramas de secuencia, representando las diferentes acciones que se dan dentro de la aplicación.
 
-Faltan las imágenes que se añadirán cuando este
+\imagen{perfilesdesonido}{Imagen que muestra el diagrama de secuencia a la hora de generar un perfil de sonido.}
+
+\imagen{gps}{Imagen que muestra el diagrama de secuencia a la hora de generar un evento GPS.}
+
+\imagen{manual}{Imagen que muestra el diagrama de secuencia a la hora de generar un evento manual.}
+
+\imagen{periodico}{Imagen que muestra el diagrama de secuencia a la hora de generar un evento periódico.}
+
+\imagen{calendario}{Imagen que muestra el diagrama de secuencia a la hora de generar un evento de calendario.}
+
+\imagen{wifi}{Imagen que muestra el diagrama de secuencia a la hora de generar un evento wifi.}
+
+\imagen{borraevento}{Imagen que muestra el diagrama de secuencia para el borrado de eventos.}
+
+\imagen{timer}{Imagen que muestra el diagrama de secuencia de como funciona el hilo que controla los eventos manuales, periódicos, wifi y calendario.}
+
+\imagen{locationlistener}{Imagen que muestra el funcionamiento del listener GPS.}
+
 
 \section{Diseño arquitectónico}
 
 Como diseño arquitectónico podríamos decir que es una aplicación que se basa en el modelo vista controlador, ya que un controlador irá sacando los datos que se requieran a la vista, de un modelo de datos que no está en contacto directo con la vista, siendo el controlador el que haga el paso de la parte front-end a la back-end.
 
+\imagen{arquitectura}{Imagen que muestra la arquitectura MVC.}
+
+\subsection{Directorios}
+A continuación se añadirán los esquemas de cómo está montada la aplicación a nivel de directorios.
+
+\imagen{directorios}{Imagen que muestra la distribución de los directorios dentro de nuestra aplicación.}
+
+\imagen{dactivities}{Imagen que muestra la distribución de clases en el directorio activities.}
+
+\imagen{dapp}{Imagen que muestra la distribución de clases en el directorio app.}
+
+\imagen{dobservergps}{Imagen que muestra la distribución de clases en el directorio observergps.}
+
+\imagen{dgenerico}{Imagen que muestra la distribución de clases en el directorio observadorgenerico.}
+
+\imagen{dmodificador}{Imagen que muestra la distribución de clases en el directorio modificadorsonido.}
+
+\imagen{dhelp}{Imagen que muestra la distribución de clases en el directorio helpfragments.}
+
+\imagen{dfragment}{Imagen que muestra la distribución de clases en el directorio fragments.}
+
+\imagen{dmodel}{Imagen que muestra la distribución de clases en el directorio bd.model.}
 

@@ -4,30 +4,67 @@
 A continuación veremos como se ha estado trabajando para generar la aplicación y algunos conceptos necesarios.
 \section{Estructura de directorios}
 
-Código java de la aplicación:
-Hay que diferenciar la parte de objetos, controladores y aplicación principal.
-
-Parte gráfica de la aplicación:
-Guardamos los bitmaps de los iconos, layouts, estructuras de menús, literales de los menús...
+\begin{itemize}
+	\item Directorio raíz aplicación: /Codigo/
+	\item Directorio de la aplicación: /Codigo/app/
+	\item Directorio del código fuente: /Codigo/app/src/
+	\item Directorio principal de la app: /Codigo/app/src/main/
+	\item Directorio test: /Codigo/app/src/test/
+	\item Directorio test Android: /Codigo/app/src/androidTest
+	\item Directorio código de la aplicación: /Codigo/app/src/java/
+	\item Directorio de los recursos: /Codigo/app/src/res/
+	\item Directorio de la documentación: /Documentacion/
+	\item Directorio de los textos de la documentación: /Documentacion/text/
+	\item Directorio de las imágenes de la documentacion: /Documentacion/img/
+\end{itemize}
 
 \section{Manual del programador}
+\subsection{Android Studio}
+Android Studio\cite{astudio} será el IDE de desarrollo que se utilizará para programar en java, el cual se podrá instalar de una manera rápida y sencilla, permitiéndonos el desarrollo de forma sencilla gracias a las ayudas que este tiene para programar, a sí como las ventajas de poder disponer de un emulador para probar al instante el código que se va generando.
+Otra ventaja de utilizar Android Studio, es que cuando se instala este ya nos indica que se instalará la versión de java correspondiente para el desarrollo de las aplicaciones.
+
 \subsection{Ficheros de configuración}
 En nuestro proyecto encontraremos tres ficheros de configuración, dos ficheros que utiliza Gradle, para añadir dependencias a nuestro proyecto y lineas de ejecución de este, y un archivo manifest donde indicaremos todo lo relacionado con la ejecución de librerías de android, versionado de la aplicación y diferentes componentes android.
-\subsection{Observadores}
-Los observadores en nuestra aplicación son una serie de clases que se encargarán de ver si se lanza agún tipo de evento, el cual active alguna de nuestras configuraciones.
 
-Para ello tendremos dos tipos de observadores: un observador GPS y un observador genérico.
-\subsubsection{Observador GPS}
-El observador GPS es la clase encargada de detectar cunado hay cambios en nuestra localización GPS, es decir, cada vez que nos movamos X metros o pase Y tiempo se lanzará un evento, el cual realizará las comprobaciones pertinentes para ver si hay configurado algún evento de GPS con esas coordenadas, y si es así activar la configuración 
+\subsection{Añadir permisos a la aplicación}
+Para añadir nuevos permisos a la aplicación, estos tendrán que ser añadidos al archivo AndroidManifest.xml. Aun con todo eso, es posible que dichos permisos también tengan que ser controlados por código.
 
-\section{Compilación, instalación y ejecución del proyecto}
+\subsection{Añadir nuevas librerías/dependencias}
+Como se realizó para añadir el Easy Content Provider\cite{easycontent}, para poder añadir una nueva librería, esta se tendrá que añadir al fichero build.gradle(Module:app) y asegurarnos de que se han actualizado las dependencias del proyecto para poder usar la librería con tranquilidad.
+
+\subsection{Cómo saber que version de Android utiliza un proyecto}
+Para poder saber qué version de Android se está contemplando, se tendrá que ir al archivo bild.gradle(Module:app) y fijarnos cual es la version de compilación, la versión mínima permitida y cual es la máxima.
+
+\subsection{Importar un nuevo proyecto}
+Para importar un nuevo proyecto desde Android Studio simplemente tendremos que ir a /File/Open... y seleccionar el directorio donde se encuentra nuestro proyecto.
+
+\subsection{Comandos básicos de Git}
+A continuación se expondrán unos comandos básicos para la utilización de Git \cite{git}.
+\begin{itemize}
+	\item git push origin rama: todo lo comiteado se sube al repositorio en la nube en la rama establecida.
+	\item git commit -m "": realizamos el commit con el mensaje que introduzcamos dentro de las comillas.
+	\item git add fichero: añadimos a lo traqueado el fichero.
+	\item git add -A .: todo lo que haya en el directorio y sus sub directorios con cambios será añadido.
+	\item git clone url: clonamos en la carpeta actual el repositorio señalado en al url.
+\end{itemize}
+
+\subsection{Comandos básicos de Git}
+Para obtener una revisión de la calidad de nuestro código, podremos utilizar la herramienta Codacy\cite{codacy}, la cual nos sacará una serie de informes para estar al tanto de la calidad de nuestro código, sugiriendo para cada caso cual sería la correcta manera de solventar el problema.
+
 \section{Compilación, instalación y ejecución del proyecto}
 Una vez ya realizados los pasos anteriores vistos en el manual del programador podremos realizar los siguiente pasos.
 \subsection{Compilación de la aplicación}
 Para ello tendremos que tener el proyecto abierto con el Android Studio y seleccionar en la barra de herramientas el botón del desplegable de "Build", y ahí seleccionaremos "Build Project" o "Rebuid Project" si ya lo habíamos buildeado anterior mente.
 \subsection{Instalación de la APP y ejecución del proyecto}
 Para instalar la aplicación dentro de un simulador Android de IDE Android Studio lo que haremos será crear un dispositivo virtual con la versión de Android que queramos simular. Una vez tengamos creada la máquina virtual de Android lo que haremos será pinchar en el botón de "Run" en la barra de herramientas de Android Studio, o abriendo el desplegable "Run" y seleccionando la opción "Run 'app'". Una vez hecho esto, tendremos que seleccionar un dispositivo sobre el que instalar y ejecutar la aplicación, por consiguiente se nos abrirá una ventana donde seleccionar el dispositivo simulado sobre el que correr la aplicación, permitiéndonos también crear nuevos dispositivos simulados. Una vez seleccionado el dispositivo pincharemos en el botón "OK" y esperaremos a que el proyecto se buildee, y que la máquina virtual se arranque. Una vez arrancada la máquina virtual automáticamente se instalará y se ejecutará.
+
+
+
 \section{Pruebas del sistema}
+A continuación se expondrán las pruebas que se le han realizado al sistema.
+
+\subsection{Creación de pruebas Espresso}
+Para generar pruebas automáticas, estas se podrán generar con el IDE Android Studio, para ello tendremos que ir a /Run/RecordEspressoTest. Una vez seleccionado, se nos abrirá el emulador de Android, en donde cada acción que se realice en la pantalla, esta será guardada, para posteriormente generar un fichero con las rutinas del test.
 
 \subsection{Pruebas unitarias de la base de datos}
 
@@ -143,6 +180,20 @@ El evento seleccionado será borrado.
 \paragraph{Resultado}
 Prueba superada.
 
+\subsubsection{Bloqueo de eventos}
+
+\paragraph{Premisas}
+No hay premisas
+
+\paragraph{Acciones}
+Se tendrá se seleccionar la configuración de la app del menú desplegable y guardar la configuración.
+
+\paragraph{Resultados esperados}
+Se guarda la configuración de la app, y los eventos no se saltan las restricciones que esta les pone.
+
+\paragraph{Resultado}
+Prueba superada.
+
 \subsubsection{Navegación por la ayuda}
 
 \paragraph{Premisas}
@@ -158,4 +209,4 @@ Se puede navegar de manera correcta a través de nuestra aplicación y a su vez 
 Prueba superada.
 
 \subsection{Pruebas automáticas de la aplicación}
-Se han realizado una serie de pruebas automáticas con la herramienta de Expresso, para el testeo de aplicaciones Android. Las pruebas realizadas son similares a las anteriormente indicadas, pero estas son realizadas de manera automática por Android Studio. Para ejecutar dichas 
+Se han realizado una serie de pruebas automáticas con la herramienta de Espresso, para el testeo de aplicaciones Android. Las pruebas realizadas son similares a las anteriormente indicadas, pero estas son realizadas de manera automática por Android Studio. Para ejecutar dichas 
